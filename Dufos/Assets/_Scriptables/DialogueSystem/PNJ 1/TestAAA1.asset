@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeakerName: Monsieur 1
   CharacterDialogue:
-  - Oh dinguerie en vrai.
+  - Merci.
   Choices: []
