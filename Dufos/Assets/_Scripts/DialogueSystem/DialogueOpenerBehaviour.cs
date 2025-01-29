@@ -12,14 +12,19 @@ public class DialogueOpenerBehaviour : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _speakerName;
     [SerializeField]
-    private TextMeshProUGUI _speakerDialogue;
-    [SerializeField]
     private List<TextMeshProUGUI> _choiceTexts;
     [SerializeField]
     private GameObject _nextDialogueButton;
 
     private static DialogueManager _dialogueManager;
+    private DialoguePlayerBehaviour _dialoguePlayer;
+    private Coroutine _dialogueCoroutine;
     private int index;
+
+    private void Awake()
+    {
+        _dialoguePlayer = GetComponent<DialoguePlayerBehaviour>();
+    }
 
     public void DisplayDialogues(DialogueManager story)
     {
@@ -34,7 +39,17 @@ public class DialogueOpenerBehaviour : MonoBehaviour
             _nextDialogueButton.SetActive(true);
             _dialogueSystemDisplay.SetActive(true);
             _speakerName.text = story.SpeakerName;
-            _speakerDialogue.text = story.CharacterDialogue[0];
+            if (_dialoguePlayer.CurrentState == DialoguePlayerBehaviour.DialogueState.PLAYING && _dialogueCoroutine != null)
+            {
+                StopCoroutine(_dialogueCoroutine);
+                _dialoguePlayer.PlayDialogue(_dialogueManager.CharacterDialogue[index]);
+            }
+
+            else
+            {
+                _dialogueCoroutine = _dialoguePlayer.StartCoroutine(_dialoguePlayer.TypingEffectDialogue(_dialogueManager.CharacterDialogue[0]));
+            }
+
             index = 0;
         }
     }
@@ -43,10 +58,16 @@ public class DialogueOpenerBehaviour : MonoBehaviour
     {
         if (_dialogueManager != null)
         {
-            if ((index + 1) < _dialogueManager.CharacterDialogue.Count)
+            if (_dialoguePlayer.CurrentState == DialoguePlayerBehaviour.DialogueState.PLAYING && _dialogueCoroutine != null)
+            {
+                StopCoroutine(_dialogueCoroutine);
+                _dialoguePlayer.PlayDialogue(_dialogueManager.CharacterDialogue[index]);
+            }
+
+            else if ((index + 1) < _dialogueManager.CharacterDialogue.Count)
             {
                 index++;
-                _speakerDialogue.text = _dialogueManager.CharacterDialogue[index];
+                _dialogueCoroutine = _dialoguePlayer.StartCoroutine(_dialoguePlayer.TypingEffectDialogue(_dialogueManager.CharacterDialogue[index]));
             }
 
             else if (_dialogueManager.Choices.Count > 0)
@@ -72,11 +93,6 @@ public class DialogueOpenerBehaviour : MonoBehaviour
             {
                 _dialogueSystemDisplay.SetActive(false);
             }
-        }
-
-        else
-        {
-            _dialogueSystemDisplay.SetActive(false);
         }
     }
 }
