@@ -8,10 +8,15 @@ public class Movement : MonoBehaviour
     [SerializeField] LayerMask _mask;
     NavMeshAgent _agent;
 
+    private void Awake()
+    {
+        TryGetComponent(out _agent);
+    }
+
     private void Start()
     {
         _cam = Camera.main;
-        TryGetComponent(out _agent);
+        
         _mousePosition.z = _cam.transform.position.z;
     }
 

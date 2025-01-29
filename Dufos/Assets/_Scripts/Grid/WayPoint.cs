@@ -16,6 +16,13 @@ public class WayPoint : MonoBehaviour
 
     [HideInInspector] public bool IsActive;
 
+    MeshRenderer _mR;
+
+    private void Awake()
+    {
+        TryGetComponent(out _mR);
+    }
+
     public void TravelThrough(ref List<WayPoint> openPoints,ref List<WayPoint> closedPoints, ref Stack<WayPoint> shorterPath, WayPoint endPoint, WayPoint startPoint)
     {
         if(this == endPoint)
@@ -63,7 +70,7 @@ public class WayPoint : MonoBehaviour
 
         FormerPoint = formerPoint;
 
-        H = Vector2.Distance(transform.position, endPoint.transform.position);
+        H = Vector3.Distance(transform.position, endPoint.transform.position);
         G ++;
 
     }
@@ -96,6 +103,11 @@ public class WayPoint : MonoBehaviour
         GraphMaker.Instance.DeactivatePoint(this);
         IsActive = false;
         gameObject.SetActive(false); // visuels pour l'instant
+    }
+
+    public void OnClicked()
+    {
+        _mR.material.color = Color.red;
     }
 
     private void OnDrawGizmosSelected()
