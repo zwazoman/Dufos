@@ -14,9 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeakerName: Monsieur 1
   CharacterDialogue:
-  - fghj
-  Choices:
-  - PlayerChoice: Oui
-    NextStory: {fileID: 0}
-  - PlayerChoice: Non
-    NextStory: {fileID: 0}
+  - Ptn
+  Choices: []

@@ -10,15 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43ea44f74cec0a043915801acf63a8a6, type: 3}
-  m_Name: TestA1
+  m_Name: TestAAA1
   m_EditorClassIdentifier: 
   SpeakerName: Monsieur 1
   CharacterDialogue:
-  - Premier dialogue
-  - "Deuxi\xE8me dialogue"
-  - "Troisi\xE8me dialogue ?"
-  Choices:
-  - PlayerChoice: Oui
-    NextStory: {fileID: 11400000, guid: 1efcbc2592c27664fac1481cbbd71381, type: 2}
-  - PlayerChoice: Non
-    NextStory: {fileID: 11400000, guid: d3dd94dbaff7dae49bcb069fdce55372, type: 2}
+  - Oh dinguerie en vrai.
+  Choices: []
