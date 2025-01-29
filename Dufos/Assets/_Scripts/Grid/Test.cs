@@ -22,7 +22,6 @@ public class Test : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Physics.Raycast(ray, out hit);
-            print(hit.collider.gameObject.name);
         }
     }
 }
