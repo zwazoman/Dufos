@@ -1870,6 +1870,7 @@ GameObject:
   - component: {fileID: 1293223270}
   - component: {fileID: 1293223271}
   - component: {fileID: 1293223272}
+  - component: {fileID: 1293223273}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -1906,7 +1907,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dialogueSystemDisplay: {fileID: 1387331951}
   _speakerName: {fileID: 478284589}
-  _speakerDialogue: {fileID: 107195617}
   _choiceTexts:
   - {fileID: 203700473}
   - {fileID: 207975037}
@@ -1926,6 +1926,20 @@ MonoBehaviour:
   _choicesDisplay:
   - {fileID: 796482772}
   - {fileID: 766557089}
+--- !u!114 &1293223273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293223269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebe2ffb4f6c37be458822dcede4faed5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speakerDialogue: {fileID: 107195617}
+  _textSpeed: 0.05
 --- !u!1 &1325886139
 GameObject:
   m_ObjectHideFlags: 0
