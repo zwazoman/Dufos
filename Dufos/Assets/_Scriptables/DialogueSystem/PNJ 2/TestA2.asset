@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeakerName: Monsieur 2
   CharacterDialogue:
-  - Premier dialogue
-  - "Deuxi\xE8me dialogue"
-  - "Troisi\xE8me dialogue"
+  - Premier dialogue.
+  - "Deuxi\xE8me dialogue."
+  - "Troisi\xE8me dialogue."
   Choices: []

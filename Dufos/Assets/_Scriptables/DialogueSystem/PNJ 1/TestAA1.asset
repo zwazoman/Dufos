@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeakerName: Monsieur 1
   CharacterDialogue:
-  - Viens on discute wsh
+  - Tu as bien dis oui ?
   Choices:
-  - PlayerChoice: Oui
+  - PlayerChoice: Oui.
     NextStory: {fileID: 11400000, guid: 23c6e1ab0cc16204c86eb980e0890295, type: 2}
-  - PlayerChoice: Non
+  - PlayerChoice: Non.
     NextStory: {fileID: 11400000, guid: d3dd94dbaff7dae49bcb069fdce55372, type: 2}
