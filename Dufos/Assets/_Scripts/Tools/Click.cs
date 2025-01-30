@@ -32,10 +32,9 @@ public class Click : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Vector3 mousePos = Input.mousePosition;
-
             RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(mousePos);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {

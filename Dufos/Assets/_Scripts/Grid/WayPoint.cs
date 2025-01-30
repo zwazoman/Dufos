@@ -5,6 +5,8 @@ public class WayPoint : MonoBehaviour
 {
     public List<WayPoint> Neighbours = new List<WayPoint>();
 
+    [HideInInspector] GameObject Content;
+
     [HideInInspector] public WayPoint FormerPoint;
 
     [HideInInspector] public bool IsOpen = false;
@@ -16,11 +18,23 @@ public class WayPoint : MonoBehaviour
 
     [HideInInspector] public bool IsActive;
 
+    [SerializeField] LayerMask _mask;
+
     MeshRenderer _mR;
 
     private void Awake()
     {
         TryGetComponent(out _mR);
+    }
+
+    private void Start()
+    {
+        RaycastHit hit;
+
+        if(Physics.Raycast(transform.position, Vector3.up, out hit, 1, _mask))
+        {
+            Content = hit.collider.gameObject;
+        }
     }
 
     public void TravelThrough(ref List<WayPoint> openPoints,ref List<WayPoint> closedPoints, ref Stack<WayPoint> shorterPath, WayPoint endPoint, WayPoint startPoint)
