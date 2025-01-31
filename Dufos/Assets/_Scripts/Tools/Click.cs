@@ -32,12 +32,14 @@ public class Click : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            print("click");
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
+                Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.yellow);
                 OnClick?.Invoke(hit.point);
                 hit.collider.gameObject.SendMessage("OnClicked");
             }

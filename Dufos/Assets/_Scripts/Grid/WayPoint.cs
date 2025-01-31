@@ -1,11 +1,14 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WayPoint : MonoBehaviour
 {
+    public event Action OnSteppedOn;
+
     public List<WayPoint> Neighbours = new List<WayPoint>();
 
-    [HideInInspector] GameObject Content;
+    public GameObject Content { get { return Content; } set { Deactivate(); OnSteppedOn?.Invoke(); } }
 
     [HideInInspector] public WayPoint FormerPoint;
 
@@ -16,7 +19,7 @@ public class WayPoint : MonoBehaviour
     [HideInInspector] public float G;
     [HideInInspector] public float F => G + H ;
 
-    [HideInInspector] public bool IsActive;
+    public bool IsActive;
 
     [SerializeField] LayerMask _mask;
 
@@ -24,13 +27,14 @@ public class WayPoint : MonoBehaviour
 
     private void Awake()
     {
+        IsActive = true;
+
         TryGetComponent(out _mR);
     }
 
     private void Start()
     {
         RaycastHit hit;
-
         if(Physics.Raycast(transform.position, Vector3.up, out hit, 1, _mask))
         {
             Content = hit.collider.gameObject;
@@ -55,7 +59,7 @@ public class WayPoint : MonoBehaviour
 
         foreach(WayPoint point in Neighbours)
         {
-            if (point.IsClosed || point.IsOpen || !point.gameObject.activeSelf) continue;
+            if (point.IsClosed || point.IsOpen || !point.IsActive) continue;
 
             point.Open(this, endPoint,  ref openPoints);
         }
@@ -107,20 +111,19 @@ public class WayPoint : MonoBehaviour
 
     public void Activate()
     {
-        GraphMaker.Instance.ActivatePoint(this);
         IsActive = true;
         gameObject.SetActive(true); // visuels pour l'instant
     }
 
     public void Deactivate()
     {
-        GraphMaker.Instance.DeactivatePoint(this);
         IsActive = false;
         gameObject.SetActive(false); // visuels pour l'instant
     }
 
     public void OnClicked()
     {
+        GraphMaker.Instance.Test.MoveTo(this);
         _mR.material.color = Color.red;
     }
 

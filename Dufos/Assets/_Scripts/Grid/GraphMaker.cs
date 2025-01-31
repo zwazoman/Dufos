@@ -3,14 +3,6 @@ using UnityEngine;
 
 public class GraphMaker : MonoBehaviour
 {
-    [SerializeField] public Vector3Int StartPos; // get set
-    [SerializeField] public Vector3Int EndPos; // get set
-
-    [SerializeField] GameObject _waypointPrefab;
-    [SerializeField] LayerMask _mask;
-
-    public Dictionary<Vector3Int, WayPoint> PointDict = new Dictionary<Vector3Int, WayPoint>();
-
     //singleton
     private static GraphMaker instance;
 
@@ -27,7 +19,15 @@ public class GraphMaker : MonoBehaviour
         }
     }
 
-    public List<WayPoint> ActivePoints = new List<WayPoint>();
+    [SerializeField] public Vector3Int StartPos; // get set
+    [SerializeField] public Vector3Int EndPos; // get set
+
+    [SerializeField] GameObject _waypointPrefab;
+
+    public Dictionary<Vector3Int, WayPoint> PointDict = new Dictionary<Vector3Int, WayPoint>();
+
+    public Entity Test;
+
 
     private void Awake()
     {
@@ -89,17 +89,5 @@ public class GraphMaker : MonoBehaviour
         //        if (!wayPoint.Neighbours.Contains(TopPoint)) wayPoint.Neighbours.Add(TopPoint);
         //    }
         //}
-    }
-
-    public void ActivatePoint(WayPoint point)
-    {
-        if (ActivePoints.Contains(point)) return;
-        ActivePoints.Add(point);
-    }
-
-    public void DeactivatePoint(WayPoint point)
-    {
-        if (!ActivePoints.Contains(point)) return;
-        ActivePoints.Remove(point);
     }
 }
