@@ -12,7 +12,7 @@ public class EntityData : ScriptableObject
     public int MaxHealth { get; private set; }
 
     [field : SerializeField]
-    public int MovePoints { get; private set; }
+    public int MaxMovePoints { get; private set; }
 
     [field : SerializeField]
     public Spell Spell_1 { get; private set; }

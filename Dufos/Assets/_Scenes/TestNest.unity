@@ -37866,8 +37866,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentPoint: {fileID: 0}
-  _data: {fileID: 0}
+  _data: {fileID: 11400000, guid: 4162b5953ea274146bf5e428a4c3629d, type: 2}
   EntityHealth: {fileID: 0}
+  MovePoints: 0
 --- !u!114 &679502151
 MonoBehaviour:
   m_ObjectHideFlags: 0

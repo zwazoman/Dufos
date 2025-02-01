@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -7,25 +8,31 @@ using UnityEngine;
 [RequireComponent (typeof(Move))]
 public class Entity : MonoBehaviour
 {
+    public event Action OnSelected;
+
     public WayPoint CurrentPoint;
 
     [SerializeField] EntityData _data;
 
     public Health EntityHealth;
+    public int MovePoints;
 
     Move _move;
 
 
+
+
     private void Awake()
     {
+        TryGetComponent(out EntityHealth);
+        TryGetComponent(out _move);
+
         if (_data != null)
         {
             EntityHealth.MaxHealth = _data.MaxHealth;
+            MovePoints = _data.MaxMovePoints;
         }
         //update UI
-
-        TryGetComponent(out EntityHealth);
-        TryGetComponent(out _move);
     }
 
     private void Start()
@@ -37,10 +44,30 @@ public class Entity : MonoBehaviour
         CurrentPoint.Content = gameObject;
     }
 
+    public void StartTurn()
+    {
+        //montrer les cases accessibles par le click / pour les déplacements
+        //leur ajouter un component "clickable" ? qu'on met que sur les cases et qui détecte le click dessus ?
+        //ou les faire passer dans un état de détection particulier <-
+    }
+
+    public void EndTurn()
+    {
+        //reset tout
+        MovePoints = _data.MaxMovePoints;
+    }
+
     public async Task MoveTo(WayPoint targetPoint)
     {
         Stack<WayPoint> path = FindBestPath(CurrentPoint, targetPoint);
         int pathlength = path.Count;
+
+        if(pathlength > MovePoints)
+        {
+            print("plus de pm !");
+            return;
+        }
+
         for(int i = 0; i < pathlength; i++)
         {
             CurrentPoint.Content = null;
@@ -52,10 +79,12 @@ public class Entity : MonoBehaviour
             CurrentPoint = steppedOnPoint;
             steppedOnPoint.Content = gameObject;
 
+            MovePoints--;
+
         }
     }
 
-    public Stack<WayPoint> FindBestPath(WayPoint startPoint, WayPoint endPoint)
+    Stack<WayPoint> FindBestPath(WayPoint startPoint, WayPoint endPoint)
     {
         List<WayPoint> openWayPoints = new List<WayPoint>();
         List<WayPoint> closedWayPoints = new List<WayPoint>();
@@ -68,4 +97,5 @@ public class Entity : MonoBehaviour
         foreach (WayPoint point in closedWayPoints) point.ResetState();
         return shorterPath;
     }
+
 }
