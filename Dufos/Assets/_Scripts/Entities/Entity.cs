@@ -12,7 +12,7 @@ public class Entity : MonoBehaviour
 
     public WayPoint CurrentPoint;
 
-    [SerializeField] EntityData _data;
+    [SerializeField] public EntityData Data;
 
     public Health EntityHealth;
     public int MovePoints;
@@ -27,10 +27,10 @@ public class Entity : MonoBehaviour
         TryGetComponent(out EntityHealth);
         TryGetComponent(out _move);
 
-        if (_data != null)
+        if (Data != null)
         {
-            EntityHealth.MaxHealth = _data.MaxHealth;
-            MovePoints = _data.MaxMovePoints;
+            EntityHealth.MaxHealth = Data.MaxHealth;
+            MovePoints = Data.MaxMovePoints;
         }
         //update UI
     }
@@ -53,8 +53,8 @@ public class Entity : MonoBehaviour
 
     public void EndTurn()
     {
-        //reset tout
-        MovePoints = _data.MaxMovePoints;
+        //reset tout et unlick event onclick
+        MovePoints = Data.MaxMovePoints;
     }
 
     public async Task MoveTo(WayPoint targetPoint)
