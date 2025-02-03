@@ -8,8 +8,6 @@ using UnityEngine;
 [RequireComponent (typeof(Move))]
 public class Entity : MonoBehaviour
 {
-    public event Action OnSelected;
-
     public WayPoint CurrentPoint;
 
     [SerializeField] public EntityData Data;
@@ -19,9 +17,6 @@ public class Entity : MonoBehaviour
 
     Move _move;
 
-
-
-
     private void Awake()
     {
         TryGetComponent(out EntityHealth);
@@ -30,7 +25,13 @@ public class Entity : MonoBehaviour
         if (Data != null)
         {
             EntityHealth.MaxHealth = Data.MaxHealth;
+
             MovePoints = Data.MaxMovePoints;
+
+            foreach(Spell spell in Data.Spells)
+            {
+                spell.Caster = this;
+            }
         }
         //update UI
     }
@@ -41,7 +42,16 @@ public class Entity : MonoBehaviour
         transform.position = roundedPos;
 
         CurrentPoint = GraphMaker.Instance.PointDict[roundedPos];
-        CurrentPoint.Content = gameObject;
+        CurrentPoint.StepOn(gameObject);
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            print("ESPACE");
+            Data.Spells[0].PreviewSelection();
+        }
     }
 
     public void StartTurn()
@@ -68,20 +78,22 @@ public class Entity : MonoBehaviour
             return;
         }
 
-        for(int i = 0; i < pathlength; i++)
+        //retirer les controles
+
+        for (int i = 0; i < pathlength; i++)
         {
-            CurrentPoint.Content = null;
+            CurrentPoint.StepOff();
 
             WayPoint steppedOnPoint = path.Pop();
 
             await _move.StartMoving(steppedOnPoint.transform.position);
 
             CurrentPoint = steppedOnPoint;
-            steppedOnPoint.Content = gameObject;
+            steppedOnPoint.StepOn(gameObject);
 
             MovePoints--;
-
         }
+        // remettre les controles
     }
 
     Stack<WayPoint> FindBestPath(WayPoint startPoint, WayPoint endPoint)

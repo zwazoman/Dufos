@@ -29,21 +29,27 @@ public class MouseHandler : MonoBehaviour
     public event Action OnClick;
     public event Action OnHover;
 
+    GameObject _previousObject;
+
     private void Update()
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
-            Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.yellow);
-            print("hover");
-            OnHover?.Invoke();
-            hit.collider.gameObject.SendMessage("OnHovered", SendMessageOptions.DontRequireReceiver);
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if(_previousObject != hit.collider.gameObject)
             {
-                print("click");
+                hit.collider.gameObject.SendMessage("OnHovered", SendMessageOptions.DontRequireReceiver);
+                if(_previousObject != null)
+                {
+                    _previousObject.SendMessage("OnStopHover", SendMessageOptions.DontRequireReceiver);
+                }
+            }
+            _previousObject = hit.collider.gameObject;
+
+            if (Input.GetKeyUp(KeyCode.Mouse0))
+            {
                 OnClick?.Invoke();
                 hit.collider.gameObject.SendMessage("OnClicked", SendMessageOptions.DontRequireReceiver);
             }

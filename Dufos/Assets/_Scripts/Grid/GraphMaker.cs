@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,6 +27,8 @@ public class GraphMaker : MonoBehaviour
 
     public Dictionary<Vector3Int, WayPoint> PointDict = new Dictionary<Vector3Int, WayPoint>();
 
+    public List<WayPoint> SelectedPoints = new List<WayPoint>();
+
     public Entity Test;
 
 
@@ -43,6 +46,7 @@ public class GraphMaker : MonoBehaviour
                 Vector3Int spawnPos = new Vector3Int(xPos + j, 0, zPos + i);
                 WayPoint point = Instantiate(_waypointPrefab, (Vector3)spawnPos, Quaternion.identity).GetComponent<WayPoint>();
                 point.transform.parent = this.transform;
+                point.gameObject.layer = 3;
                 PointDict.Add(spawnPos, point);
 
                 Vector3Int down = new Vector3Int(spawnPos.x, 0, spawnPos.z - 1);
@@ -62,32 +66,14 @@ public class GraphMaker : MonoBehaviour
                 }
             }
         }
+    }
 
-
-
-
-        //foreach (WayPoint point in PointDict.Values)
-        //{
-        //    //if (Physics.OverlapPoint(point.transform.position, _mask.value)) point.Deactivate(); else point.Activate();
-        //    point.Activate();
-        //    if (point.TryGetComponent<WayPoint>(out WayPoint wayPoint))
-        //    {
-        //        Vector3Int actualPos = new Vector3Int((int)point.transform.position.x, 0, (int)point.transform.position.z);
-
-        //        WayPoint rightPoint = null;
-        //        WayPoint leftPoint = null;
-        //        WayPoint BottomPoint = null;
-        //        WayPoint TopPoint = null;
-        //        if (actualPos.x != EndPos.x) rightPoint = PointDict[new Vector3Int(actualPos.x + 1, 0, actualPos.z )].GetComponent<WayPoint>();
-        //        if (actualPos.x != StartPos.x) leftPoint = PointDict[new Vector3Int(actualPos.x - 1, 0, actualPos.z)].GetComponent<WayPoint>();
-        //        if (actualPos.z != StartPos.z) BottomPoint = PointDict[new Vector3Int(actualPos.x, 0, actualPos.z - 1)].GetComponent<WayPoint>();
-        //        if (actualPos.z != EndPos.z) TopPoint = PointDict[new Vector3Int(actualPos.x, 0, actualPos.z + 1)].GetComponent<WayPoint>();
-
-        //        if (!wayPoint.Neighbours.Contains(rightPoint)) wayPoint.Neighbours.Add(rightPoint);
-        //        if (!wayPoint.Neighbours.Contains(leftPoint)) wayPoint.Neighbours.Add(leftPoint);
-        //        if (!wayPoint.Neighbours.Contains(BottomPoint)) wayPoint.Neighbours.Add(BottomPoint);
-        //        if (!wayPoint.Neighbours.Contains(TopPoint)) wayPoint.Neighbours.Add(TopPoint);
-        //    }
-        //}
+    public void UnSelect()
+    {
+        foreach(WayPoint point in SelectedPoints)
+        {
+            point.UnSelect();
+            SelectedPoints.Clear();
+        }
     }
 }

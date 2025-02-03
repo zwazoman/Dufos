@@ -2,12 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SelectionForm
+{
+    Sphere,
+    Ray,
+    Targeted
+}
+
 public enum SpellForm
 {
     Sphere,
     Ray,
     Point
 }
+
 [CreateAssetMenu(fileName = "Spell", menuName = "Spells")]
 public class SpellData : ScriptableObject
 {
@@ -15,16 +23,17 @@ public class SpellData : ScriptableObject
 
     public int Uses;
 
-    public SpellForm LaunchForm;
-
-    //en fonction de la form, choisir les directions disponibles
+    public SelectionForm LaunchForm;
 
     public float MaxRange;
 
-    public bool BypassNear;
-    public float BypassSize { get { return BypassSize; } set { BypassSize = Mathf.Clamp(value,0, MaxRange); } }
+    public bool BypassNearSelection;
+    public float SelectionBypassSize;//seulement si BypassNearSelection est coché
 
     public SpellForm DamageForm;
+
+    public bool BypassNearSpell;
+    public float SpellBypassSize; //seulement si BypassNearSpell est coché
 
     public float Damage;
 

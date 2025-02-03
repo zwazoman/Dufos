@@ -14,9 +14,6 @@ public class EntityData : ScriptableObject
     [field : SerializeField]
     public int MaxMovePoints { get; private set; }
 
-    [field : SerializeField]
-    public Spell Spell_1 { get; private set; }
+    public Spell[] Spells;
 
-    [field : SerializeField]
-    public Spell Spell_2 { get; private set;}
 }
