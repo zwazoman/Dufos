@@ -13,6 +13,10 @@ public class Spell
 
     [HideInInspector] public Entity Caster;
 
+    private List<WayPoint> _selectedpoints = new List<WayPoint>();
+    private List<WayPoint> _targetPoints = new List<WayPoint>();
+
+
     protected List<WayPoint> ReadSelectionForm()
     {
         Vector3 origin = Caster.transform.position;
@@ -24,7 +28,7 @@ public class Spell
             case SelectionForm.Ray:
                 foreach(Vector3 direction in Tools.AllFlatDirections)
                 {
-                    foreach(RaycastHit hit in Physics.RaycastAll(origin + direction * Data.SelectionBypassSize ,direction,Data.MaxRange, LayerMask.GetMask("Ground")))
+                    foreach(RaycastHit hit in Physics.RaycastAll(origin + direction * Data.SelectionBypassSize ,direction,Data.SelectionMaxRange, LayerMask.GetMask("Ground")))
                     {
                         Debug.Log("selectionne");
                         SelectionPoints.Add(hit.collider.GetComponent<WayPoint>());
@@ -34,9 +38,13 @@ public class Spell
                 break;
             case SelectionForm.Sphere:
                 Debug.Log("Sphere");
-                foreach (Collider hit in Physics.OverlapSphere(origin, Data.MaxRange, LayerMask.GetMask("Ground")))
+                foreach (Collider hit in Physics.OverlapSphere(origin, Data.SelectionMaxRange, LayerMask.GetMask("Ground")))
                 {
                     SelectionPoints.Add(hit.GetComponent<WayPoint>());
+                    foreach (Collider removeHit in Physics.OverlapSphere(origin, Data.SelectionBypassSize, LayerMask.GetMask("Ground")))
+                    {
+                        SelectionPoints.Remove(removeHit.GetComponent<WayPoint>());
+                    }
                 }
                 break;
             case SelectionForm.Targeted:
@@ -48,68 +56,102 @@ public class Spell
         return SelectionPoints;
     }
 
-    protected List<WayPoint> ReadSpellForm(WayPoint selectedPoint)
+    protected List<WayPoint> ReadTargetForm(WayPoint selectedPoint)
     {
         Vector3 origin = selectedPoint.transform.position;
 
-        List<WayPoint> SpellPreviewPoints = new List<WayPoint>();
+        List<WayPoint> TargetPoints = new List<WayPoint>();
 
-        switch (Data.DamageForm)
+        switch (Data.TargetForm)
         {
             case SpellForm.Ray:
                 foreach (Vector3 direction in Tools.AllFlatDirections)
                 {
-                    foreach (RaycastHit hit in Physics.RaycastAll(origin + direction * Data.SpellBypassSize, direction, Data.MaxRange, LayerMask.GetMask("Ground")))
+                    foreach (RaycastHit hit in Physics.RaycastAll(origin + direction * Data.SpellBypassSize, direction, Data.SpellMaxRange, LayerMask.GetMask("Ground")))
                     {
                         Debug.Log("selectionne");
-                        SpellPreviewPoints.Add(hit.collider.GetComponent<WayPoint>());
+                        TargetPoints.Add(hit.collider.GetComponent<WayPoint>());
                     }
                 }
+                //SpellPreviewPoints.Add(GraphMaker.Instance.PointDict[origin.SnapOnGrid()]);
 
                 break;
             case SpellForm.Sphere:
                 Debug.Log("Sphere");
-                foreach (Collider hit in Physics.OverlapSphere(origin, Data.MaxRange, LayerMask.GetMask("Ground")))
+                foreach (Collider hit in Physics.OverlapSphere(origin, Data.SpellMaxRange, LayerMask.GetMask("Ground")))
                 {
-                    SpellPreviewPoints.Add(hit.GetComponent<WayPoint>());
+                    TargetPoints.Add(hit.GetComponent<WayPoint>());
+                    foreach (Collider removeHit in Physics.OverlapSphere(origin, Data.SpellBypassSize, LayerMask.GetMask("Ground")))
+                    {
+                        TargetPoints.Remove(removeHit.GetComponent<WayPoint>());
+                    }
                 }
                 break;
             case SpellForm.Point:
-                Debug.Log("point");
-                
+                TargetPoints.Add(GraphMaker.Instance.PointDict[origin.SnapOnGrid()]);
                 break;
         }
 
-        return SpellPreviewPoints;
+        return TargetPoints;
     }
 
-    public void PreviewSelection()
+    public void StartSelectionPreview()
     {
-        Debug.Log("aaahhh");
         foreach(WayPoint selectedPoint in ReadSelectionForm())
         {
-            Debug.Log("suu");
-            selectedPoint.Select();
+            _selectedpoints.Add(selectedPoint);
+
+            selectedPoint.OnHovered += StartSpellPreview;
+            selectedPoint.OnNotHovered += StopSpellPreview;
+            selectedPoint.OnClicked += Execute;
+
+            selectedPoint.ApplySelectVisual();
         }
     }
 
-    public void PreviewSpell(WayPoint selectedPoint)
+    public void StartSpellPreview(WayPoint selectedPoint)
     {
-        foreach(WayPoint spellPoint in ReadSpellForm(selectedPoint))
+        foreach(WayPoint targetPoint in ReadTargetForm(selectedPoint))
         {
-            //faut rajouter le reste là
+            _targetPoints.Add(targetPoint);
+            
+            targetPoint.ApplyTargetVisual();
         }
     }
 
-    public void StopPreview()
+    public void StopSelectionPreview()
     {
+        foreach(WayPoint selectedPoint in _selectedpoints)
+        {
+            selectedPoint.OnHovered -= StartSpellPreview;
+            selectedPoint.OnNotHovered -= StopSpellPreview;
+            selectedPoint.OnClicked -= Execute;
 
+            selectedPoint.ApplyDefaultVisual();
+        }
+        _selectedpoints.Clear();
+
+        StopSpellPreview();
     }
 
-
-    public virtual async Task Execute(WayPoint target)
+    public void StopSpellPreview()
     {
-        await ShowVisuals(target);
+        foreach(WayPoint targetPoint in _targetPoints)
+        {
+            targetPoint.ApplyDefaultVisual();
+        }
+        _targetPoints.Clear();
+    }
+
+    public virtual async void Execute(WayPoint target)
+    {
+        //await ShowVisuals(target);
+
+       foreach(WayPoint targetPoint in _targetPoints)
+       {
+            //apply le sort
+       }
+
     }
 
     protected virtual async Task ShowVisuals(WayPoint target)

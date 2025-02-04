@@ -50,7 +50,7 @@ public class Entity : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             print("ESPACE");
-            Data.Spells[0].PreviewSelection();
+            Data.Spells[0].StartSelectionPreview();
         }
     }
 

@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class GraphMaker : MonoBehaviour
@@ -26,8 +27,6 @@ public class GraphMaker : MonoBehaviour
     [SerializeField] GameObject _waypointPrefab;
 
     public Dictionary<Vector3Int, WayPoint> PointDict = new Dictionary<Vector3Int, WayPoint>();
-
-    public List<WayPoint> SelectedPoints = new List<WayPoint>();
 
     public Entity Test;
 
@@ -65,15 +64,6 @@ public class GraphMaker : MonoBehaviour
                     PointDict[left].Neighbours.Add(point);
                 }
             }
-        }
-    }
-
-    public void UnSelect()
-    {
-        foreach(WayPoint point in SelectedPoints)
-        {
-            point.UnSelect();
-            SelectedPoints.Clear();
         }
     }
 }

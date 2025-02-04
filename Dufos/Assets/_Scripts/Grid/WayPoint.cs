@@ -7,6 +7,11 @@ public class WayPoint : MonoBehaviour
     public event Action OnSteppedOn;
     public event Action OnSteppedOff;
 
+    public event Action<WayPoint> OnHovered;
+    public event Action OnNotHovered;
+
+    public event Action<WayPoint> OnClicked;
+
     public List<WayPoint> Neighbours = new List<WayPoint>();
 
     public GameObject Content;
@@ -20,7 +25,6 @@ public class WayPoint : MonoBehaviour
     [HideInInspector] public float G;
     [HideInInspector] public float F => G + H ;
 
-    public bool IsSelected;
     public bool IsActive;
 
     [SerializeField] LayerMask _mask;
@@ -65,6 +69,41 @@ public class WayPoint : MonoBehaviour
         }
     }
 
+    public void ApplySelectVisual()
+    {
+        //visuel de selection
+    }
+
+    public void ApplyTargetVisual()
+    {
+        //visuel de target
+    }
+
+    public void ApplyDefaultVisual()
+    {
+        //visuel par défaut
+    }
+
+    public void Clicked()
+    {
+        //refaire cette merde
+
+        GraphMaker.Instance.Test.MoveTo(this);
+        _mR.material.color = Color.red; // pour l'instant
+        OnClicked?.Invoke(this);
+    }
+
+    public void Hovered()
+    {
+        OnHovered?.Invoke(this);
+    }
+
+    public void NotHovered()
+    {
+        OnNotHovered?.Invoke();
+    }
+
+    #region Astar
     public void TravelThrough(ref List<WayPoint> openPoints,ref List<WayPoint> closedPoints, ref Stack<WayPoint> shorterPath, WayPoint endPoint, WayPoint startPoint)
     {
         if(this == endPoint)
@@ -144,38 +183,7 @@ public class WayPoint : MonoBehaviour
         IsActive = false;
         //gameObject.SetActive(false); // visuels pour l'instant
     }
-
-    public void Select()
-    {
-        _mR.material.color = Color.green; //pour l'instant
-        IsSelected = true;
-        GraphMaker.Instance.SelectedPoints.Add(this);
-    }
-
-    public void UnSelect()
-    {
-        _mR.material.color = new Color(0, 227, 252); // pour l'instant
-        IsSelected = false;
-    }
-
-    public void OnClicked()
-    {
-        GraphMaker.Instance.Test.MoveTo(this);
-        _mR.material.color = Color.red; // pour l'instant
-    }
-
-    public void OnHovered()
-    {
-        if(IsSelected)
-        {
-            //preview du sort et tout
-        }
-    }
-
-    public void OnStopHover()
-    {
-
-    }
+    #endregion Astar
 
     private void OnDrawGizmosSelected()
     {

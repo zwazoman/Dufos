@@ -40,10 +40,10 @@ public class MouseHandler : MonoBehaviour
         {
             if(_previousObject != hit.collider.gameObject)
             {
-                hit.collider.gameObject.SendMessage("OnHovered", SendMessageOptions.DontRequireReceiver);
+                hit.collider.gameObject.SendMessage("Hovered", SendMessageOptions.DontRequireReceiver);
                 if(_previousObject != null)
                 {
-                    _previousObject.SendMessage("OnStopHover", SendMessageOptions.DontRequireReceiver);
+                    _previousObject.SendMessage("NotHovered", SendMessageOptions.DontRequireReceiver);
                 }
             }
             _previousObject = hit.collider.gameObject;
@@ -51,7 +51,7 @@ public class MouseHandler : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.Mouse0))
             {
                 OnClick?.Invoke();
-                hit.collider.gameObject.SendMessage("OnClicked", SendMessageOptions.DontRequireReceiver);
+                hit.collider.gameObject.SendMessage("Clicked", SendMessageOptions.DontRequireReceiver);
             }
         }
     }
