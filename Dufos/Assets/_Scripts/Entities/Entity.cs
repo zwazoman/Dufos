@@ -8,6 +8,8 @@ using UnityEngine;
 [RequireComponent (typeof(Move))]
 public class Entity : MonoBehaviour
 {
+    [HideInInspector] public bool CanMove = true;
+
     public WayPoint CurrentPoint;
 
     [SerializeField] public EntityData Data;
@@ -52,6 +54,11 @@ public class Entity : MonoBehaviour
             print("ESPACE");
             Data.Spells[0].StartSelectionPreview();
         }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            Data.Spells[0].StopSelectionPreview();
+        }
+
     }
 
     public void StartTurn()
@@ -67,8 +74,10 @@ public class Entity : MonoBehaviour
         MovePoints = Data.MaxMovePoints;
     }
 
-    public async Task MoveTo(WayPoint targetPoint)
+    public async Task TryMoveTo(WayPoint targetPoint)
     {
+        if (!CanMove) return;
+
         Stack<WayPoint> path = FindBestPath(CurrentPoint, targetPoint);
         int pathlength = path.Count;
 
@@ -78,7 +87,7 @@ public class Entity : MonoBehaviour
             return;
         }
 
-        //retirer les controles
+        CanMove = false;
 
         for (int i = 0; i < pathlength; i++)
         {
@@ -93,6 +102,7 @@ public class Entity : MonoBehaviour
 
             MovePoints--;
         }
+        CanMove = true;
         // remettre les controles
     }
 

@@ -10,7 +10,7 @@ public class Health : MonoBehaviour
 
     public event Action OnDie;
 
-    public int MaxHealth;
+    [HideInInspector] public int MaxHealth;
 
     float _currentHealth;
 

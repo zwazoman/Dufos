@@ -40,11 +40,11 @@ public class MouseHandler : MonoBehaviour
         {
             if(_previousObject != hit.collider.gameObject)
             {
-                hit.collider.gameObject.SendMessage("Hovered", SendMessageOptions.DontRequireReceiver);
-                if(_previousObject != null)
+                if (_previousObject != null)
                 {
                     _previousObject.SendMessage("NotHovered", SendMessageOptions.DontRequireReceiver);
                 }
+                hit.collider.gameObject.SendMessage("Hovered", SendMessageOptions.DontRequireReceiver);
             }
             _previousObject = hit.collider.gameObject;
 

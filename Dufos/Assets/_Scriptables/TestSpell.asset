@@ -15,10 +15,11 @@ MonoBehaviour:
   UISprite: {fileID: 0}
   Uses: 1
   LaunchForm: 1
-  MaxRange: 3
-  BypassNearSelection: 0
-  SelectionBypassSize: 0
-  DamageForm: 0
+  SelectionMaxRange: 5
+  BypassNearSelection: 1
+  SelectionBypassSize: 3
+  TargetForm: 1
+  SpellMaxRange: 1
   BypassNearSpell: 0
   SpellBypassSize: 0
-  Damage: 0
+  Damage: 5

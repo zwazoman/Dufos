@@ -28,16 +28,14 @@ public class Spell
             case SelectionForm.Ray:
                 foreach(Vector3 direction in Tools.AllFlatDirections)
                 {
-                    foreach(RaycastHit hit in Physics.RaycastAll(origin + direction * Data.SelectionBypassSize ,direction,Data.SelectionMaxRange, LayerMask.GetMask("Ground")))
+                    foreach(RaycastHit hit in Physics.RaycastAll(origin + direction * Data.SelectionBypassSize ,direction,Data.SelectionMaxRange - Data.SelectionBypassSize, LayerMask.GetMask("Ground")))
                     {
-                        Debug.Log("selectionne");
                         SelectionPoints.Add(hit.collider.GetComponent<WayPoint>());
                     }
                 }
 
                 break;
             case SelectionForm.Sphere:
-                Debug.Log("Sphere");
                 foreach (Collider hit in Physics.OverlapSphere(origin, Data.SelectionMaxRange, LayerMask.GetMask("Ground")))
                 {
                     SelectionPoints.Add(hit.GetComponent<WayPoint>());
@@ -48,7 +46,6 @@ public class Spell
                 }
                 break;
             case SelectionForm.Targeted:
-                Debug.Log("targeted");
                 //choper tous les ennemis ou players et selectionner leurs currentpoints
                 break;
         }
@@ -62,14 +59,18 @@ public class Spell
 
         List<WayPoint> TargetPoints = new List<WayPoint>();
 
+        if (!Data.BypassNearSpell)
+        {
+            TargetPoints.Add(GraphMaker.Instance.PointDict[origin.SnapOnGrid()]);
+        }
+
         switch (Data.TargetForm)
         {
             case SpellForm.Ray:
                 foreach (Vector3 direction in Tools.AllFlatDirections)
                 {
-                    foreach (RaycastHit hit in Physics.RaycastAll(origin + direction * Data.SpellBypassSize, direction, Data.SpellMaxRange, LayerMask.GetMask("Ground")))
+                    foreach (RaycastHit hit in Physics.RaycastAll(origin + direction * Data.SpellBypassSize, direction, Data.SpellMaxRange - Data.SpellBypassSize, LayerMask.GetMask("Ground")))
                     {
-                        Debug.Log("selectionne");
                         TargetPoints.Add(hit.collider.GetComponent<WayPoint>());
                     }
                 }
@@ -77,7 +78,6 @@ public class Spell
 
                 break;
             case SpellForm.Sphere:
-                Debug.Log("Sphere");
                 foreach (Collider hit in Physics.OverlapSphere(origin, Data.SpellMaxRange, LayerMask.GetMask("Ground")))
                 {
                     TargetPoints.Add(hit.GetComponent<WayPoint>());
@@ -87,9 +87,6 @@ public class Spell
                     }
                 }
                 break;
-            case SpellForm.Point:
-                TargetPoints.Add(GraphMaker.Instance.PointDict[origin.SnapOnGrid()]);
-                break;
         }
 
         return TargetPoints;
@@ -97,7 +94,8 @@ public class Spell
 
     public void StartSelectionPreview()
     {
-        foreach(WayPoint selectedPoint in ReadSelectionForm())
+        Caster.CanMove = false;
+        foreach (WayPoint selectedPoint in ReadSelectionForm())
         {
             _selectedpoints.Add(selectedPoint);
 
@@ -111,6 +109,7 @@ public class Spell
 
     public void StartSpellPreview(WayPoint selectedPoint)
     {
+        Debug.Log("start spell preview");
         foreach(WayPoint targetPoint in ReadTargetForm(selectedPoint))
         {
             _targetPoints.Add(targetPoint);
@@ -132,25 +131,41 @@ public class Spell
         _selectedpoints.Clear();
 
         StopSpellPreview();
+        Caster.CanMove = true;
     }
 
     public void StopSpellPreview()
     {
+        Debug.Log("Stop Spell Review");
         foreach(WayPoint targetPoint in _targetPoints)
         {
-            targetPoint.ApplyDefaultVisual();
+            if (_selectedpoints.Contains(targetPoint))
+            {
+                targetPoint.ApplySelectVisual();
+            }
+            else
+            {
+                targetPoint.ApplyDefaultVisual();
+            }
         }
         _targetPoints.Clear();
     }
 
-    public virtual async void Execute(WayPoint target)
+    public virtual async void Execute(WayPoint origin)
     {
-        //await ShowVisuals(target);
+        WayPoint[] targets = _targetPoints.ToArray();
+        StopSelectionPreview();
 
-       foreach(WayPoint targetPoint in _targetPoints)
+        await ShowVisuals(origin);
+
+        foreach (WayPoint target in targets)
        {
-            //apply le sort
+            ApplySpell();
        }
+    }
+
+    protected virtual void ApplySpell()
+    {
 
     }
 

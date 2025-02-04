@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Neighbours: []
+  Content: {fileID: 0}
   FormerPoint: {fileID: 0}
   IsOpen: 0
   IsClosed: 0
@@ -107,6 +108,10 @@ MonoBehaviour:
   _mask:
     serializedVersion: 2
     m_Bits: 64
+  _walkableMat: {fileID: 2100000, guid: 34f25192858460244bef4579d589fa51, type: 2}
+  _selectionMat: {fileID: 2100000, guid: 19994e8f0fa66dd46abec4df3dbe974e, type: 2}
+  _targettingMat: {fileID: 2100000, guid: fe77272e973151d44b4858f1b0213fb2, type: 2}
+  _defaultMat: {fileID: 2100000, guid: 53b1e875437273340b65c33f93bef557, type: 2}
 --- !u!65 &4193691378832793766
 BoxCollider:
   m_ObjectHideFlags: 0

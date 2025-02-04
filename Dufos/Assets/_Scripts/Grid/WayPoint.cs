@@ -29,6 +29,12 @@ public class WayPoint : MonoBehaviour
 
     [SerializeField] LayerMask _mask;
 
+    [SerializeField] Material _walkableMat;
+
+    [SerializeField] Material _selectionMat;
+    [SerializeField] Material _targettingMat;
+    [SerializeField] Material _defaultMat;
+
     MeshRenderer _mR;
 
     private void Awake()
@@ -36,6 +42,8 @@ public class WayPoint : MonoBehaviour
         IsActive = true;
 
         TryGetComponent(out _mR);
+
+        _mR.material = _defaultMat;
     }
 
     private void Start()
@@ -71,24 +79,23 @@ public class WayPoint : MonoBehaviour
 
     public void ApplySelectVisual()
     {
-        //visuel de selection
+        _mR.material = _selectionMat;
     }
 
     public void ApplyTargetVisual()
     {
-        //visuel de target
+        _mR.material = _targettingMat;
     }
 
     public void ApplyDefaultVisual()
     {
-        //visuel par défaut
+        _mR.material = _defaultMat;
     }
 
     public void Clicked()
     {
-        //refaire cette merde
+        GraphMaker.Instance.Test.TryMoveTo(this);
 
-        GraphMaker.Instance.Test.MoveTo(this);
         _mR.material.color = Color.red; // pour l'instant
         OnClicked?.Invoke(this);
     }
