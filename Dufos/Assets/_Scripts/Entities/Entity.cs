@@ -89,6 +89,11 @@ public class Entity : MonoBehaviour
 
         CanMove = false;
 
+        foreach(WayPoint tile in path)
+        {
+            tile.ApplyWalkableVisual();
+        }
+
         for (int i = 0; i < pathlength; i++)
         {
             CurrentPoint.StepOff();
@@ -99,6 +104,8 @@ public class Entity : MonoBehaviour
 
             CurrentPoint = steppedOnPoint;
             steppedOnPoint.StepOn(gameObject);
+
+            steppedOnPoint.ApplyDefaultVisual();
 
             MovePoints--;
         }

@@ -18,7 +18,7 @@ MonoBehaviour:
   SelectionMaxRange: 10
   BypassNearSelection: 0
   SelectionBypassSize: 0
-  TargetForm: 1
+  TargetForm: 0
   SpellMaxRange: 5
   BypassNearSpell: 0
   SpellBypassSize: 0
