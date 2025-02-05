@@ -92,11 +92,14 @@ public class WayPoint : MonoBehaviour
         _mR.material = _defaultMat;
     }
 
+    public void ApplyWalkableVisual()
+    {
+        _mR.material = _walkableMat;
+    }
+
     public void Clicked()
     {
         GraphMaker.Instance.Test.TryMoveTo(this);
-
-        _mR.material.color = Color.red; // pour l'instant
         OnClicked?.Invoke(this);
     }
 

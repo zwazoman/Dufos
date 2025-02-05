@@ -59,10 +59,6 @@ public class Spell
 
         List<WayPoint> TargetPoints = new List<WayPoint>();
 
-        if (!Data.BypassNearSpell)
-        {
-            TargetPoints.Add(GraphMaker.Instance.PointDict[origin.SnapOnGrid()]);
-        }
 
         switch (Data.TargetForm)
         {
@@ -74,8 +70,10 @@ public class Spell
                         TargetPoints.Add(hit.collider.GetComponent<WayPoint>());
                     }
                 }
-                //SpellPreviewPoints.Add(GraphMaker.Instance.PointDict[origin.SnapOnGrid()]);
-
+                if (!Data.BypassNearSpell)
+                {
+                    TargetPoints.Add(GraphMaker.Instance.PointDict[origin.SnapOnGrid()]);
+                }
                 break;
             case SpellForm.Sphere:
                 foreach (Collider hit in Physics.OverlapSphere(origin, Data.SpellMaxRange, LayerMask.GetMask("Ground")))
@@ -85,6 +83,12 @@ public class Spell
                     {
                         TargetPoints.Remove(removeHit.GetComponent<WayPoint>());
                     }
+                }
+                break;
+            case SpellForm.Point:
+                if (!Data.BypassNearSpell)
+                {
+                    TargetPoints.Add(GraphMaker.Instance.PointDict[origin.SnapOnGrid()]);
                 }
                 break;
         }
