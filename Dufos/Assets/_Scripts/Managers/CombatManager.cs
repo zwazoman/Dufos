@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,17 +23,25 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    List<Entity> entities = new List<Entity>();
+    [SerializeField] CinemachineVirtualCamera cam;
 
-    public Entity CurrentEntity;
+    [HideInInspector] public List<Entity> entities = new List<Entity>();
+
+    [HideInInspector] public Entity CurrentEntity;
 
     private void Awake()
     {
         instance = this;
-        
+    }
+
+    private void Start()
+    {
         entities = entities.OrderByDescending(entity => entity.Data.Initiative).ToList();
 
         CurrentEntity = entities[0];
+
+        cam.LookAt = CurrentEntity.transform;
+
         CurrentEntity.StartTurn();
     }
 
@@ -42,10 +51,21 @@ public class CombatManager : MonoBehaviour
 
         int currentIndex = entities.IndexOf(CurrentEntity);
 
+        print(entities.Count);
+        print(currentIndex);
+
+        if (currentIndex == entities.Count -1)
+        {
+            currentIndex = -1;
+        }
+
         CurrentEntity = entities[currentIndex + 1];
+
+        cam.LookAt = CurrentEntity.transform;
+
+
+
         CurrentEntity.StartTurn();
-
-
     }
 
 }

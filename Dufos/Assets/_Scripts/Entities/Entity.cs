@@ -8,19 +8,21 @@ using UnityEngine;
 [RequireComponent (typeof(Move))]
 public class Entity : MonoBehaviour
 {
-    [HideInInspector] public bool CanMove = true;
+    [HideInInspector] public bool CanInteract = false;
 
-    public WayPoint CurrentPoint;
+    [HideInInspector] public WayPoint CurrentPoint;
 
     [SerializeField] public EntityData Data;
 
-    public Health EntityHealth;
-    public int MovePoints;
+    [HideInInspector] public Health EntityHealth;
+    [HideInInspector] public int MovePoints;
 
     Move _move;
 
     private void Awake()
     {
+        CombatManager.Instance.entities.Add(this);
+
         TryGetComponent(out EntityHealth);
         TryGetComponent(out _move);
 
@@ -35,6 +37,7 @@ public class Entity : MonoBehaviour
                 spell.Caster = this;
             }
         }
+
         //update UI
     }
 
@@ -49,6 +52,7 @@ public class Entity : MonoBehaviour
 
     private void Update()
     {
+        if (!CanInteract) return;
         if(Input.GetKeyDown(KeyCode.Space))
         {
             print("ESPACE");
@@ -63,20 +67,21 @@ public class Entity : MonoBehaviour
 
     public void StartTurn()
     {
+        print("start turn : " + gameObject.name);
+        CanInteract = true;
         //montrer les cases accessibles par le click / pour les déplacements
-        //leur ajouter un component "clickable" ? qu'on met que sur les cases et qui détecte le click dessus ?
-        //ou les faire passer dans un état de détection particulier <-
     }
 
     public void EndTurn()
     {
-        //reset tout et unlick event onclick
+        CanInteract = false;
+
         MovePoints = Data.MaxMovePoints;
     }
 
     public async Task TryMoveTo(WayPoint targetPoint)
     {
-        if (!CanMove) return;
+        if (!CanInteract) return;
 
         Stack<WayPoint> path = FindBestPath(CurrentPoint, targetPoint);
         int pathlength = path.Count;
@@ -87,7 +92,7 @@ public class Entity : MonoBehaviour
             return;
         }
 
-        CanMove = false;
+        CanInteract = false;
 
         foreach(WayPoint tile in path)
         {
@@ -109,7 +114,7 @@ public class Entity : MonoBehaviour
 
             MovePoints--;
         }
-        CanMove = true;
+        CanInteract = true;
         // remettre les controles
     }
 

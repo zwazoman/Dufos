@@ -21,6 +21,10 @@ public class GraphMaker : MonoBehaviour
         }
     }
 
+    [HideInInspector] public List<WayPoint> SelectedPoints = new List<WayPoint>();
+    [HideInInspector] public List<WayPoint> TargetPoints = new List<WayPoint>();
+
+
     [SerializeField] public Vector3Int StartPos; // get set
     [SerializeField] public Vector3Int EndPos; // get set
 

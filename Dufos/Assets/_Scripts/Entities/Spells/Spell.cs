@@ -13,10 +13,6 @@ public class Spell
 
     [HideInInspector] public Entity Caster;
 
-    private List<WayPoint> _selectedpoints = new List<WayPoint>();
-    private List<WayPoint> _targetPoints = new List<WayPoint>();
-
-
     protected List<WayPoint> ReadSelectionForm()
     {
         Vector3 origin = Caster.transform.position;
@@ -98,10 +94,12 @@ public class Spell
 
     public void StartSelectionPreview()
     {
-        Caster.CanMove = false;
-        foreach (WayPoint selectedPoint in ReadSelectionForm())
+        Debug.Log("start selection preview");
+        Caster.CanInteract = false;
+        List<WayPoint> test = ReadSelectionForm();
+        foreach (WayPoint selectedPoint in test)
         {
-            _selectedpoints.Add(selectedPoint);
+            GraphMaker.Instance.SelectedPoints.Add(selectedPoint);
 
             selectedPoint.OnHovered += StartSpellPreview;
             selectedPoint.OnNotHovered += StopSpellPreview;
@@ -109,6 +107,7 @@ public class Spell
 
             selectedPoint.ApplySelectVisual();
         }
+        Debug.Log(GraphMaker.Instance.SelectedPoints.Count);
     }
 
     public void StartSpellPreview(WayPoint selectedPoint)
@@ -116,7 +115,7 @@ public class Spell
         Debug.Log("start spell preview");
         foreach(WayPoint targetPoint in ReadTargetForm(selectedPoint))
         {
-            _targetPoints.Add(targetPoint);
+            GraphMaker.Instance.TargetPoints.Add(targetPoint);
             
             targetPoint.ApplyTargetVisual();
         }
@@ -124,26 +123,29 @@ public class Spell
 
     public void StopSelectionPreview()
     {
-        foreach(WayPoint selectedPoint in _selectedpoints)
+        Debug.Log("stop selection preview");
+
+        foreach(WayPoint selectedPoint in GraphMaker.Instance.SelectedPoints)
         {
+            Debug.Log(selectedPoint);
             selectedPoint.OnHovered -= StartSpellPreview;
             selectedPoint.OnNotHovered -= StopSpellPreview;
             selectedPoint.OnClicked -= Execute;
 
             selectedPoint.ApplyDefaultVisual();
         }
-        _selectedpoints.Clear();
+        GraphMaker.Instance.SelectedPoints.Clear();
 
         StopSpellPreview();
-        Caster.CanMove = true;
+        Caster.CanInteract = true;
     }
 
     public void StopSpellPreview()
     {
         Debug.Log("Stop Spell Review");
-        foreach(WayPoint targetPoint in _targetPoints)
+        foreach(WayPoint targetPoint in GraphMaker.Instance.TargetPoints)
         {
-            if (_selectedpoints.Contains(targetPoint))
+            if (GraphMaker.Instance.SelectedPoints.Contains(targetPoint))
             {
                 targetPoint.ApplySelectVisual();
             }
@@ -152,12 +154,13 @@ public class Spell
                 targetPoint.ApplyDefaultVisual();
             }
         }
-        _targetPoints.Clear();
+        GraphMaker.Instance.TargetPoints.Clear();
     }
 
     public virtual async void Execute(WayPoint origin)
     {
-        WayPoint[] targets = _targetPoints.ToArray();
+        Debug.Log("execute");
+        WayPoint[] targets = GraphMaker.Instance.TargetPoints.ToArray();
         StopSelectionPreview();
 
         await ShowVisuals(origin);

@@ -99,7 +99,9 @@ public class WayPoint : MonoBehaviour
 
     public void Clicked()
     {
-        GraphMaker.Instance.Test.TryMoveTo(this);
+        print(CombatManager.Instance.CurrentEntity);
+        CombatManager.Instance.CurrentEntity.TryMoveTo(this);
+
         OnClicked?.Invoke(this);
     }
 
