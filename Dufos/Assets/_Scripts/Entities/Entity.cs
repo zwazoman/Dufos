@@ -99,6 +99,11 @@ public class Entity : MonoBehaviour
             tile.ApplyWalkableVisual();
         }
 
+        foreach(WayPoint tile in path)
+        {
+            tile.ApplyWalkableVisual();
+        }
+
         for (int i = 0; i < pathlength; i++)
         {
             CurrentPoint.StepOff();
