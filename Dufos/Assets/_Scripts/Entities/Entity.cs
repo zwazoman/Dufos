@@ -8,7 +8,7 @@ using UnityEngine;
 [RequireComponent (typeof(Move))]
 public class Entity : MonoBehaviour
 {
-    [HideInInspector] public bool CanInteract = false;
+    [HideInInspector] public bool CanInteract = false; //transférer
 
     [HideInInspector] public WayPoint CurrentPoint;
 
@@ -21,8 +21,6 @@ public class Entity : MonoBehaviour
 
     private void Awake()
     {
-        CombatManager.Instance.entities.Add(this);
-
         TryGetComponent(out EntityHealth);
         TryGetComponent(out _move);
 
@@ -43,6 +41,8 @@ public class Entity : MonoBehaviour
 
     private void Start()
     {
+        CombatManager.Instance.entities.Add(this);
+
         Vector3Int roundedPos = transform.position.SnapOnGrid();
         transform.position = roundedPos;
 
@@ -52,6 +52,8 @@ public class Entity : MonoBehaviour
 
     private void Update()
     {
+        // remplacer par l'ui
+
         if (!CanInteract) return;
         if(Input.GetKeyDown(KeyCode.Space))
         {
@@ -65,14 +67,14 @@ public class Entity : MonoBehaviour
 
     }
 
-    public void StartTurn()
+    public void StartTurn() //transférer (passer en virtual)
     {
         print("start turn : " + gameObject.name);
         CanInteract = true;
         //montrer les cases accessibles par le click / pour les déplacements
     }
 
-    public void EndTurn()
+    public void EndTurn() //transférer (passer en virtual)
     {
         CanInteract = false;
 
@@ -93,11 +95,6 @@ public class Entity : MonoBehaviour
         }
 
         CanInteract = false;
-
-        foreach(WayPoint tile in path)
-        {
-            tile.ApplyWalkableVisual();
-        }
 
         foreach(WayPoint tile in path)
         {
