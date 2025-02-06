@@ -55,6 +55,10 @@ public class Spell
 
         List<WayPoint> TargetPoints = new List<WayPoint>();
 
+        if (!Data.BypassNearSpell)
+        {
+            TargetPoints.Add(GraphMaker.Instance.PointDict[origin.SnapOnGrid()]);
+        }
 
         switch (Data.TargetForm)
         {
@@ -82,10 +86,6 @@ public class Spell
                 }
                 break;
             case SpellForm.Point:
-                if (!Data.BypassNearSpell)
-                {
-                    TargetPoints.Add(GraphMaker.Instance.PointDict[origin.SnapOnGrid()]);
-                }
                 break;
         }
 

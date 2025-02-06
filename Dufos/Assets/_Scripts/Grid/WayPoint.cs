@@ -97,7 +97,7 @@ public class WayPoint : MonoBehaviour
         _mR.material = _walkableMat;
     }
 
-    public void Clicked()
+    public void Clicked() 
     {
         print(CombatManager.Instance.CurrentEntity);
         CombatManager.Instance.CurrentEntity.TryMoveTo(this);
