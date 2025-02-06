@@ -11,6 +11,8 @@ public class Spell
 {
     [SerializeField] public SpellData Data;
 
+    [SerializeField] public SpellVisual Visual;
+
     [HideInInspector] public Entity Caster;
 
     protected List<WayPoint> ReadSelectionForm()
@@ -163,21 +165,16 @@ public class Spell
         WayPoint[] targets = GraphMaker.Instance.TargetPoints.ToArray();
         StopSelectionPreview();
 
-        await ShowVisuals(origin);
+        await Visual.ShowVisuals(origin);
 
         foreach (WayPoint target in targets)
-       {
+        {
             ApplySpell();
-       }
+        }
     }
 
     protected virtual void ApplySpell()
     {
 
-    }
-
-    protected virtual async Task ShowVisuals(WayPoint target)
-    {
-        //faire les visuals et les await bien comme un bon toutou de merde
     }
 }
