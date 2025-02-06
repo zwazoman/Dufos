@@ -99,9 +99,7 @@ public class WayPoint : MonoBehaviour
 
     public void Clicked() 
     {
-        print(CombatManager.Instance.CurrentEntity);
         CombatManager.Instance.CurrentEntity.TryMoveTo(this);
-
         OnClicked?.Invoke(this);
     }
 

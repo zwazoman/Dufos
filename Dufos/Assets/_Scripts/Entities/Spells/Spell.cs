@@ -165,7 +165,10 @@ public class Spell
         WayPoint[] targets = GraphMaker.Instance.TargetPoints.ToArray();
         StopSelectionPreview();
 
-        await Visual.ShowVisuals(origin);
+        if(Visual != null)
+        {
+            await Visual.ShowVisuals(origin);
+        }
 
         foreach (WayPoint target in targets)
         {

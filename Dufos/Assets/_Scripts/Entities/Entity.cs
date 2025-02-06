@@ -8,7 +8,7 @@ using UnityEngine;
 [RequireComponent (typeof(Move))]
 public class Entity : MonoBehaviour
 {
-    [HideInInspector] public bool CanInteract = false; //transférer
+    [HideInInspector] public bool CanInteract;
 
     [HideInInspector] public WayPoint CurrentPoint;
 
@@ -19,7 +19,7 @@ public class Entity : MonoBehaviour
 
     Move _move;
 
-    private void Awake()
+    protected void Awake()
     {
         TryGetComponent(out EntityHealth);
         TryGetComponent(out _move);
@@ -35,13 +35,12 @@ public class Entity : MonoBehaviour
                 spell.Caster = this;
             }
         }
-
         //update UI
     }
 
-    private void Start()
+    protected virtual void Start()
     {
-        CombatManager.Instance.entities.Add(this);
+        CombatManager.Instance.Entities.Add(this);
 
         Vector3Int roundedPos = transform.position.SnapOnGrid();
         transform.position = roundedPos;
@@ -50,41 +49,27 @@ public class Entity : MonoBehaviour
         CurrentPoint.StepOn(gameObject);
     }
 
-    private void Update()
-    {
-        // remplacer par l'ui
-
-        if (!CanInteract) return;
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            print("ESPACE");
-            Data.Spells[0].StartSelectionPreview();
-        }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            Data.Spells[0].StopSelectionPreview();
-        }
-
-    }
-
-    public void StartTurn() //transférer (passer en virtual)
+    public virtual void StartTurn() //transférer (passer en virtual)
     {
         print("start turn : " + gameObject.name);
-        CanInteract = true;
         //montrer les cases accessibles par le click / pour les déplacements
     }
 
-    public void EndTurn() //transférer (passer en virtual)
+    public virtual void EndTurn() //transférer (passer en virtual)
     {
-        CanInteract = false;
-
         MovePoints = Data.MaxMovePoints;
     }
 
-    public async Task TryMoveTo(WayPoint targetPoint)
+    public virtual void UseSpell(int spellIndex)
     {
-        if (!CanInteract) return;
+        if (spellIndex < Data.Spells.Length - 1)
+        {
+            Data.Spells[spellIndex].StartSelectionPreview();
+        }
+    }
 
+    public virtual async Task TryMoveTo(WayPoint targetPoint)
+    {
         Stack<WayPoint> path = FindBestPath(CurrentPoint, targetPoint);
         int pathlength = path.Count;
 
@@ -93,8 +78,6 @@ public class Entity : MonoBehaviour
             print("plus de pm !");
             return;
         }
-
-        CanInteract = false;
 
         foreach(WayPoint tile in path)
         {
@@ -116,7 +99,6 @@ public class Entity : MonoBehaviour
 
             MovePoints--;
         }
-        CanInteract = true;
         // remettre les controles
     }
 

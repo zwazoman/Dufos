@@ -25,7 +25,11 @@ public class CombatManager : MonoBehaviour
 
     [SerializeField] CinemachineVirtualCamera cam;
 
-    [HideInInspector] public List<Entity> entities = new List<Entity>();
+    [HideInInspector] public List<Entity> Entities = new List<Entity>();
+
+    [HideInInspector] public List<PlayerEntity> PlayerEntities = new List<PlayerEntity>();
+
+    [HideInInspector] public List<EnemyEntity> EnemyEntities = new List<EnemyEntity>();
 
     [HideInInspector] public Entity CurrentEntity;
 
@@ -36,9 +40,9 @@ public class CombatManager : MonoBehaviour
 
     private void Start()
     {
-        entities = entities.OrderByDescending(entity => entity.Data.Initiative).ToList();
+        Entities = Entities.OrderByDescending(entity => entity.Data.Initiative).ToList();
 
-        CurrentEntity = entities[0];
+        CurrentEntity = Entities[0];
 
         cam.LookAt = CurrentEntity.transform;
 
@@ -49,17 +53,17 @@ public class CombatManager : MonoBehaviour
     {
         CurrentEntity.EndTurn();
 
-        int currentIndex = entities.IndexOf(CurrentEntity);
+        int currentIndex = Entities.IndexOf(CurrentEntity);
 
-        print(entities.Count);
+        print(Entities.Count);
         print(currentIndex);
 
-        if (currentIndex == entities.Count -1)
+        if (currentIndex == Entities.Count -1)
         {
             currentIndex = -1;
         }
 
-        CurrentEntity = entities[currentIndex + 1];
+        CurrentEntity = Entities[currentIndex + 1];
 
         cam.LookAt = CurrentEntity.transform;
 
