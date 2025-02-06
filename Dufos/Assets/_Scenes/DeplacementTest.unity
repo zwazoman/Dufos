@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 81529629}
   - component: {fileID: 81529628}
   m_Layer: 2
-  m_Name: Rock (3)
+  m_Name: Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,10 +152,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.14544079, y: -0.7410266, z: -0.027036455, w: 0.65497756}
   m_LocalPosition: {x: -86, y: 247.9139, z: -131.7914}
-  m_LocalScale: {x: 2.494008, y: 1.4967117, z: 1.4967117}
+  m_LocalScale: {x: 2.4940078, y: 1.4967117, z: 1.4967117}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 912202265}
+  m_Father: {fileID: 1094096758}
   m_LocalEulerAnglesHint: {x: 8.653, y: -98.173, z: -14.706}
 --- !u!208 &81529628
 NavMeshObstacle:
@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 95531739}
   - component: {fileID: 95531738}
   m_Layer: 0
-  m_Name: Cylinder (1)
+  m_Name: Arbre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -277,7 +277,7 @@ Transform:
   m_LocalScale: {x: 1.47, y: 1.47, z: 1.47}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 912202265}
+  m_Father: {fileID: 1094096758}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &95531738
 NavMeshObstacle:
@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 114330169}
   - component: {fileID: 114330168}
   m_Layer: 2
-  m_Name: Rock (6)
+  m_Name: Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -504,10 +504,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.14544079, y: -0.7410266, z: -0.027036455, w: 0.65497756}
   m_LocalPosition: {x: -100.55, y: 247.9139, z: -153.47}
-  m_LocalScale: {x: 2.494008, y: 1.4967117, z: 1.4967117}
+  m_LocalScale: {x: 2.4940078, y: 1.4967117, z: 1.4967117}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 912202265}
+  m_Father: {fileID: 1094096758}
   m_LocalEulerAnglesHint: {x: 8.653, y: -98.173, z: -14.706}
 --- !u!208 &114330168
 NavMeshObstacle:
@@ -748,12 +748,12 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 16
   m_FocusDistance: 10
-  m_FocalLength: 50
+  m_FocalLength: 0.86602545
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
   m_Anamorphism: 0
-  m_SensorSize: {x: 36, y: 24}
+  m_SensorSize: {x: 1, y: 1}
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -763,7 +763,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 90
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -789,13 +789,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241756289}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalRotation: {x: 0.70090926, y: -0.000000034006742, z: 0.00000003341833, w: 0.71325046}
+  m_LocalPosition: {x: -61.8, y: 16.24, z: 12.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -9.4, z: 0}
 --- !u!114 &241756293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -849,10 +849,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 241756289}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dafe2605e607f5145a76942e9fed0714, type: 3}
+  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 376219690}
+  m_ShowDebugText: 0
+  m_ShowCameraFrustum: 1
+  m_IgnoreTimeScale: 0
+  m_WorldUpOverride: {fileID: 0}
+  m_UpdateMethod: 2
+  m_BlendUpdateMethod: 1
+  m_DefaultBlend:
+    m_Style: 1
+    m_Time: 2
+    m_CustomCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  m_CustomBlends: {fileID: 0}
+  m_CameraCutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_CameraActivatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &262546110
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,7 +888,7 @@ GameObject:
   - component: {fileID: 262546113}
   - component: {fileID: 262546112}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Arbre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -886,7 +907,7 @@ Transform:
   m_LocalScale: {x: 1.47, y: 1.47, z: 1.47}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 912202265}
+  m_Father: {fileID: 1094096758}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &262546112
 NavMeshObstacle:
@@ -991,7 +1012,7 @@ GameObject:
   - component: {fileID: 266947743}
   - component: {fileID: 266947742}
   m_Layer: 2
-  m_Name: Rock (2)
+  m_Name: Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1007,10 +1028,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.041160412, y: 0.091901146, z: -0.013894587, w: 0.99482006}
   m_LocalPosition: {x: -143.7, y: 247.9139, z: -50.3}
-  m_LocalScale: {x: 3.96, y: 1.4967117, z: 1.4967117}
+  m_LocalScale: {x: 3.9600005, y: 1.4967116, z: 1.4967119}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 912202265}
+  m_Father: {fileID: 1094096758}
   m_LocalEulerAnglesHint: {x: -4.551, y: 10.636, z: -2.024}
 --- !u!208 &266947742
 NavMeshObstacle:
@@ -1113,7 +1134,7 @@ GameObject:
   - component: {fileID: 276381344}
   - component: {fileID: 276381343}
   m_Layer: 2
-  m_Name: Rock (1)
+  m_Name: Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1128,11 +1149,11 @@ Transform:
   m_GameObject: {fileID: 276381341}
   serializedVersion: 2
   m_LocalRotation: {x: -0.041160412, y: 0.091901146, z: -0.013894587, w: 0.99482006}
-  m_LocalPosition: {x: -169.4, y: 247.9139, z: 0.8}
-  m_LocalScale: {x: 3.96, y: 1.4967117, z: 1.4967117}
+  m_LocalPosition: {x: -169.4, y: 247.9139, z: 0.79999924}
+  m_LocalScale: {x: 3.9600005, y: 1.4967116, z: 1.4967119}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 912202265}
+  m_Father: {fileID: 1094096758}
   m_LocalEulerAnglesHint: {x: -4.551, y: 10.636, z: -2.024}
 --- !u!208 &276381343
 NavMeshObstacle:
@@ -1373,7 +1394,7 @@ GameObject:
   - component: {fileID: 364111328}
   - component: {fileID: 364111327}
   m_Layer: 0
-  m_Name: Cylinder (4)
+  m_Name: Arbre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1392,7 +1413,7 @@ Transform:
   m_LocalScale: {x: 1.47, y: 1.47, z: 1.47}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 912202265}
+  m_Father: {fileID: 1094096758}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &364111327
 NavMeshObstacle:
@@ -1483,12 +1504,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 364111325}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &376219690 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6808041152681981610, guid: 4610ce0a3f1059c4384850167d1c12ef,
-    type: 3}
-  m_PrefabInstance: {fileID: 8706157244834293969}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &472938481
 GameObject:
   m_ObjectHideFlags: 0
@@ -1503,7 +1518,7 @@ GameObject:
   - component: {fileID: 472938484}
   - component: {fileID: 472938483}
   m_Layer: 0
-  m_Name: Cylinder (2)
+  m_Name: Arbre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1522,7 +1537,7 @@ Transform:
   m_LocalScale: {x: 1.47, y: 1.47, z: 1.47}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 912202265}
+  m_Father: {fileID: 1094096758}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &472938483
 NavMeshObstacle:
@@ -1627,7 +1642,7 @@ GameObject:
   - component: {fileID: 543292502}
   - component: {fileID: 543292501}
   m_Layer: 0
-  m_Name: Cylinder (11)
+  m_Name: Arbre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1646,7 +1661,7 @@ Transform:
   m_LocalScale: {x: 1.47, y: 1.47, z: 1.47}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 912202265}
+  m_Father: {fileID: 1094096758}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &543292501
 NavMeshObstacle:
@@ -1857,7 +1872,7 @@ GameObject:
   - component: {fileID: 587275467}
   - component: {fileID: 587275466}
   m_Layer: 0
-  m_Name: Cylinder (16)
+  m_Name: Arbre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1876,7 +1891,7 @@ Transform:
   m_LocalScale: {x: 1.47, y: 1.47, z: 1.47}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 912202265}
+  m_Father: {fileID: 1094096758}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &587275466
 NavMeshObstacle:
@@ -1981,7 +1996,7 @@ GameObject:
   - component: {fileID: 675743345}
   - component: {fileID: 675743344}
   m_Layer: 0
-  m_Name: Cylinder (15)
+  m_Name: Arbre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2000,7 +2015,7 @@ Transform:
   m_LocalScale: {x: 1.47, y: 1.47, z: 1.47}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 912202265}
+  m_Father: {fileID: 1094096758}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &675743344
 NavMeshObstacle:
@@ -2105,7 +2120,7 @@ GameObject:
   - component: {fileID: 737208662}
   - component: {fileID: 737208661}
   m_Layer: 2
-  m_Name: Rock (4)
+  m_Name: Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2121,10 +2136,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.013013844, y: -0.73173344, z: 0.12007109, w: 0.6708054}
   m_LocalPosition: {x: -101.43, y: 247.95, z: -155.14}
-  m_LocalScale: {x: 2.494008, y: 1.4967117, z: 1.4967117}
+  m_LocalScale: {x: 2.494008, y: 1.4967119, z: 1.4967117}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 912202265}
+  m_Father: {fileID: 1094096758}
   m_LocalEulerAnglesHint: {x: 11.138, y: -94.162, z: 8.324}
 --- !u!208 &737208661
 NavMeshObstacle:
@@ -2227,7 +2242,7 @@ GameObject:
   - component: {fileID: 740468116}
   - component: {fileID: 740468115}
   m_Layer: 2
-  m_Name: Rock (5)
+  m_Name: Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2243,10 +2258,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.20626989, y: -0.6728551, z: -0.0229146, w: 0.710066}
   m_LocalPosition: {x: -94.5, y: 247.9139, z: -139.9}
-  m_LocalScale: {x: 2.494008, y: 1.4967117, z: 1.4967117}
+  m_LocalScale: {x: 2.494008, y: 1.4967117, z: 1.4967119}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 912202265}
+  m_Father: {fileID: 1094096758}
   m_LocalEulerAnglesHint: {x: -18.891, y: -89.428, z: 15.01}
 --- !u!208 &740468115
 NavMeshObstacle:
@@ -2349,7 +2364,7 @@ GameObject:
   - component: {fileID: 851885070}
   - component: {fileID: 851885069}
   m_Layer: 0
-  m_Name: Cylinder (10)
+  m_Name: Arbre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2368,7 +2383,7 @@ Transform:
   m_LocalScale: {x: 1.47, y: 1.47, z: 1.47}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 912202265}
+  m_Father: {fileID: 1094096758}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &851885069
 NavMeshObstacle:
@@ -2489,32 +2504,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1397249378}
-  - {fileID: 2051434517}
-  - {fileID: 266947741}
-  - {fileID: 81529627}
-  - {fileID: 737208660}
-  - {fileID: 114330167}
-  - {fileID: 740468114}
-  - {fileID: 276381342}
-  - {fileID: 262546111}
-  - {fileID: 95531737}
-  - {fileID: 472938482}
-  - {fileID: 2074910107}
-  - {fileID: 364111326}
-  - {fileID: 1194051170}
-  - {fileID: 999001617}
-  - {fileID: 1009408891}
-  - {fileID: 1271083305}
-  - {fileID: 1476692756}
-  - {fileID: 851885068}
-  - {fileID: 543292500}
-  - {fileID: 1916528338}
-  - {fileID: 1494121170}
-  - {fileID: 1675485773}
-  - {fileID: 675743343}
-  - {fileID: 587275465}
-  - {fileID: 1363219685}
-  - {fileID: 1734684188}
+  - {fileID: 1094096758}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &942568582
@@ -2861,7 +2851,7 @@ GameObject:
   - component: {fileID: 999001619}
   - component: {fileID: 999001618}
   m_Layer: 0
-  m_Name: Cylinder (6)
+  m_Name: Arbre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2880,7 +2870,7 @@ Transform:
   m_LocalScale: {x: 1.47, y: 1.47, z: 1.47}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 912202265}
+  m_Father: {fileID: 1094096758}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &999001618
 NavMeshObstacle:
@@ -2985,7 +2975,7 @@ GameObject:
   - component: {fileID: 1009408893}
   - component: {fileID: 1009408892}
   m_Layer: 0
-  m_Name: Cylinder (7)
+  m_Name: Arbre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3004,7 +2994,7 @@ Transform:
   m_LocalScale: {x: 1.47, y: 1.47, z: 1.47}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 912202265}
+  m_Father: {fileID: 1094096758}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &1009408892
 NavMeshObstacle:
@@ -3095,6 +3085,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009408890}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1094096757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1094096758}
+  m_Layer: 0
+  m_Name: Props map
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1094096758
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094096757}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2051434517}
+  - {fileID: 266947741}
+  - {fileID: 81529627}
+  - {fileID: 737208660}
+  - {fileID: 114330167}
+  - {fileID: 740468114}
+  - {fileID: 276381342}
+  - {fileID: 262546111}
+  - {fileID: 95531737}
+  - {fileID: 472938482}
+  - {fileID: 2074910107}
+  - {fileID: 364111326}
+  - {fileID: 1194051170}
+  - {fileID: 999001617}
+  - {fileID: 1009408891}
+  - {fileID: 1271083305}
+  - {fileID: 1476692756}
+  - {fileID: 851885068}
+  - {fileID: 543292500}
+  - {fileID: 1916528338}
+  - {fileID: 1494121170}
+  - {fileID: 1675485773}
+  - {fileID: 675743343}
+  - {fileID: 587275465}
+  - {fileID: 1363219685}
+  - {fileID: 1734684188}
+  m_Father: {fileID: 912202265}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1194051169
 GameObject:
   m_ObjectHideFlags: 0
@@ -3109,7 +3156,7 @@ GameObject:
   - component: {fileID: 1194051172}
   - component: {fileID: 1194051171}
   m_Layer: 0
-  m_Name: Cylinder (5)
+  m_Name: Arbre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3128,7 +3175,7 @@ Transform:
   m_LocalScale: {x: 1.47, y: 1.47, z: 1.47}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 912202265}
+  m_Father: {fileID: 1094096758}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &1194051171
 NavMeshObstacle:
@@ -3445,7 +3492,7 @@ GameObject:
   - component: {fileID: 1271083307}
   - component: {fileID: 1271083306}
   m_Layer: 0
-  m_Name: Cylinder (8)
+  m_Name: Arbre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3464,7 +3511,7 @@ Transform:
   m_LocalScale: {x: 1.47, y: 1.47, z: 1.47}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 912202265}
+  m_Father: {fileID: 1094096758}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &1271083306
 NavMeshObstacle:
@@ -3569,7 +3616,7 @@ GameObject:
   - component: {fileID: 1363219687}
   - component: {fileID: 1363219686}
   m_Layer: 0
-  m_Name: Cylinder (17)
+  m_Name: Arbre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3588,7 +3635,7 @@ Transform:
   m_LocalScale: {x: 1.47, y: 1.47, z: 1.47}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 912202265}
+  m_Father: {fileID: 1094096758}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &1363219686
 NavMeshObstacle:
@@ -3950,7 +3997,7 @@ GameObject:
   - component: {fileID: 1476692758}
   - component: {fileID: 1476692757}
   m_Layer: 0
-  m_Name: Cylinder (9)
+  m_Name: Arbre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3969,7 +4016,7 @@ Transform:
   m_LocalScale: {x: 1.47, y: 1.47, z: 1.47}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 912202265}
+  m_Father: {fileID: 1094096758}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &1476692757
 NavMeshObstacle:
@@ -4074,7 +4121,7 @@ GameObject:
   - component: {fileID: 1494121172}
   - component: {fileID: 1494121171}
   m_Layer: 0
-  m_Name: Cylinder (13)
+  m_Name: Arbre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4093,7 +4140,7 @@ Transform:
   m_LocalScale: {x: 1.47, y: 1.47, z: 1.47}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 912202265}
+  m_Father: {fileID: 1094096758}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &1494121171
 NavMeshObstacle:
@@ -4198,7 +4245,7 @@ GameObject:
   - component: {fileID: 1675485775}
   - component: {fileID: 1675485774}
   m_Layer: 0
-  m_Name: Cylinder (14)
+  m_Name: Arbre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4217,7 +4264,7 @@ Transform:
   m_LocalScale: {x: 1.47, y: 1.47, z: 1.47}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 912202265}
+  m_Father: {fileID: 1094096758}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &1675485774
 NavMeshObstacle:
@@ -4322,7 +4369,7 @@ GameObject:
   - component: {fileID: 1734684190}
   - component: {fileID: 1734684189}
   m_Layer: 0
-  m_Name: Cylinder (18)
+  m_Name: Arbre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4341,7 +4388,7 @@ Transform:
   m_LocalScale: {x: 1.47, y: 1.47, z: 1.47}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 912202265}
+  m_Father: {fileID: 1094096758}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &1734684189
 NavMeshObstacle:
@@ -4764,7 +4811,7 @@ GameObject:
   - component: {fileID: 1916528340}
   - component: {fileID: 1916528339}
   m_Layer: 0
-  m_Name: Cylinder (12)
+  m_Name: Arbre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4783,7 +4830,7 @@ Transform:
   m_LocalScale: {x: 1.47, y: 1.47, z: 1.47}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 912202265}
+  m_Father: {fileID: 1094096758}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &1916528339
 NavMeshObstacle:
@@ -5012,6 +5059,133 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946016832}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2011655024
+GameObject:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2011655025}
+  - component: {fileID: 2011655028}
+  - component: {fileID: 2011655027}
+  - component: {fileID: 2011655029}
+  m_Layer: 0
+  m_Name: cm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2011655025
+Transform:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011655024}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2090495900}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2011655027
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011655024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
+  m_LookaheadTime: 0
+  m_LookaheadSmoothing: 0
+  m_LookaheadIgnoreY: 0
+  m_HorizontalDamping: 0.5
+  m_VerticalDamping: 0.5
+  m_ScreenX: 0.5
+  m_ScreenY: 0.5
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
+  m_SoftZoneWidth: 0.8
+  m_SoftZoneHeight: 0.8
+  m_BiasX: 0
+  m_BiasY: 0
+  m_CenterOnActivate: 1
+--- !u!114 &2011655028
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011655024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2011655029
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011655024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BindingMode: 3
+  m_FollowOffset: {x: 0, y: 15, z: -0}
+  m_XDamping: 0.94
+  m_YDamping: 1
+  m_ZDamping: 1
+  m_AngularDampingMode: 0
+  m_PitchDamping: 0
+  m_YawDamping: 0
+  m_RollDamping: 0
+  m_AngularDamping: 0
+  m_Heading:
+    m_Definition: 2
+    m_VelocityFilterStrength: 4
+    m_Bias: 0
+  m_RecenterToTargetHeading:
+    m_enabled: 1
+    m_WaitTime: 1
+    m_RecenteringTime: 2
+    m_LegacyHeadingDefinition: -1
+    m_LegacyVelocityFilterStrength: -1
+  m_XAxis:
+    Value: 0
+    m_SpeedMode: 0
+    m_MaxSpeed: 300
+    m_AccelTime: 0.1
+    m_DecelTime: 0.1
+    m_InputAxisName: Mouse X
+    m_InputAxisValue: 0
+    m_InvertInput: 1
+    m_MinValue: -180
+    m_MaxValue: 180
+    m_Wrap: 1
+    m_Recentering:
+      m_enabled: 0
+      m_WaitTime: 1
+      m_RecenteringTime: 2
+      m_LegacyHeadingDefinition: -1
+      m_LegacyVelocityFilterStrength: -1
+  m_LegacyRadius: 3.4028235e+38
+  m_LegacyHeightOffset: 3.4028235e+38
+  m_LegacyHeadingBias: 3.4028235e+38
+  m_HeadingIsSlave: 0
 --- !u!1 &2051434513
 GameObject:
   m_ObjectHideFlags: 0
@@ -5113,10 +5287,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.041160412, y: 0.091901146, z: -0.013894587, w: 0.99482006}
   m_LocalPosition: {x: -184.4, y: 247.9139, z: -24.7}
-  m_LocalScale: {x: 3.96, y: 1.4967117, z: 1.4967117}
+  m_LocalScale: {x: 3.9600005, y: 1.4967116, z: 1.4967119}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 912202265}
+  m_Father: {fileID: 1094096758}
   m_LocalEulerAnglesHint: {x: -4.551, y: 10.636, z: -2.024}
 --- !u!208 &2051434518
 NavMeshObstacle:
@@ -5148,7 +5322,7 @@ GameObject:
   - component: {fileID: 2074910109}
   - component: {fileID: 2074910108}
   m_Layer: 0
-  m_Name: Cylinder (3)
+  m_Name: Arbre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5167,7 +5341,7 @@ Transform:
   m_LocalScale: {x: 1.47, y: 1.47, z: 1.47}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 912202265}
+  m_Father: {fileID: 1094096758}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &2074910108
 NavMeshObstacle:
@@ -5258,6 +5432,78 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2074910106}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2090495898
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2090495900}
+  - component: {fileID: 2090495899}
+  m_Layer: 0
+  m_Name: Virtual Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2090495899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090495898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExcludedPropertiesInInspector:
+  - m_Script
+  m_LockStageInInspector: 
+  m_StreamingVersion: 20170927
+  m_Priority: 10
+  m_StandbyUpdate: 1
+  m_LookAt: {fileID: 8706157244834293970}
+  m_Follow: {fileID: 8706157244834293970}
+  m_Lens:
+    FieldOfView: 60
+    OrthographicSize: 5
+    NearClipPlane: 0.3
+    FarClipPlane: 1000
+    Dutch: 0
+    ModeOverride: 0
+    LensShift: {x: 0, y: 0}
+    GateFit: 2
+    FocusDistance: 10
+    m_SensorSize: {x: 1, y: 1}
+  m_Transitions:
+    m_BlendHint: 0
+    m_InheritPosition: 0
+    m_OnCameraLive:
+      m_PersistentCalls:
+        m_Calls: []
+  m_LegacyBlendHint: 0
+  m_ComponentOwner: {fileID: 2011655025}
+--- !u!4 &2090495900
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090495898}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.70090926, y: -0.00000003400661, z: 0.0000000334182, w: 0.71325046}
+  m_LocalPosition: {x: -61.8, y: 16.24, z: 12.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2011655025}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -13.9, z: 0}
 --- !u!1001 &8706157244834293969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5266,6 +5512,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 537265720280222178, guid: 4610ce0a3f1059c4384850167d1c12ef,
+        type: 3}
+      propertyPath: _cam
+      value: 
+      objectReference: {fileID: 241756291}
     - target: {fileID: 6808041152681981610, guid: 4610ce0a3f1059c4384850167d1c12ef,
         type: 3}
       propertyPath: m_Name
@@ -5326,11 +5577,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4610ce0a3f1059c4384850167d1c12ef, type: 3}
+--- !u!4 &8706157244834293970 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8232521918641056167, guid: 4610ce0a3f1059c4384850167d1c12ef,
+    type: 3}
+  m_PrefabInstance: {fileID: 8706157244834293969}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 942568584}
   - {fileID: 241756292}
+  - {fileID: 2090495900}
   - {fileID: 8706157244834293969}
   - {fileID: 912202265}
