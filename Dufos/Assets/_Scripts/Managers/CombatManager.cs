@@ -63,8 +63,6 @@ public class CombatManager : MonoBehaviour
 
         cam.LookAt = CurrentEntity.transform;
 
-
-
         CurrentEntity.StartTurn();
     }
 
