@@ -11,6 +11,8 @@ public class Spell
 {
     [SerializeField] public SpellData Data;
 
+    [SerializeField] public SpellVisual Visual;
+
     [HideInInspector] public Entity Caster;
 
     protected List<WayPoint> ReadSelectionForm()
@@ -55,6 +57,10 @@ public class Spell
 
         List<WayPoint> TargetPoints = new List<WayPoint>();
 
+        if (!Data.BypassNearSpell)
+        {
+            TargetPoints.Add(GraphMaker.Instance.PointDict[origin.SnapOnGrid()]);
+        }
 
         switch (Data.TargetForm)
         {
@@ -82,10 +88,6 @@ public class Spell
                 }
                 break;
             case SpellForm.Point:
-                if (!Data.BypassNearSpell)
-                {
-                    TargetPoints.Add(GraphMaker.Instance.PointDict[origin.SnapOnGrid()]);
-                }
                 break;
         }
 
@@ -163,21 +165,16 @@ public class Spell
         WayPoint[] targets = GraphMaker.Instance.TargetPoints.ToArray();
         StopSelectionPreview();
 
-        await ShowVisuals(origin);
+        await Visual.ShowVisuals(origin);
 
         foreach (WayPoint target in targets)
-       {
+        {
             ApplySpell();
-       }
+        }
     }
 
     protected virtual void ApplySpell()
     {
 
-    }
-
-    protected virtual async Task ShowVisuals(WayPoint target)
-    {
-        //faire les visuals et les await bien comme un bon toutou de merde
     }
 }
