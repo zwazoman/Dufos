@@ -29,6 +29,8 @@ public class MouseHandler : MonoBehaviour
     public event Action OnClick;
     public event Action OnHover;
 
+    [SerializeField] LayerMask _mask;
+
     GameObject _previousObject;
 
     private void Update()
@@ -36,7 +38,7 @@ public class MouseHandler : MonoBehaviour
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity,_mask))
         {
             if(_previousObject != hit.collider.gameObject)
             {

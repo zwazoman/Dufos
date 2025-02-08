@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -15,9 +16,11 @@ public class PlayerEntity : Entity
 
     protected void Update()
     {
-        // remplacer par l'ui
-
         if (!CanInteract) return;
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            PreviewFloodField();
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             print("ESPACE");
@@ -53,5 +56,31 @@ public class PlayerEntity : Entity
     {
         if(!CanInteract) return;
         base.UseSpell(spellIndex);
+    }
+
+    void PreviewFloodField()
+    {
+        List<WayPoint> walkables = new List<WayPoint>();
+        walkables.Add(CurrentPoint);
+        
+        for (int i = 0; i < MovePoints; i++)
+        {
+            List<WayPoint> tmp = new List<WayPoint>();
+            foreach(WayPoint walkable in walkables)
+            {
+                foreach (WayPoint neighbour in walkable.Neighbours)
+                {
+                    if(walkables.Contains(neighbour) || !neighbour.IsActive) continue;
+                    neighbour.ApplyWalkableVisual();
+                    tmp.Add(neighbour);
+                }
+            }
+            walkables.AddRange(tmp);
+        }
+
+
+        //List<WayPoint> walkables = new List<WayPoint>();
+
+        //CurrentPoint.Flood(ref walkables, MovePoints + 1);
     }
 }

@@ -195,6 +195,23 @@ public class WayPoint : MonoBehaviour
     }
     #endregion Astar
 
+    public void Flood(ref List<WayPoint> walkables, int stepsCount)
+    {
+        if(stepsCount ==  0) return;
+        print(transform.position);
+
+        walkables.Add(this);
+
+        ApplyWalkableVisual();
+
+        foreach (WayPoint neighbour in Neighbours)
+        {
+            if (walkables.Contains(neighbour) || !neighbour.IsActive) continue;
+            int currentStepCount = stepsCount - 1;
+            neighbour.Flood(ref walkables, currentStepCount);
+        }
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
