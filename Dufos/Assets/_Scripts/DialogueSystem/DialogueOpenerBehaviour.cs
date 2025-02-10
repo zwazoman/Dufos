@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class DialogueOpenerBehaviour : MonoBehaviour
@@ -15,6 +16,8 @@ public class DialogueOpenerBehaviour : MonoBehaviour
     private List<TextMeshProUGUI> _choiceTexts;
     [SerializeField]
     private GameObject _nextDialogueButton;
+    [SerializeField]
+    private Movement _playerMove;
 
     private static DialogueManager _dialogueManager;
     private DialoguePlayerBehaviour _dialoguePlayer;
@@ -31,6 +34,7 @@ public class DialogueOpenerBehaviour : MonoBehaviour
         if (story == null)
         {
             _dialogueSystemDisplay.SetActive(false);
+            _playerMove.enabled = true;
         }
 
         else
@@ -92,6 +96,7 @@ public class DialogueOpenerBehaviour : MonoBehaviour
             else
             {
                 _dialogueSystemDisplay.SetActive(false);
+                _playerMove.enabled = true;
             }
         }
     }
