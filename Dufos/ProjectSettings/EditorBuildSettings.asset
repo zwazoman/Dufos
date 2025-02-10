@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/_Scenes/ClickableCombatTest.unity
+    guid: fe058a74a16a8e945901abeb1dc2c4a7
+  - enabled: 1
+    path: Assets/_Scenes/DialogueTest.unity
+    guid: 83daf669f0bd3ac409741f6246a8f037
   m_configObjects: {}
