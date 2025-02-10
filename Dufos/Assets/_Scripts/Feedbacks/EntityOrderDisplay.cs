@@ -1,8 +1,6 @@
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class EntityOrderDisplay : MonoBehaviour
 {
@@ -17,7 +15,7 @@ public class EntityOrderDisplay : MonoBehaviour
         {
             _entitiesCopy.Clear();
             _entitiesCopy = CombatManager.Instance.Entities;
-            for (int i = 0; i < CombatManager.Instance.Entities.Count; i++)
+            for (int i = 0; i < _orderDisplay.Count; i++)
             {
                 _orderDisplay[i].text = CombatManager.Instance.Entities[i].name;
             }
@@ -31,7 +29,7 @@ public class EntityOrderDisplay : MonoBehaviour
         _entitiesCopy.RemoveAt(0);
         _entitiesCopy.Add(temp);
 
-        for (int i = 0; i < _entitiesCopy.Count; i++)
+        for (int i = 0; i < _orderDisplay.Count; i++)
         {
             _orderDisplay[i].text = _entitiesCopy[i].name;
         }
