@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class DialogueDetectionBehaviour : MonoBehaviour
 {
+    [SerializeField]
+    private float _detectionRange;
     private bool _detected;
     private GameObject _currentPnj;
 
     private void Update()
     {
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hit, 1) && !_detected)
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hit, _detectionRange) && !_detected)
         {
             _detected = true;
             _currentPnj = hit.collider.gameObject;

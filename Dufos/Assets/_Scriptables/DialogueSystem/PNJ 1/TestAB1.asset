@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeakerName: Monsieur 1
   CharacterDialogue:
-  - Ah. Pardon.
+  - 
   Choices: []
+  Happening:
+    nextSceneName: TestNest

@@ -39,6 +39,11 @@ public class DialogueOpenerBehaviour : MonoBehaviour
 
         else
         {
+            if (story.Happening.nextSceneName != "")
+            {
+                story.Happening.Load();
+            }
+
             _dialogueManager = story;
             _nextDialogueButton.SetActive(true);
             _dialogueSystemDisplay.SetActive(true);

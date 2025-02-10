@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeakerName: Monsieur 1
   CharacterDialogue:
-  - Premier dialogue.
-  - "Deuxi\xE8me dialogue."
-  - "Troisi\xE8me dialogue ?"
+  - Tu veux savoir ce qui t'attend ?
   Choices:
   - PlayerChoice: Oui.
     NextStory: {fileID: 11400000, guid: 1efcbc2592c27664fac1481cbbd71381, type: 2}
   - PlayerChoice: Non.
-    NextStory: {fileID: 11400000, guid: d3dd94dbaff7dae49bcb069fdce55372, type: 2}
+    NextStory: {fileID: 11400000, guid: 4ce211d56e7bb1248b50982a1cbd3f16, type: 2}
+  Happening:
+    nextSceneName: 

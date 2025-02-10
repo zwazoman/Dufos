@@ -14,5 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeakerName: Monsieur 1
   CharacterDialogue:
-  - Merci.
-  Choices: []
+  - Ok, c'est parti !
+  Choices:
+  - PlayerChoice: Commencer le combat.
+    NextStory: {fileID: 11400000, guid: d3dd94dbaff7dae49bcb069fdce55372, type: 2}
+  - PlayerChoice: Commencer le combat.
+    NextStory: {fileID: 11400000, guid: d3dd94dbaff7dae49bcb069fdce55372, type: 2}
+  Happening:
+    nextSceneName: 
