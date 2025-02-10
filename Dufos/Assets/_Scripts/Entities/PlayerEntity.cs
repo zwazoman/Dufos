@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class PlayerEntity : Entity
 {
+
+    List<WayPoint> walkables = new List<WayPoint>();
     Spell _currentSpell;
 
     protected override void Start()
@@ -20,6 +22,10 @@ public class PlayerEntity : Entity
         if (Input.GetKeyDown(KeyCode.V))
         {
             PreviewFloodField();
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            StopFloodFieldPreview();
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -60,7 +66,6 @@ public class PlayerEntity : Entity
 
     void PreviewFloodField()
     {
-        List<WayPoint> walkables = new List<WayPoint>();
         walkables.Add(CurrentPoint);
         
         for (int i = 0; i < MovePoints; i++)
@@ -77,10 +82,14 @@ public class PlayerEntity : Entity
             }
             walkables.AddRange(tmp);
         }
+    }
 
-
-        //List<WayPoint> walkables = new List<WayPoint>();
-
-        //CurrentPoint.Flood(ref walkables, MovePoints + 1);
+    void StopFloodFieldPreview()
+    {
+        foreach(WayPoint point in walkables)
+        {
+            point.ApplyDefaultVisual();
+        }
+        walkables.Clear();
     }
 }
