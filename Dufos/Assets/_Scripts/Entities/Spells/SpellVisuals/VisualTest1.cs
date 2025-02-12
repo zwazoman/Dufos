@@ -1,8 +1,9 @@
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 [Serializable]
-public class VisualTest1 : SpellVisual
+public class VisualTest1 : SpellVisuals
 {
     private bool _endSpell;
 
@@ -13,7 +14,6 @@ public class VisualTest1 : SpellVisual
             _endSpell = true;
             await Task.Yield();
         }
-
-        print("spell used");
+        print("bigsingeos");
     }
 }

@@ -15,5 +15,4 @@ public class EntityData : ScriptableObject
     public int MaxMovePoints { get; private set; }
 
     public Spell[] Spells;
-
 }

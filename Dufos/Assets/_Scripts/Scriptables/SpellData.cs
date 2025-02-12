@@ -16,6 +16,11 @@ public enum SpellForm
     Point
 }
 
+public enum Visuals
+{
+
+}
+
 [CreateAssetMenu(fileName = "Spell", menuName = "Spells")]
 public class SpellData : ScriptableObject
 {
@@ -37,7 +42,9 @@ public class SpellData : ScriptableObject
     public bool BypassNearSpell;
     public float SpellBypassSize; //seulement si BypassNearSpell est coché
 
-    public float Damage;
+    public int Damage;
+
+    public SpellVisuals Visual;
 
     //mettre un bouton "show" qui fait apparaitre les gizmos ou colorie la grille pour montrer la zone d'effet du spell
 }

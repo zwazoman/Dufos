@@ -69,8 +69,11 @@ public class WayPoint : MonoBehaviour
         Activate();
     }
 
-    public void ApplyDamage(int damages)
+    public void TryApplyDamage(int damages)
     {
+        if (Content == null)
+            return;
+
         if(Content.TryGetComponent(out Health health))
         {
             health.ApplyDamage(damages);

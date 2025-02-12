@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.Timeline;
@@ -11,9 +12,9 @@ public class Spell
 {
     [SerializeField] public SpellData Data;
 
-    [SerializeField] public SpellVisual Visual;
-
     [HideInInspector] public Entity Caster;
+
+    SpellVisuals spellVisuals = new SpellVisuals();
 
     protected List<WayPoint> ReadSelectionForm()
     {
@@ -159,25 +160,19 @@ public class Spell
         GraphMaker.Instance.TargetPoints.Clear();
     }
 
-    public virtual async void Execute(WayPoint origin)
+    public async void Execute(WayPoint origin)
     {
         Debug.Log("execute");
         WayPoint[] targets = GraphMaker.Instance.TargetPoints.ToArray();
         StopSelectionPreview();
 
-        if(Visual != null)
-        {
-            await Visual.ShowVisuals(origin);
-        }
+        SpellVisuals visuals = Caster.gameObject.AddComponent<SpellVisuals>();
+
+        await visuals.ShowVisuals(origin);
 
         foreach (WayPoint target in targets)
         {
-            ApplySpell();
+            target.TryApplyDamage(Data.Damage);
         }
-    }
-
-    protected virtual void ApplySpell()
-    {
-
     }
 }
