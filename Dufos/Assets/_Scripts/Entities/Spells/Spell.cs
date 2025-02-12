@@ -11,7 +11,6 @@ using UnityEngine.Timeline;
 public class Spell
 {
     [SerializeField] public SpellData Data;
-
     [HideInInspector] public Entity Caster;
 
     SpellVisuals spellVisuals = new SpellVisuals();
@@ -166,9 +165,15 @@ public class Spell
         WayPoint[] targets = GraphMaker.Instance.TargetPoints.ToArray();
         StopSelectionPreview();
 
-        SpellVisuals visuals = Caster.gameObject.AddComponent<SpellVisuals>();
+        switch (Data.Visual)
+        {
+            //case Visuals.FireBall:
+            //    await spellVisuals.ShowFireball();
+            //    break;
 
-        await visuals.ShowVisuals(origin);
+        }
+
+
 
         foreach (WayPoint target in targets)
         {

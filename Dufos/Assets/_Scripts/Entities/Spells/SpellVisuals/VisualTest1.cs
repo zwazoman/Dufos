@@ -14,6 +14,5 @@ public class VisualTest1 : SpellVisuals
             _endSpell = true;
             await Task.Yield();
         }
-        print("bigsingeos");
     }
 }
