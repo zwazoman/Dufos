@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06eb20bd3aea0444886a62f390db4e49, type: 3}
   m_Name: TestSpell 1
   m_EditorClassIdentifier: 
-  UISprite: {fileID: 21300000, guid: d49e78756811bfa4aafb8b6535417991, type: 3}
+  UISprite: {fileID: 21300000, guid: 250af3f8ed851d143a1b933c24e5fb5a, type: 3}
   Uses: 1
   LaunchForm: 1
   SelectionMaxRange: 10
