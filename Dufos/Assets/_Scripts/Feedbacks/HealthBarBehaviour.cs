@@ -13,7 +13,14 @@ public class HealthBarBehaviour : MonoBehaviour
 
     private void Awake()
     {
+        _healthBar = GetComponent<Slider>();
         _playerHealth.OnTakeDamage += SliderUpdate;
+    }
+
+    private void Start()
+    {
+        _healthBar.maxValue = _playerHealth.MaxHealth;
+        _healthBar.value = _playerHealth.MaxHealth;
     }
 
     private void Update()
