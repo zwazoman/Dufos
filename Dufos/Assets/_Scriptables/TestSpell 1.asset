@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06eb20bd3aea0444886a62f390db4e49, type: 3}
-  m_Name: TestSpell
+  m_Name: TestSpell 1
   m_EditorClassIdentifier: 
-  UISprite: {fileID: 21300000, guid: a01087ce1455c7e4c8f2410c26afcfd2, type: 3}
+  UISprite: {fileID: 21300000, guid: d49e78756811bfa4aafb8b6535417991, type: 3}
   Uses: 1
   LaunchForm: 1
   SelectionMaxRange: 10
   BypassNearSelection: 0
   SelectionBypassSize: 3
-  TargetForm: 0
+  TargetForm: 1
   SpellMaxRange: 5
   BypassNearSpell: 0
   SpellBypassSize: 0
