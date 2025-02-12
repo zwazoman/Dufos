@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UISprite: {fileID: 21300000, guid: f82f07327c0f1fd4abc19e20c851a714, type: 3}
   Uses: 1
-  LaunchForm: 1
+  LaunchForm: 2
   SelectionMaxRange: 10
   BypassNearSelection: 0
   SelectionBypassSize: 3
-  TargetForm: 1
+  TargetForm: 2
   SpellMaxRange: 5
   BypassNearSpell: 0
   SpellBypassSize: 0

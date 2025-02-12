@@ -1,5 +1,7 @@
+using System;
 using System.Threading.Tasks;
 
+[Serializable]
 public class VisualTest1 : SpellVisual
 {
     private bool _endSpell;
