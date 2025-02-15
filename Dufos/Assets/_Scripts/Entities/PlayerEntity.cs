@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class PlayerEntity : Entity
 {
-
-    List<WayPoint> walkables = new List<WayPoint>();
     Spell _currentSpell;
 
     protected override void Start()
@@ -54,7 +52,8 @@ public class PlayerEntity : Entity
     {
         if(!CanInteract) return;
         CanInteract = false;
-        base.TryMoveTo(targetPoint);
+        await base.TryMoveTo(targetPoint);
+        PreviewFloodField();
         CanInteract = true;
     }
 
@@ -66,30 +65,19 @@ public class PlayerEntity : Entity
 
     void PreviewFloodField()
     {
-        walkables.Add(CurrentPoint);
-        
-        for (int i = 0; i < MovePoints; i++)
+        Flood();
+        foreach(WayPoint point in Walkables)
         {
-            List<WayPoint> tmp = new List<WayPoint>();
-            foreach(WayPoint walkable in walkables)
-            {
-                foreach (WayPoint neighbour in walkable.Neighbours)
-                {
-                    if(walkables.Contains(neighbour) || !neighbour.IsActive) continue;
-                    neighbour.ApplyWalkableVisual();
-                    tmp.Add(neighbour);
-                }
-            }
-            walkables.AddRange(tmp);
+            point.ApplyWalkableVisual();
         }
+
     }
 
     void StopFloodFieldPreview()
     {
-        foreach(WayPoint point in walkables)
+        foreach(WayPoint point in Walkables)
         {
             point.ApplyDefaultVisual();
         }
-        walkables.Clear();
     }
 }

@@ -16,15 +16,6 @@ public class WayPoint : MonoBehaviour
 
     public GameObject Content;
 
-    [HideInInspector] public WayPoint FormerPoint;
-
-    [HideInInspector] public bool IsOpen = false;
-    [HideInInspector] public bool IsClosed = false;
-
-    [HideInInspector] public float H;
-    [HideInInspector] public float G;
-    [HideInInspector] public float F => G + H ;
-
     public bool IsActive;
 
     [SerializeField] LayerMask _mask;
@@ -36,6 +27,17 @@ public class WayPoint : MonoBehaviour
     [SerializeField] Material _defaultMat;
 
     MeshRenderer _mR;
+
+    #region Astar Fields
+    [HideInInspector] public WayPoint FormerPoint;
+
+    [HideInInspector] public bool IsOpen = false;
+    [HideInInspector] public bool IsClosed = false;
+
+    [HideInInspector] public float H;
+    [HideInInspector] public float G;
+    [HideInInspector] public float F => G + H ;
+    #endregion
 
     private void Awake()
     {

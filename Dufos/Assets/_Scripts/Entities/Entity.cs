@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Health))]
@@ -16,6 +17,8 @@ public class Entity : MonoBehaviour
 
     [HideInInspector] public Health EntityHealth;
     [HideInInspector] public int MovePoints;
+
+    protected List<WayPoint> Walkables = new List<WayPoint>();
 
     Move _move;
 
@@ -116,4 +119,26 @@ public class Entity : MonoBehaviour
         return shorterPath;
     }
 
+    protected void Flood()
+    {
+        //reset les anciens walkkables
+        Walkables.Clear();
+
+        Walkables.Add(CurrentPoint);
+
+        for (int i = 0; i < MovePoints; i++)
+        {
+            List<WayPoint> tmp = new List<WayPoint>();
+            foreach (WayPoint walkable in Walkables)
+            {
+                foreach (WayPoint neighbour in walkable.Neighbours)
+                {
+                    if (Walkables.Contains(neighbour) || !neighbour.IsActive) continue;
+                    neighbour.ApplyWalkableVisual();
+                    tmp.Add(neighbour);
+                }
+            }
+            Walkables.AddRange(tmp);
+        }
+    }
 }
