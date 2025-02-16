@@ -18,7 +18,7 @@ public enum SpellForm
 
 public enum Visuals
 {
-
+    Test1
 }
 
 [CreateAssetMenu(fileName = "Spell", menuName = "Spells")]
@@ -48,7 +48,7 @@ public class SpellData : ScriptableObject
 
     public int Damage;
 
-    public SpellVisuals Visual;
+    public Visuals Visuals;
 
     //mettre un bouton "show" qui fait apparaitre les gizmos ou colorie la grille pour montrer la zone d'effet du spell
 }

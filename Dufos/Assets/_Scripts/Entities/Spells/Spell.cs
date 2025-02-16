@@ -176,11 +176,15 @@ public class Spell
 
         CancelSelectionPreview();
 
-        switch (Data.Visual)
+        switch (Data.Visuals)
         {
-            //case Visuals.FireBall:
-            //    await spellVisuals.ShowFireball();
-            //    break;
+            case Visuals.Test1:
+                await spellVisuals.VisualTest1(origin);
+                break;
+
+                //case Visuals.FireBall:
+                //    await spellVisuals.ShowFireball();
+                //    break;
 
         }
 
