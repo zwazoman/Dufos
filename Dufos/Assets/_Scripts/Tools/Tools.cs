@@ -183,84 +183,32 @@ public static class Tools
 
     }
 
-    public static WayPoint FindClosest(this List<WayPoint> points, Vector3 origin)
+    public static T FindClosest<T>(this List<T> elements, Vector3 origin) where T : Component
     {
-        if (points.Count == 0)
+        if (elements.Count == 0)
         {
             Debug.LogError("List Is Empty");
             return null;
         }
-        if (points.Count == 1)
+        if (elements.Count == 1)
         {
-            return points[0];
+            return elements[0];
         }
 
-        WayPoint closest = points[0];
+        T closest = elements[0];
 
-        foreach (WayPoint element in points)
+        float closestDistance = (closest.transform.position - origin).sqrMagnitude;
+
+        foreach (T element in elements)
         {
-            Vector3 pointOffset = element.transform.position - origin;
-            Vector3 closestOffset = closest.transform.position - origin;
-
-            if (pointOffset.sqrMagnitude < closestOffset.sqrMagnitude)
+                                                                   
+            if ((element.transform.position - origin).sqrMagnitude < closestDistance)
+            {
                 closest = element;
+                closestDistance = (closest.transform.position - origin).sqrMagnitude;
+            }
         }
 
         return closest;
-
-    }
-
-    public static Entity FindClosest(this List<Entity> points, Vector3 origin)
-    {
-        if (points.Count == 0)
-        {
-            Debug.LogError("List Is Empty");
-            return null;
-        }
-        if (points.Count == 1)
-        {
-            return points[0];
-        }
-
-        Entity closest = points[0];
-
-        foreach (Entity element in points)
-        {
-            Vector3 pointOffset = element.transform.position - origin;
-            Vector3 closestOffset = closest.transform.position - origin;
-
-            if (pointOffset.sqrMagnitude < closestOffset.sqrMagnitude)
-                closest = element;
-        }
-
-        return closest;
-
-    }
-
-    public static PlayerEntity FindClosest(this List<PlayerEntity> points, Vector3 origin)
-    {
-        if (points.Count == 0)
-        {
-            Debug.LogError("List Is Empty");
-            return null;
-        }
-        if (points.Count == 1)
-        {
-            return points[0];
-        }
-
-        PlayerEntity closest = points[0];
-
-        foreach (PlayerEntity element in points)
-        {
-            Vector3 pointOffset = element.transform.position - origin;
-            Vector3 closestOffset = closest.transform.position - origin;
-
-            if (pointOffset.sqrMagnitude < closestOffset.sqrMagnitude)
-                closest = element;
-        }
-
-        return closest;
-
     }
 }
