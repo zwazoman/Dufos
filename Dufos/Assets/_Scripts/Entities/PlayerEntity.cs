@@ -64,10 +64,9 @@ public class PlayerEntity : Entity
 
     public void UseSpell(int spellIndex)
     {
-        if (!IsFree) return;
+        if (!IsFree || Data.Spells[spellIndex].IsPreviewing) return;
         if (spellIndex <= Data.Spells.Length - 1)
         {
-            print("indew in range ! ");
             Data.Spells[spellIndex].StartSelectionPreview();
         }
     }
@@ -76,11 +75,11 @@ public class PlayerEntity : Entity
     {
         Spell spell = Data.Spells[spellIndex];
 
-        if (spell.IsPreviewing)
-        {
-            spell.CancelSelectionPreview();
-            Free();
-        }
+        if (!spell.IsPreviewing)
+            return;
+
+        spell.CancelSelectionPreview();
+        Free();
     }
 
     void Free()
