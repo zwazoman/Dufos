@@ -50,7 +50,7 @@ public class Gobelin : Entity
 
         if (targetReached)
         {
-            //trouver le Waypoint sur lequel tirer
+            print("attack !");
 
             WayPoint selected = targetPointsDict[choosenTargetPoint];
 
@@ -60,6 +60,7 @@ public class Gobelin : Entity
 
             WayPoint pointToSelect = _graphMaker.PointDict[selfPointPos + (targetPointPos - selectedpointPos)];
 
+            print(pointToSelect.transform.position);
 
             choosenSpell.StartSpellPreview(pointToSelect , true);
             choosenSpell.Execute(pointToSelect);
