@@ -23,7 +23,7 @@ public class Gobelin : Entity
                 {
                     if(neighbour.Content.layer == 7)
                     {
-                        UseSpell(0);
+                        //UseSpell(0);
                     }
                 }
             }
