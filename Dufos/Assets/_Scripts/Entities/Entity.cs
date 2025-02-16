@@ -63,8 +63,6 @@ public class Entity : MonoBehaviour
 
     public virtual async Task TryMoveTo(WayPoint targetPoint)
     {
-        print(MovePoints);
-
         Stack<WayPoint> path = FindBestPath(CurrentPoint, targetPoint);
         int pathlength = path.Count;
 

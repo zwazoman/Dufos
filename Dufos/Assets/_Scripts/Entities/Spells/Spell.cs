@@ -15,9 +15,9 @@ public class Spell
 
     SpellVisuals spellVisuals = new SpellVisuals();
 
-    protected List<WayPoint> ReadSelectionForm()
+    protected List<WayPoint> ReadSelectionForm(WayPoint origin)
     {
-        Vector3 origin = Caster.transform.position;
+        Vector3 originPoint = origin.transform.position;
 
         List<WayPoint> selectionPoints = new List<WayPoint>();
 
@@ -26,7 +26,7 @@ public class Spell
             case SelectionForm.Ray:
                 foreach(Vector3 direction in Tools.AllFlatDirections)
                 {
-                    foreach(RaycastHit hit in Physics.RaycastAll(origin + direction * Data.SelectionBypassSize ,direction,Data.SelectionMaxRange - Data.SelectionBypassSize, LayerMask.GetMask("Ground")))
+                    foreach(RaycastHit hit in Physics.RaycastAll(originPoint + direction * Data.SelectionBypassSize ,direction,Data.SelectionMaxRange - Data.SelectionBypassSize, LayerMask.GetMask("Ground")))
                     {
                         selectionPoints.Add(hit.collider.GetComponent<WayPoint>());
                     }
@@ -34,10 +34,10 @@ public class Spell
 
                 break;
             case SelectionForm.Sphere:
-                foreach (Collider hit in Physics.OverlapSphere(origin, Data.SelectionMaxRange, LayerMask.GetMask("Ground")))
+                foreach (Collider hit in Physics.OverlapSphere(originPoint, Data.SelectionMaxRange, LayerMask.GetMask("Ground")))
                 {
                     selectionPoints.Add(hit.GetComponent<WayPoint>());
-                    foreach (Collider removeHit in Physics.OverlapSphere(origin, Data.SelectionBypassSize, LayerMask.GetMask("Ground")))
+                    foreach (Collider removeHit in Physics.OverlapSphere(originPoint, Data.SelectionBypassSize, LayerMask.GetMask("Ground")))
                     {
                         selectionPoints.Remove(removeHit.GetComponent<WayPoint>());
                     }
@@ -56,7 +56,6 @@ public class Spell
                 break;
         }
 
-        Debug.Log(selectionPoints.Count);
         return selectionPoints;
     }
 
@@ -103,12 +102,40 @@ public class Spell
         return TargetPoints;
     }
 
-    public void StartSelectionPreview()
+    public Dictionary<WayPoint,WayPoint> ComputeTargetableWaypoints(WayPoint origin)
     {
-        Debug.Log("start preview");
+        Dictionary<WayPoint,WayPoint> targetPointsDict = new Dictionary<WayPoint,WayPoint>();
+
+        StartSelectionPreview(origin,true);
+
+        foreach(WayPoint selectedPoint in GraphMaker.Instance.SelectedPoints)
+        {
+            StartSpellPreview(selectedPoint,true);
+            foreach(WayPoint targetpoint  in GraphMaker.Instance.TargetPoints)
+            {
+                if (targetPointsDict.ContainsKey(targetpoint))
+                    continue;
+                targetpoint.ApplyTargetVisual();
+                targetPointsDict.Add(targetpoint,selectedPoint);
+            }
+            GraphMaker.Instance.TargetPoints.Clear();
+        }
+        GraphMaker.Instance.SelectedPoints.Clear();
+
+        return targetPointsDict;
+    }
+
+
+    public void StartSelectionPreview(WayPoint origin = null, bool isAuto = false)
+    {
         OnPreviewStarted?.Invoke();
         IsPreviewing = true;
-        List<WayPoint> selectetPoints = ReadSelectionForm();
+
+        if (origin == null)
+            origin = Caster.CurrentPoint;
+
+        List<WayPoint> selectetPoints = ReadSelectionForm(origin);
+
         foreach (WayPoint selectedPoint in selectetPoints)
         {
             if (!Data.ThrowableOnWalls && selectedPoint.Content != null && selectedPoint.Content.layer == 6)
@@ -116,21 +143,27 @@ public class Spell
 
             GraphMaker.Instance.SelectedPoints.Add(selectedPoint);
 
-            selectedPoint.OnHovered += StartSpellPreview;
-            selectedPoint.OnNotHovered += CancelSpellPreview;
-            selectedPoint.OnClicked += Execute;
+            if (!isAuto)
+            {
+                selectedPoint.OnHovered += StartSpellPreview;
+                selectedPoint.OnNotHovered += CancelSpellPreview;
+                selectedPoint.OnClicked += Execute;
 
-            selectedPoint.ApplySelectVisual();
+                selectedPoint.ApplySelectVisual();
+            }
         }
     }
 
-    public void StartSpellPreview(WayPoint selectedPoint)
+    public void StartSpellPreview(WayPoint selectedPoint, bool isAuto = false)
     {
         foreach(WayPoint targetPoint in ReadTargetForm(selectedPoint))
         {
             GraphMaker.Instance.TargetPoints.Add(targetPoint);
-            
-            targetPoint.ApplyTargetVisual();
+
+            if (!isAuto)
+            {
+                targetPoint.ApplyTargetVisual();
+            }
         }
     }
 

@@ -7,7 +7,7 @@ public class WayPoint : MonoBehaviour
     public event Action OnSteppedOn;
     public event Action OnSteppedOff;
 
-    public event Action<WayPoint> OnHovered;
+    public event Action<WayPoint, bool> OnHovered;
     public event Action OnNotHovered;
 
     public event Action<WayPoint> OnClicked;
@@ -110,7 +110,7 @@ public class WayPoint : MonoBehaviour
 
     public void Hovered()
     {
-        OnHovered?.Invoke(this);
+        OnHovered?.Invoke(this,false);
     }
 
     public void NotHovered()

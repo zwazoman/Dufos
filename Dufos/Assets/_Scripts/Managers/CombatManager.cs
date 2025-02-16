@@ -49,14 +49,17 @@ public class CombatManager : MonoBehaviour
         CurrentEntity.StartTurn();
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.N))
+            NextTurn();
+    }
+
     public void NextTurn()
     {
         CurrentEntity.EndTurn();
 
         int currentIndex = Entities.IndexOf(CurrentEntity);
-
-        print(Entities.Count);
-        print(currentIndex);
 
         if (currentIndex == Entities.Count -1)
         {

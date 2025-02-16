@@ -6,7 +6,7 @@ public class SpellPlayerBehaviour : MonoBehaviour
     {
         if (CombatManager.Instance.CurrentEntity.name.Contains("Player"))
         {
-            CombatManager.Instance.CurrentEntity.Data.Spells[index].StartSelectionPreview();
+            //CombatManager.Instance.CurrentEntity.Data.Spells[index].StartSelectionPreview();
         }
     }
 }

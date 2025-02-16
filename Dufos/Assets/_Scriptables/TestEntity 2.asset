@@ -12,13 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67b45e8d42d28844a656f8202221e33, type: 3}
   m_Name: TestEntity 2
   m_EditorClassIdentifier: 
-  <Initiative>k__BackingField: 2
-  <MaxHealth>k__BackingField: 50
-  <MaxMovePoints>k__BackingField: 7
+  <Initiative>k__BackingField: 1
+  <MaxHealth>k__BackingField: 100
+  <MaxMovePoints>k__BackingField: 5
   Spells:
-  - Data: {fileID: 11400000, guid: 01bb65069dff7b94a95e56803efdc6e4, type: 2}
-    Caster: {fileID: 0}
-    IsPreviewing: 0
-  - Data: {fileID: 11400000, guid: dccaacd8be65810449551465b98ab9e3, type: 2}
+  - Data: {fileID: 11400000, guid: f0c249d8351158343ac7752d271da209, type: 2}
     Caster: {fileID: 0}
     IsPreviewing: 0
