@@ -9,8 +9,6 @@ using UnityEngine;
 [RequireComponent (typeof(Move))]
 public class Entity : MonoBehaviour
 {
-    [HideInInspector] public bool CanInteract;
-
     [HideInInspector] public WayPoint CurrentPoint;
 
     [SerializeField] public EntityData Data;
@@ -22,7 +20,7 @@ public class Entity : MonoBehaviour
 
     Move _move;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         TryGetComponent(out EntityHealth);
         TryGetComponent(out _move);
@@ -63,16 +61,10 @@ public class Entity : MonoBehaviour
         MovePoints = Data.MaxMovePoints;
     }
 
-    public virtual void UseSpell(int spellIndex)
-    {
-        if (spellIndex < Data.Spells.Length - 1)
-        {
-            Data.Spells[spellIndex].StartSelectionPreview();
-        }
-    }
-
     public virtual async Task TryMoveTo(WayPoint targetPoint)
     {
+        print(MovePoints);
+
         Stack<WayPoint> path = FindBestPath(CurrentPoint, targetPoint);
         int pathlength = path.Count;
 

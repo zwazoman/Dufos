@@ -10,8 +10,13 @@ using UnityEngine.Timeline;
 [Serializable]
 public class Spell
 {
+    public event Action OnPreviewStarted;
+    public event Action OnPreviewCanceled;
+
     [SerializeField] public SpellData Data;
+
     [HideInInspector] public Entity Caster;
+    [HideInInspector] public bool IsPreviewing;
 
     SpellVisuals spellVisuals = new SpellVisuals();
 
@@ -44,7 +49,15 @@ public class Spell
                 }
                 break;
             case SelectionForm.Targeted:
-                //choper tous les ennemis ou players et selectionner leurs currentpoints
+                List<WayPoint> targetpoints = new List<WayPoint>();
+                foreach(Entity entity in CombatManager.Instance.Entities)
+                {
+                    targetpoints.Add(entity.CurrentPoint);
+                }
+                foreach(WayPoint point in targetpoints)
+                {
+                    SelectionPoints.Add(point);
+                }
                 break;
         }
 
@@ -96,25 +109,26 @@ public class Spell
 
     public void StartSelectionPreview()
     {
-        Debug.Log("start selection preview");
-        Caster.CanInteract = false;
-        List<WayPoint> test = ReadSelectionForm();
-        foreach (WayPoint selectedPoint in test)
+        OnPreviewStarted?.Invoke();
+        IsPreviewing = true;
+        List<WayPoint> selectetPoints = ReadSelectionForm();
+        foreach (WayPoint selectedPoint in selectetPoints)
         {
+            if (!Data.ThrowableOnWalls && selectedPoint.Content.layer == 6)
+                continue;
+
             GraphMaker.Instance.SelectedPoints.Add(selectedPoint);
 
             selectedPoint.OnHovered += StartSpellPreview;
-            selectedPoint.OnNotHovered += StopSpellPreview;
+            selectedPoint.OnNotHovered += CancelSpellPreview;
             selectedPoint.OnClicked += Execute;
 
             selectedPoint.ApplySelectVisual();
         }
-        Debug.Log(GraphMaker.Instance.SelectedPoints.Count);
     }
 
     public void StartSpellPreview(WayPoint selectedPoint)
     {
-        Debug.Log("start spell preview");
         foreach(WayPoint targetPoint in ReadTargetForm(selectedPoint))
         {
             GraphMaker.Instance.TargetPoints.Add(targetPoint);
@@ -123,28 +137,25 @@ public class Spell
         }
     }
 
-    public void StopSelectionPreview()
+    public void CancelSelectionPreview()
     {
-        Debug.Log("stop selection preview");
-
         foreach(WayPoint selectedPoint in GraphMaker.Instance.SelectedPoints)
         {
             Debug.Log(selectedPoint);
             selectedPoint.OnHovered -= StartSpellPreview;
-            selectedPoint.OnNotHovered -= StopSpellPreview;
+            selectedPoint.OnNotHovered -= CancelSpellPreview;
             selectedPoint.OnClicked -= Execute;
 
             selectedPoint.ApplyDefaultVisual();
         }
         GraphMaker.Instance.SelectedPoints.Clear();
 
-        StopSpellPreview();
-        Caster.CanInteract = true;
+        CancelSpellPreview();
+        IsPreviewing = false;
     }
 
-    public void StopSpellPreview()
+    public void CancelSpellPreview()
     {
-        Debug.Log("Stop Spell Review");
         foreach(WayPoint targetPoint in GraphMaker.Instance.TargetPoints)
         {
             if (GraphMaker.Instance.SelectedPoints.Contains(targetPoint))
@@ -161,9 +172,9 @@ public class Spell
 
     public async void Execute(WayPoint origin)
     {
-        Debug.Log("execute");
         WayPoint[] targets = GraphMaker.Instance.TargetPoints.ToArray();
-        StopSelectionPreview();
+
+        CancelSelectionPreview();
 
         switch (Data.Visual)
         {
@@ -173,11 +184,11 @@ public class Spell
 
         }
 
-
-
         foreach (WayPoint target in targets)
         {
             target.TryApplyDamage(Data.Damage);
         }
+
+        OnPreviewCanceled?.Invoke();
     }
 }

@@ -183,4 +183,84 @@ public static class Tools
 
     }
 
+    public static WayPoint FindClosest(this List<WayPoint> points, Vector3 origin)
+    {
+        if (points.Count == 0)
+        {
+            Debug.LogError("List Is Empty");
+            return null;
+        }
+        if (points.Count == 1)
+        {
+            return points[0];
+        }
+
+        WayPoint closest = points[0];
+
+        foreach (WayPoint element in points)
+        {
+            Vector3 pointOffset = element.transform.position - origin;
+            Vector3 closestOffset = closest.transform.position - origin;
+
+            if (pointOffset.sqrMagnitude < closestOffset.sqrMagnitude)
+                closest = element;
+        }
+
+        return closest;
+
+    }
+
+    public static Entity FindClosest(this List<Entity> points, Vector3 origin)
+    {
+        if (points.Count == 0)
+        {
+            Debug.LogError("List Is Empty");
+            return null;
+        }
+        if (points.Count == 1)
+        {
+            return points[0];
+        }
+
+        Entity closest = points[0];
+
+        foreach (Entity element in points)
+        {
+            Vector3 pointOffset = element.transform.position - origin;
+            Vector3 closestOffset = closest.transform.position - origin;
+
+            if (pointOffset.sqrMagnitude < closestOffset.sqrMagnitude)
+                closest = element;
+        }
+
+        return closest;
+
+    }
+
+    public static PlayerEntity FindClosest(this List<PlayerEntity> points, Vector3 origin)
+    {
+        if (points.Count == 0)
+        {
+            Debug.LogError("List Is Empty");
+            return null;
+        }
+        if (points.Count == 1)
+        {
+            return points[0];
+        }
+
+        PlayerEntity closest = points[0];
+
+        foreach (PlayerEntity element in points)
+        {
+            Vector3 pointOffset = element.transform.position - origin;
+            Vector3 closestOffset = closest.transform.position - origin;
+
+            if (pointOffset.sqrMagnitude < closestOffset.sqrMagnitude)
+                closest = element;
+        }
+
+        return closest;
+
+    }
 }

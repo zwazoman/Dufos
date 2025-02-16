@@ -6,7 +6,21 @@ using UnityEngine;
 
 public class PlayerEntity : Entity
 {
+    public bool IsFree;
+
     Spell _currentSpell;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        foreach(Spell spell in Data.Spells)
+        {
+            spell.OnPreviewStarted += Lock;
+
+            spell.OnPreviewCanceled += Free;
+        }
+    }
 
     protected override void Start()
     {
@@ -16,53 +30,80 @@ public class PlayerEntity : Entity
 
     protected void Update()
     {
-        if (!CanInteract) return;
+        if (!IsFree) return;
         if (Input.GetKeyDown(KeyCode.V))
         {
             PreviewFloodField();
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            StopFloodFieldPreview();
+            CancelFloodFieldPreview();
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             print("ESPACE");
-            Data.Spells[0].StartSelectionPreview();
+            UseSpell(0);
         }
         if (Input.GetKeyDown(KeyCode.B))
         {
-            Data.Spells[0].StopSelectionPreview();
+            Data.Spells[0].CancelSelectionPreview();
+            Free();
         }
     }
 
     public override void StartTurn()
     {
         base.StartTurn();
-        CanInteract = true;
+        Free();
     }
 
     public override void EndTurn()
     {
         base.EndTurn();
-        CanInteract = false;
+        Lock();
     }
 
     public override async Task TryMoveTo(WayPoint targetPoint)
     {
-        if(!CanInteract) return;
-        CanInteract = false;
+        if(!IsFree) return;
+        Lock();
         await base.TryMoveTo(targetPoint);
-        PreviewFloodField();
-        CanInteract = true;
+        Free();
     }
 
-    public override void UseSpell(int spellIndex)
+    public void UseSpell(int spellIndex)
     {
-        if(!CanInteract) return;
-        base.UseSpell(spellIndex);
+        if (!IsFree) return;
+        if (spellIndex < Data.Spells.Length - 1)
+        {
+            Data.Spells[spellIndex].StartSelectionPreview();
+        }
     }
 
+    public void CancelSpellUse(int spellIndex)
+    {
+        Spell spell = Data.Spells[spellIndex];
+
+        if (spell.IsPreviewing)
+        {
+            spell.CancelSelectionPreview();
+            Free();
+        }
+    }
+
+    void Free()
+    {
+        IsFree = true;
+        PreviewFloodField();
+    }
+
+    void Lock()
+    {
+        IsFree = false;
+        CancelFloodFieldPreview();
+    }
+
+    #region Flood Field;
     void PreviewFloodField()
     {
         Flood();
@@ -72,12 +113,12 @@ public class PlayerEntity : Entity
         }
 
     }
-
-    void StopFloodFieldPreview()
+    void CancelFloodFieldPreview()
     {
         foreach(WayPoint point in Walkables)
         {
             point.ApplyDefaultVisual();
         }
     }
+    #endregion
 }

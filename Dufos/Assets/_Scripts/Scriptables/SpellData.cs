@@ -32,6 +32,10 @@ public class SpellData : ScriptableObject
 
     public int SelectionMaxRange;
 
+    public bool ThrowableOnWalls;
+
+    public bool GoesThroughWalls;
+
     public bool BypassNearSelection;
     public float SelectionBypassSize;//seulement si BypassNearSelection est coché
 
