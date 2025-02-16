@@ -1,11 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using Unity.VisualScripting;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
-using UnityEngine.Timeline;
 
 [Serializable]
 public class Spell
@@ -24,7 +19,7 @@ public class Spell
     {
         Vector3 origin = Caster.transform.position;
 
-        List<WayPoint> SelectionPoints = new List<WayPoint>();
+        List<WayPoint> selectionPoints = new List<WayPoint>();
 
         switch (Data.LaunchForm)
         {
@@ -33,7 +28,7 @@ public class Spell
                 {
                     foreach(RaycastHit hit in Physics.RaycastAll(origin + direction * Data.SelectionBypassSize ,direction,Data.SelectionMaxRange - Data.SelectionBypassSize, LayerMask.GetMask("Ground")))
                     {
-                        SelectionPoints.Add(hit.collider.GetComponent<WayPoint>());
+                        selectionPoints.Add(hit.collider.GetComponent<WayPoint>());
                     }
                 }
 
@@ -41,10 +36,10 @@ public class Spell
             case SelectionForm.Sphere:
                 foreach (Collider hit in Physics.OverlapSphere(origin, Data.SelectionMaxRange, LayerMask.GetMask("Ground")))
                 {
-                    SelectionPoints.Add(hit.GetComponent<WayPoint>());
+                    selectionPoints.Add(hit.GetComponent<WayPoint>());
                     foreach (Collider removeHit in Physics.OverlapSphere(origin, Data.SelectionBypassSize, LayerMask.GetMask("Ground")))
                     {
-                        SelectionPoints.Remove(removeHit.GetComponent<WayPoint>());
+                        selectionPoints.Remove(removeHit.GetComponent<WayPoint>());
                     }
                 }
                 break;
@@ -56,12 +51,13 @@ public class Spell
                 }
                 foreach(WayPoint point in targetpoints)
                 {
-                    SelectionPoints.Add(point);
+                    selectionPoints.Add(point);
                 }
                 break;
         }
 
-        return SelectionPoints;
+        Debug.Log(selectionPoints.Count);
+        return selectionPoints;
     }
 
     protected List<WayPoint> ReadTargetForm(WayPoint selectedPoint)
@@ -109,12 +105,13 @@ public class Spell
 
     public void StartSelectionPreview()
     {
+        Debug.Log("start preview");
         OnPreviewStarted?.Invoke();
         IsPreviewing = true;
         List<WayPoint> selectetPoints = ReadSelectionForm();
         foreach (WayPoint selectedPoint in selectetPoints)
         {
-            if (!Data.ThrowableOnWalls && selectedPoint.Content.layer == 6)
+            if (!Data.ThrowableOnWalls && selectedPoint.Content != null && selectedPoint.Content.layer == 6)
                 continue;
 
             GraphMaker.Instance.SelectedPoints.Add(selectedPoint);

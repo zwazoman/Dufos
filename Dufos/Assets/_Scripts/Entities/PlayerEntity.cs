@@ -31,14 +31,6 @@ public class PlayerEntity : Entity
     protected void Update()
     {
         if (!IsFree) return;
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            PreviewFloodField();
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            CancelFloodFieldPreview();
-        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             print("ESPACE");
@@ -46,8 +38,7 @@ public class PlayerEntity : Entity
         }
         if (Input.GetKeyDown(KeyCode.B))
         {
-            Data.Spells[0].CancelSelectionPreview();
-            Free();
+            CancelSpellUse(0);
         }
     }
 
@@ -74,8 +65,9 @@ public class PlayerEntity : Entity
     public void UseSpell(int spellIndex)
     {
         if (!IsFree) return;
-        if (spellIndex < Data.Spells.Length - 1)
+        if (spellIndex <= Data.Spells.Length - 1)
         {
+            print("indew in range ! ");
             Data.Spells[spellIndex].StartSelectionPreview();
         }
     }

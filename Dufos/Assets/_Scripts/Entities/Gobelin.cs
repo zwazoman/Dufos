@@ -21,7 +21,7 @@ public class Gobelin : Entity
                 await TryMoveTo(point);
                 foreach(WayPoint neighbour in point.Neighbours)
                 {
-                    if(neighbour.Content.layer == 7)
+                    if(neighbour.Content != null && neighbour.Content.layer == 7)
                     {
                         //UseSpell(0);
                     }
