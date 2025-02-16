@@ -14,12 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UISprite: {fileID: 21300000, guid: 250af3f8ed851d143a1b933c24e5fb5a, type: 3}
   Uses: 1
-  LaunchForm: 1
+  LaunchForm: 0
   SelectionMaxRange: 10
+  ThrowableOnWalls: 0
+  GoesThroughWalls: 0
   BypassNearSelection: 0
   SelectionBypassSize: 3
-  TargetForm: 1
+  TargetForm: 0
   SpellMaxRange: 5
   BypassNearSpell: 0
   SpellBypassSize: 0
   Damage: 5
+  Visuals: 0
