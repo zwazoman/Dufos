@@ -104,7 +104,9 @@ public class WayPoint : MonoBehaviour
 
     public void Clicked() 
     {
-        CombatManager.Instance.CurrentEntity.TryMoveTo(this);
+        CombatManager combatManager = CombatManager.Instance;
+
+        if(!combatManager.EnemyEntities.Contains(combatManager.CurrentEntity))  combatManager.CurrentEntity.TryMoveTo(this);
         OnClicked?.Invoke(this);
     }
 

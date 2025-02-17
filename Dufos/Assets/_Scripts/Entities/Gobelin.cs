@@ -9,6 +9,12 @@ public class Gobelin : Entity
 {
     GraphMaker _graphMaker;
 
+    protected override void Start()
+    {
+        base.Start();
+        CombatManager.Instance.EnemyEntities.Add(this);
+    }
+
 
     public override async void StartTurn()
     {

@@ -124,7 +124,6 @@ public class Entity : MonoBehaviour
                 foreach (WayPoint neighbour in walkable.Neighbours)
                 {
                     if (Walkables.Contains(neighbour) || !neighbour.IsActive) continue;
-                    neighbour.ApplyWalkableVisual();
                     tmp.Add(neighbour);
                 }
             }

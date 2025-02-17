@@ -29,7 +29,7 @@ public class CombatManager : MonoBehaviour
 
     [HideInInspector] public List<PlayerEntity> PlayerEntities = new List<PlayerEntity>();
 
-    [HideInInspector] public List<EnemyEntity> EnemyEntities = new List<EnemyEntity>();
+    [HideInInspector] public List<Entity> EnemyEntities = new List<Entity>();
 
     [HideInInspector] public Entity CurrentEntity;
 
