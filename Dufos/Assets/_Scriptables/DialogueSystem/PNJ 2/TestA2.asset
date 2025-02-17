@@ -18,3 +18,5 @@ MonoBehaviour:
   - "Deuxi\xE8me dialogue."
   - "Troisi\xE8me dialogue."
   Choices: []
+  Happening:
+    nextSceneName: 

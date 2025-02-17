@@ -209,7 +209,7 @@ public class Spell
         switch (Data.Visuals)
         {
             case Visuals.Test1:
-                await spellVisuals.VisualTest1(origin);
+                await spellVisuals.CatchingFire(origin);
                 break;
 
                 //case Visuals.FireBall:
