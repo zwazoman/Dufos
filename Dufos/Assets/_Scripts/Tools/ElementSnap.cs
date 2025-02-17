@@ -1,13 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
+using Singe;
 using UnityEngine;
 
-public class ElementSnap : MonoBehaviour
+namespace Singe
 {
-    private void Awake()
+    public class ElementSnap : MonoBehaviour
     {
-        transform.position.SnapOnGrid();
-        transform.position = Vector3.up * 0.5f;
+        internal bool bonjour;
+
+        private void Awake()
+        {
+            transform.position.SnapOnGrid();
+            transform.position = Vector3.up * 0.5f;
+        }
+    }
+
+
+
+}
+
+public class SingeController
+{
+    ElementSnap snap;
+
+    void zievhze()
+    {
+        Debug.Log(snap.bonjour);
     }
 }
+
+
 

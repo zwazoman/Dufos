@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.Xml;
-using System.Globalization;
 using TMPro;
 
 public class CreationSauvegarde : MonoBehaviour
