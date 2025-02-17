@@ -208,10 +208,12 @@ public class Spell
 
         switch (Data.Visuals)
         {
-            case Visuals.Test1:
+            case Visuals.RockProjectile:
                 await spellVisuals.RockProjectile(origin);
                 break;
-
+            case Visuals.CatchingFire:
+                await spellVisuals.CatchingFire(origin);
+                break;
                 //case Visuals.FireBall:
                 //    await spellVisuals.ShowFireball();
                 //    break;

@@ -30,7 +30,6 @@ public class SpellVfxManager : MonoBehaviour
             if (vfx.name == vfxName)
             {
                 vfx.transform.SetParent(transform, false);
-                vfx.transform.localPosition += Vector3.up;
                 vfx.gameObject.SetActive(true);
             }
         }

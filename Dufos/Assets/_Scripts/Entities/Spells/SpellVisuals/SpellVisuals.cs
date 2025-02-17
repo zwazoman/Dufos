@@ -20,10 +20,10 @@ public class SpellVisuals
         SpellVfxManager.Instance.PlayVfx("RockProjectile", target.transform);
     }
 
-    public async Task CatchingFire(WayPoint[] targets)
+    public async Task CatchingFire(WayPoint target)
     {
         await Task.Yield();
         //Debug.Log("<color=red>test visuel 1</color>" + targets.name);
-        //SpellVfxManager.Instance.PlayVfx("CatchingFire", targets.transform);
+        SpellVfxManager.Instance.PlayVfx("CatchingFire", target.transform);
     }
 }
