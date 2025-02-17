@@ -51,8 +51,6 @@ public class CreationSauvegarde : MonoBehaviour
         {
             Debug.Log("Already Saved");
         }
-
-
     }
 
     static void WriteXmlString(XmlWriter _writer, string _key, string _value)
