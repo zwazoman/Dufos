@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class EndCombatHandler : MonoBehaviour
@@ -31,11 +32,13 @@ public class EndCombatHandler : MonoBehaviour
     {
         print(CombatManager.Instance.EnemyEntities.Count);
         print("<color=green>no more enemies, you win</color>");
+        _victoryPanel.SetActive(true);
         // Ajouter le combat au compteur de combats.
     }
 
     public void DefeatEnd()
     {
         print("<color=red>no more players, you lose</color>");
+        _defeatPanel.SetActive(true);
     }
 }
