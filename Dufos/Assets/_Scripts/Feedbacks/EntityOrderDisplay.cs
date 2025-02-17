@@ -11,7 +11,7 @@ public class EntityOrderDisplay : MonoBehaviour
 
     private void Update()
     {
-        if (CombatManager.Instance.Entities.Count > 0 && _firstOrder)
+        if (CombatManager.Instance.Entities.Count > 0 && _entitiesCopy != CombatManager.Instance.Entities)
         {
             _entitiesCopy.Clear();
             _entitiesCopy = CombatManager.Instance.Entities;
@@ -31,7 +31,15 @@ public class EntityOrderDisplay : MonoBehaviour
 
         for (int i = 0; i < _orderDisplay.Count; i++)
         {
-            _orderDisplay[i].text = _entitiesCopy[i].name;
+            if(_entitiesCopy.Count > i)
+            {
+                _orderDisplay[i].text = _entitiesCopy[i].name;
+            }
+
+            else
+            {
+                _orderDisplay[i].transform.parent.gameObject.SetActive(false);
+            }
         }
     }
 }

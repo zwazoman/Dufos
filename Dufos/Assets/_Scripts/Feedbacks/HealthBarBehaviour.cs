@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,11 +11,14 @@ public class HealthBarBehaviour : MonoBehaviour
     private Vector3 _offset;
 
     private Slider _healthBar;
+    private Entity _entity;
 
     private void Awake()
     {
         _healthBar = GetComponent<Slider>();
         _playerHealth.OnTakeDamage += SliderUpdate;
+
+        _entity = _playerHealth.gameObject.GetComponent<Entity>();
     }
 
     private void Start()
@@ -28,8 +32,19 @@ public class HealthBarBehaviour : MonoBehaviour
         this.transform.position = _playerHealth.gameObject.transform.position + _offset;
     }
 
-    public void SliderUpdate(int health)
+    public void SliderUpdate(int damage)
     {
-        _healthBar.value = health;
+        _healthBar.value -= damage;
+        if (_healthBar.value <= 0)
+        {
+            _playerHealth.gameObject.SetActive(false);
+            _healthBar.gameObject.SetActive(false);
+            print(_playerHealth.gameObject.name + "just died !");
+
+            if (CombatManager.Instance.Entities.Contains(_entity))
+            {
+                CombatManager.Instance.Entities.Remove(_entity);
+            }
+        }
     }
 }
