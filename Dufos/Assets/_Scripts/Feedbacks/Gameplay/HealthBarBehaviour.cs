@@ -10,14 +10,13 @@ public class HealthBarBehaviour : MonoBehaviour
     private Vector3 _offset;
 
     private Slider _healthBar;
-    private Entity _entity;
+    private EnemyEntity _enemy;
+    private PlayerEntity _player;
 
     private void Awake()
     {
         _healthBar = GetComponent<Slider>();
         _playerHealth.OnTakeDamage += SliderUpdate;
-
-        _entity = _playerHealth.gameObject.GetComponent<Entity>();
     }
 
     private void Start()
@@ -36,14 +35,21 @@ public class HealthBarBehaviour : MonoBehaviour
         _healthBar.value -= damage;
         if (_healthBar.value <= 0)
         {
+            if (_playerHealth.gameObject.TryGetComponent(out Gobelin _enemy))
+            {
+                CombatManager.Instance.Entities.Remove(_enemy);
+                CombatManager.Instance.EnemyEntities.Remove(_enemy);
+            }
+
+            else if (_playerHealth.gameObject.TryGetComponent(out PlayerEntity _player))
+            {
+                CombatManager.Instance.Entities.Remove(_player);
+                CombatManager.Instance.PlayerEntities.Remove(_player);
+            }
+
             _playerHealth.gameObject.SetActive(false);
             _healthBar.gameObject.SetActive(false);
             print(_playerHealth.gameObject.name + "just died !");
-
-            if (CombatManager.Instance.Entities.Contains(_entity))
-            {
-                CombatManager.Instance.Entities.Remove(_entity);
-            }
         }
     }
 }
