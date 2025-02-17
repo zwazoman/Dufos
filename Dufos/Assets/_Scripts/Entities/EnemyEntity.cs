@@ -68,7 +68,7 @@ public class EnemyEntity : Entity
         WayPoint choosenTargetPoint = allTargetPoints.FindClosest(transform.position);
         print(choosenTargetPoint.transform.position);
 
-        bool targetReached = await MoveToward(choosenTargetPoint); // le point le plus proche de lancé de sortt
+        bool targetReached = await MoveToward(choosenTargetPoint); // le point le plus proche de lancé de sort
 
         if (targetReached)
         {

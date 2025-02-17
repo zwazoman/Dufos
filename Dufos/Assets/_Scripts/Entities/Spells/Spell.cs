@@ -116,7 +116,6 @@ public class Spell
             {
                 if (targetPointsDict.ContainsKey(targetpoint))
                     continue;
-                targetpoint.ApplyTargetVisual();
                 targetPointsDict.Add(targetpoint,selectedPoint);
             }
             GraphMaker.Instance.TargetPoints.Clear();

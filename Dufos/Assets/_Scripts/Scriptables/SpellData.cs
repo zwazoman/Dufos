@@ -28,6 +28,8 @@ public class SpellData : ScriptableObject
 
     public int Uses;
 
+
+
     public SelectionForm LaunchForm;
 
     public int SelectionMaxRange;
@@ -39,12 +41,18 @@ public class SpellData : ScriptableObject
     public bool BypassNearSelection;
     public float SelectionBypassSize;//seulement si BypassNearSelection est coché
 
+
+
+
     public SpellForm TargetForm;
 
     public int SpellMaxRange; 
 
     public bool BypassNearSpell;
     public float SpellBypassSize; //seulement si BypassNearSpell est coché
+
+
+
 
     public int Damage;
 

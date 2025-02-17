@@ -105,7 +105,7 @@ public static class Tools
         return closest;
     }
 
-    public static T GetKeyFromValue<T,U>(this Dictionary<T,U> dict, U value)
+    public static T1 GetKeyFromValue<T1,T2>(this Dictionary<T1,T2> dict, T2 value)
     {
         foreach (var pair in dict)
         {

@@ -49,10 +49,9 @@ public class CombatManager : MonoBehaviour
         CurrentEntity.StartTurn();
     }
 
-    private void Update()
+    public void EndCurrentEntityTurn()
     {
-        if(Input.GetKeyDown(KeyCode.N))
-            NextTurn();
+        CurrentEntity.EndTurn();
     }
 
     public void NextTurn()
