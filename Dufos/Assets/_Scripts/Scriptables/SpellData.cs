@@ -18,7 +18,8 @@ public enum SpellForm
 
 public enum Visuals
 {
-    Test1
+    RockProjectile,
+    CatchingFire
 }
 
 [CreateAssetMenu(fileName = "Spell", menuName = "Spells")]

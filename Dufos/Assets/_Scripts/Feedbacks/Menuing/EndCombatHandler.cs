@@ -30,10 +30,9 @@ public class EndCombatHandler : MonoBehaviour
 
     public void VictoryEnd()
     {
-        print(CombatManager.Instance.EnemyEntities.Count);
         print("<color=green>no more enemies, you win</color>");
         _victoryPanel.SetActive(true);
-        // Ajouter le combat au compteur de combats.
+        // Ajouter le combat au compteur de combats (++).
     }
 
     public void DefeatEnd()
