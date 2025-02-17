@@ -57,8 +57,6 @@ public class CombatManager : MonoBehaviour
 
     public void NextTurn()
     {
-        CurrentEntity.EndTurn();
-
         int currentIndex = Entities.IndexOf(CurrentEntity);
 
         if (currentIndex == Entities.Count -1)

@@ -17,6 +17,7 @@ public class Entity : MonoBehaviour
     [HideInInspector] public int MovePoints;
 
     protected List<WayPoint> Walkables = new List<WayPoint>();
+    protected GraphMaker graphMaker;
 
     Move _move;
 
@@ -41,6 +42,8 @@ public class Entity : MonoBehaviour
 
     protected virtual void Start()
     {
+        graphMaker = GraphMaker.Instance;
+
         CombatManager.Instance.Entities.Add(this);
 
         Vector3Int roundedPos = transform.position.SnapOnGrid();
@@ -59,6 +62,7 @@ public class Entity : MonoBehaviour
     public virtual void EndTurn() //transférer (passer en virtual)
     {
         MovePoints = Data.MaxMovePoints;
+        CombatManager.Instance.NextTurn();
     }
 
     public virtual async Task TryMoveTo(WayPoint targetPoint)

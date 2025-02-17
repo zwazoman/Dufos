@@ -5,91 +5,23 @@ using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Gobelin : Entity
+public class Gobelin : EnemyEntity
 {
-    GraphMaker _graphMaker;
-
-    protected override void Start()
-    {
-        base.Start();
-        CombatManager.Instance.EnemyEntities.Add(this);
-    }
-
 
     public override async void StartTurn()
     {
         base.StartTurn();
 
-        _graphMaker = GraphMaker.Instance;
-
         Flood();
 
-        WayPoint targetPlayerPoint;
+        Spell choosenSpell = ChooseRandomSpell();
 
-        List<WayPoint> playerPoints = new List<WayPoint>();
+        await TryUseSpell(choosenSpell);
 
-        List<WayPoint> allTargetPoints = new List<WayPoint>();
+        await Task.Delay(1000);
 
-        Dictionary<WayPoint, WayPoint> targetPointsDict = new Dictionary<WayPoint, WayPoint>();
-
-        foreach (PlayerEntity player in CombatManager.Instance.PlayerEntities)
-        {
-            playerPoints.Add(player.CurrentPoint);
-        }
-
-        targetPlayerPoint = playerPoints.FindClosest(transform.position);
-
-        Spell choosenSpell = Data.Spells.PickRandom();
-
-        //target points en clef et selected points en value
-        targetPointsDict = choosenSpell.ComputeTargetableWaypoints(targetPlayerPoint);
-
-        foreach(WayPoint targetpoint in targetPointsDict.Keys)
-        {
-            allTargetPoints.Add(targetpoint);
-        }
-
-        WayPoint choosenTargetPoint = allTargetPoints.FindClosest(transform.position);
-        print(choosenTargetPoint.transform.position);
-
-        bool targetReached = await MoveToward(choosenTargetPoint); // le point le plus proche de lancé de sortt
-
-        if (targetReached)
-        {
-            print("attack !");
-
-            WayPoint selected = targetPointsDict[choosenTargetPoint];
-
-            Vector3Int selfPointPos = _graphMaker.PointDict.GetKeyFromValue(CurrentPoint);
-            Vector3Int targetPointPos = _graphMaker.PointDict.GetKeyFromValue(targetPlayerPoint);
-            Vector3Int selectedpointPos = _graphMaker.PointDict.GetKeyFromValue(selected);
-
-            WayPoint pointToSelect = _graphMaker.PointDict[selfPointPos + (targetPointPos - selectedpointPos)];
-
-            print(pointToSelect.transform.position);
-
-            choosenSpell.StartSpellPreview(pointToSelect , true);
-            choosenSpell.Execute(pointToSelect);
-        }
+        EndTurn();
     }
-
-   async Task<bool> MoveToward(WayPoint targetPoint)
-    {
-        print("move toward");
-
-        if (Walkables.Contains(targetPoint))
-        {
-            print("target in range !");
-            await TryMoveTo(targetPoint);
-            return true;
-        }
-        print("target not in range yet ! getting closer...");
-        await TryMoveTo(Walkables.FindClosest(targetPoint.transform.position));
-        return false;
-    }
-
-
-
 
 
     //idées en vrac :

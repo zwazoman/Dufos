@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 [Serializable]
@@ -147,7 +148,7 @@ public class Spell
             {
                 selectedPoint.OnHovered += StartSpellPreview;
                 selectedPoint.OnNotHovered += CancelSpellPreview;
-                selectedPoint.OnClicked += Execute;
+                selectedPoint.OnClicked += StartExecute;
 
                 selectedPoint.ApplySelectVisual();
             }
@@ -174,14 +175,16 @@ public class Spell
             Debug.Log(selectedPoint);
             selectedPoint.OnHovered -= StartSpellPreview;
             selectedPoint.OnNotHovered -= CancelSpellPreview;
-            selectedPoint.OnClicked -= Execute;
+            selectedPoint.OnClicked -= StartExecute;
 
             selectedPoint.ApplyDefaultVisual();
         }
         GraphMaker.Instance.SelectedPoints.Clear();
 
         CancelSpellPreview();
+
         IsPreviewing = false;
+        OnPreviewCanceled?.Invoke();
     }
 
     public void CancelSpellPreview()
@@ -200,11 +203,15 @@ public class Spell
         GraphMaker.Instance.TargetPoints.Clear();
     }
 
-    public async void Execute(WayPoint origin)
+    async void StartExecute(WayPoint origin)
+    {
+        await Execute(origin);
+        CancelSelectionPreview();
+    }
+
+    public async Task Execute(WayPoint origin)
     {
         WayPoint[] targets = GraphMaker.Instance.TargetPoints.ToArray();
-
-        CancelSelectionPreview();
 
         switch (Data.Visuals)
         {
@@ -222,7 +229,5 @@ public class Spell
         {
             target.TryApplyDamage(Data.Damage);
         }
-
-        OnPreviewCanceled?.Invoke();
     }
 }
