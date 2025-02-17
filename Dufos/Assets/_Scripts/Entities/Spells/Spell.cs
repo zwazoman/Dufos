@@ -158,6 +158,9 @@ public class Spell
     {
         foreach(WayPoint targetPoint in ReadTargetForm(selectedPoint))
         {
+            if (targetPoint.Content != null && targetPoint.Content.layer == 6)
+                continue;
+
             GraphMaker.Instance.TargetPoints.Add(targetPoint);
 
             if (!isAuto)

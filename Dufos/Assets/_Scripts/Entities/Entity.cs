@@ -48,6 +48,7 @@ public class Entity : MonoBehaviour
 
         Vector3Int roundedPos = transform.position.SnapOnGrid();
         transform.position = roundedPos;
+        transform.position += Vector3.up * 1.3f;
 
         CurrentPoint = GraphMaker.Instance.PointDict[roundedPos];
         CurrentPoint.StepOn(gameObject);
