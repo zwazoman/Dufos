@@ -13,21 +13,9 @@ public class EndCombatHandler : MonoBehaviour
     {
         if (CombatManager.Instance.Entities.Count > 0 && !_end)
         {
-            foreach (var entity in CombatManager.Instance.Entities)
+            if (CombatManager.Instance.EnemyEntities.Count == 0)
             {
-                if (entity.name.Contains("Enemy"))
-                {
-                    break;
-                }
-
-                else
-                {
-                    _end = true;
-                }
-            }
-
-            if (_end)
-            {
+                _end = true;
                 VictoryEnd();
             }
 
