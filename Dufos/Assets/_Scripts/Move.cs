@@ -7,6 +7,7 @@ public class Move : MonoBehaviour
 
     public async Task StartMoving(Vector3 targetPos)
     {
+        targetPos.y = 1f;
         Vector3 offset = targetPos - (Vector3)transform.position;
         Quaternion targetRotation = Quaternion.Euler(0, Mathf.Atan2(offset.z, offset.x) * Mathf.Rad2Deg, 0);
         transform.rotation = targetRotation;
