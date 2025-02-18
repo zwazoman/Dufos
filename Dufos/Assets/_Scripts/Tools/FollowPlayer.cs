@@ -7,6 +7,6 @@ public class FollowPlayer : MonoBehaviour
     [SerializeField] GameObject _player;
     void Update()
     {
-        transform.position = new Vector3(_player.transform.position.x, 10, _player.transform.position.z);   
+        transform.position = new Vector3(_player.transform.position.x, 15, _player.transform.position.z);   
     }
 }
