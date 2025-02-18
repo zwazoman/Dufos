@@ -11,30 +11,46 @@ public class SpellDisplayBehaviour : MonoBehaviour
     private List<Button> _spellButtons;
     [SerializeField]
     private List<TextMeshProUGUI> _spellUsesDisplay;
+    [SerializeField]
+    private GameObject _turnAndMoveDisplay;
 
     private void Update()
     {
-        foreach(var spell in _spellImages)
+        if (CombatManager.Instance.CurrentEntity.name.Contains("Enemy"))
         {
-            int i = _spellImages.Count - 1;
-            for (; i >= CombatManager.Instance.CurrentEntity.Data.Spells.Length; i--)
+            foreach(var spell in _spellImages)
             {
-                _spellImages[i].gameObject.SetActive(false);
+                spell.gameObject.SetActive(false);
+                _turnAndMoveDisplay.gameObject.SetActive(false);
             }
+        }
 
-            for(;i >= 0; i--)
+        else
+        {
+            foreach (var spell in _spellImages)
             {
-                _spellImages[i].gameObject.SetActive(true);
-            }
-
-            if(spell.gameObject.activeInHierarchy && spell.sprite != CombatManager.Instance.CurrentEntity.Data.Spells[_spellImages.IndexOf(spell)].Data.UISprite)
-            {
-                spell.sprite = CombatManager.Instance.CurrentEntity.Data.Spells[_spellImages.IndexOf(spell)].Data.UISprite;
-                foreach(var spellUse in _spellUsesDisplay)
+                int i = _spellImages.Count - 1;
+                for (; i >= CombatManager.Instance.CurrentEntity.Data.Spells.Length; i--)
                 {
-                    spellUse.text = CombatManager.Instance.CurrentEntity.Data.Spells[_spellImages.IndexOf(spell)].Data.Uses.ToString();
+                    _spellImages[i].gameObject.SetActive(false);
+                }
+
+                for (; i >= 0; i--)
+                {
+                    _spellImages[i].gameObject.SetActive(true);
+                }
+
+                if (spell.gameObject.activeInHierarchy && spell.sprite != CombatManager.Instance.CurrentEntity.Data.Spells[_spellImages.IndexOf(spell)].Data.UISprite)
+                {
+                    _turnAndMoveDisplay.gameObject.SetActive(true);
+                    spell.sprite = CombatManager.Instance.CurrentEntity.Data.Spells[_spellImages.IndexOf(spell)].Data.UISprite;
+                    foreach (var spellUse in _spellUsesDisplay)
+                    {
+                        spellUse.text = CombatManager.Instance.CurrentEntity.Data.Spells[_spellImages.IndexOf(spell)].Data.Uses.ToString();
+                    }
                 }
             }
         }
+
     }
 }

@@ -49746,10 +49746,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1450473364}
   - {fileID: 43533523}
   - {fileID: 1193248684}
   - {fileID: 1407337555}
+  - {fileID: 1450473364}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &813544487
@@ -52638,6 +52638,7 @@ GameObject:
   - component: {fileID: 846954441}
   - component: {fileID: 846954443}
   - component: {fileID: 846954442}
+  - component: {fileID: 846954444}
   m_Layer: 0
   m_Name: CatchingFire
   m_TagString: Untagged
@@ -57457,6 +57458,19 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &846954444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846954440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ebbe1b4bdf4b72419d5be3531fba44a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inGameUI: {fileID: 1918076614}
 --- !u!1 &847964071
 GameObject:
   m_ObjectHideFlags: 0
@@ -119694,6 +119708,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1784055705066638404, guid: dfa1e93c0ca9a3d438fa773f385fe8e9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2221897886625494152, guid: dfa1e93c0ca9a3d438fa773f385fe8e9,
         type: 3}
       propertyPath: m_EffectColor.b
@@ -119906,6 +119925,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6979071614047461743, guid: dfa1e93c0ca9a3d438fa773f385fe8e9,
         type: 3}
+      propertyPath: _turnAndMoveDisplay
+      value: 
+      objectReference: {fileID: 1918076613}
+    - target: {fileID: 6979071614047461743, guid: dfa1e93c0ca9a3d438fa773f385fe8e9,
+        type: 3}
       propertyPath: _spellButtons.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -120104,6 +120128,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8930993086236942707, guid: dfa1e93c0ca9a3d438fa773f385fe8e9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8949624645576804844, guid: dfa1e93c0ca9a3d438fa773f385fe8e9,
         type: 3}
       propertyPath: m_Sprite
@@ -120135,6 +120164,18 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 368706228}
   m_SourcePrefab: {fileID: 100100000, guid: dfa1e93c0ca9a3d438fa773f385fe8e9, type: 3}
+--- !u!1 &1918076613 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8930993086236942707, guid: dfa1e93c0ca9a3d438fa773f385fe8e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1918076612}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1918076614 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6656214578126406535, guid: dfa1e93c0ca9a3d438fa773f385fe8e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1918076612}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1920660572
 GameObject:
   m_ObjectHideFlags: 0
@@ -130971,6 +131012,7 @@ GameObject:
   - component: {fileID: 2086766860}
   - component: {fileID: 2086766859}
   - component: {fileID: 2086766858}
+  - component: {fileID: 2086766861}
   m_Layer: 0
   m_Name: RockProjectile
   m_TagString: Untagged
@@ -131060,10 +131102,10 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086766857}
   serializedVersion: 8
-  lengthInSec: 0.8
+  lengthInSec: 0.4
   simulationSpeed: 1
   stopAction: 1
-  cullingMode: 0
+  cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
@@ -131135,7 +131177,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -135790,6 +135832,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 336169750}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &2086766861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086766857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ebbe1b4bdf4b72419d5be3531fba44a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inGameUI: {fileID: 1918076614}
 --- !u!1 &2089255276
 GameObject:
   m_ObjectHideFlags: 0
