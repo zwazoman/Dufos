@@ -19,3 +19,6 @@ MonoBehaviour:
   - Data: {fileID: 11400000, guid: dccaacd8be65810449551465b98ab9e3, type: 2}
     Caster: {fileID: 0}
     IsPreviewing: 0
+  - Data: {fileID: 11400000, guid: 01bb65069dff7b94a95e56803efdc6e4, type: 2}
+    Caster: {fileID: 0}
+    IsPreviewing: 1

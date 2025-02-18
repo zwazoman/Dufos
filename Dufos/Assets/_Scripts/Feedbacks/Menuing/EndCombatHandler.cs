@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class EndCombatHandler : MonoBehaviour
@@ -29,13 +30,26 @@ public class EndCombatHandler : MonoBehaviour
     public void VictoryEnd()
     {
         print("<color=green>no more enemies, you win</color>");
-        _victoryPanel.SetActive(true);
-        // Ajouter le combat au compteur de combats (++).
+        Sequence endGameSequence = DOTween.Sequence();
+
+        endGameSequence
+          .SetDelay(0.5f).onComplete += () =>
+          {
+              _victoryPanel.SetActive(true);
+              // Ajouter le combat au compteur de combats (++).
+          };
     }
 
     public void DefeatEnd()
     {
         print("<color=red>no more players, you lose</color>");
-        _defeatPanel.SetActive(true);
+        Sequence endGameSequence = DOTween.Sequence();
+
+        endGameSequence
+          .SetDelay(0.5f).onComplete += () =>
+          {
+              _defeatPanel.SetActive(true);
+          };
+
     }
 }
