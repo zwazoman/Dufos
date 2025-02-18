@@ -52638,6 +52638,7 @@ GameObject:
   - component: {fileID: 846954441}
   - component: {fileID: 846954443}
   - component: {fileID: 846954442}
+  - component: {fileID: 846954444}
   m_Layer: 0
   m_Name: CatchingFire
   m_TagString: Untagged
@@ -57457,6 +57458,19 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &846954444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846954440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ebbe1b4bdf4b72419d5be3531fba44a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inGameUI: {fileID: 1636902919}
 --- !u!1 &847964071
 GameObject:
   m_ObjectHideFlags: 0
@@ -103070,6 +103084,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 758181819}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1636902919 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2996264458514313998, guid: dfa1e93c0ca9a3d438fa773f385fe8e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1918076612}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1642376517
 GameObject:
   m_ObjectHideFlags: 0
@@ -130971,6 +130991,7 @@ GameObject:
   - component: {fileID: 2086766860}
   - component: {fileID: 2086766859}
   - component: {fileID: 2086766858}
+  - component: {fileID: 2086766861}
   m_Layer: 0
   m_Name: RockProjectile
   m_TagString: Untagged
@@ -131060,10 +131081,10 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086766857}
   serializedVersion: 8
-  lengthInSec: 0.8
+  lengthInSec: 0.4
   simulationSpeed: 1
   stopAction: 1
-  cullingMode: 0
+  cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
@@ -131135,7 +131156,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -135790,6 +135811,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 336169750}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &2086766861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086766857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ebbe1b4bdf4b72419d5be3531fba44a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inGameUI: {fileID: 1636902919}
 --- !u!1 &2089255276
 GameObject:
   m_ObjectHideFlags: 0
