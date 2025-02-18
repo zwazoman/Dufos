@@ -23,13 +23,16 @@ public class SpellDataCustomInspector : Editor
         EditorGUILayout.LabelField("Display Settings", EditorStyles.boldLabel);
         EditorGUILayout.Space(15);
 
-        Texture2D sprite = AssetPreview.GetAssetPreview(spellSprite.objectReferenceValue);
-        GUILayout.Label("", GUILayout.Width(50), GUILayout.Height(50));
-        GUI.DrawTexture(GUILayoutUtility.GetLastRect(), sprite);
+        if(data.UISprite != null)
+        {
+            Texture2D sprite = AssetPreview.GetAssetPreview(spellSprite.objectReferenceValue);
+            GUILayout.Label("", GUILayout.Width(50), GUILayout.Height(50));
+            GUI.DrawTexture(GUILayoutUtility.GetLastRect(), sprite);
+        }
 
         EditorGUILayout.Space(20);
 
-        EditorGUILayout.ObjectField("Spell Sprite", spellSprite.objectReferenceValue, typeof(Sprite), false, GUILayout.Height(EditorGUIUtility.singleLineHeight));
+        data.UISprite = (Sprite)EditorGUILayout.ObjectField("Spell Sprite", spellSprite.objectReferenceValue, typeof(Sprite), false, GUILayout.Height(EditorGUIUtility.singleLineHeight));
         
         data.Uses = EditorGUILayout.IntField("Uses", data.Uses);
         data.Damage = EditorGUILayout.IntField("Damage", data.Damage);
