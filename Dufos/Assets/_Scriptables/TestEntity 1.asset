@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestEntity 1
   m_EditorClassIdentifier: 
   <Initiative>k__BackingField: 2
-  <MaxHealth>k__BackingField: 100
+  <MaxHealth>k__BackingField: 30
   <MaxMovePoints>k__BackingField: 5
   Spells:
   - Data: {fileID: 11400000, guid: dccaacd8be65810449551465b98ab9e3, type: 2}
