@@ -33,7 +33,7 @@ public class EndCombatHandler : MonoBehaviour
         Sequence endGameSequence = DOTween.Sequence();
 
         endGameSequence
-          .SetDelay(0.5f).onComplete += () =>
+          .SetDelay(1.5f).onComplete += () =>
           {
               _victoryPanel.SetActive(true);
               // Ajouter le combat au compteur de combats (++).
@@ -46,7 +46,7 @@ public class EndCombatHandler : MonoBehaviour
         Sequence endGameSequence = DOTween.Sequence();
 
         endGameSequence
-          .SetDelay(0.5f).onComplete += () =>
+          .SetDelay(1.5f).onComplete += () =>
           {
               _defeatPanel.SetActive(true);
           };
