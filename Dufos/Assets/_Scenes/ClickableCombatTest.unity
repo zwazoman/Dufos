@@ -1896,6 +1896,7 @@ MonoBehaviour:
   _playerHealth: {fileID: 604380774}
   _offset: {x: 0, y: 1, z: 1}
   _order: {fileID: 924347990}
+  _screenShake: {fileID: 1675847781}
 --- !u!114 &54795057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52912,6 +52913,7 @@ MonoBehaviour:
   _playerHealth: {fileID: 94205489}
   _offset: {x: 0, y: 1, z: 1}
   _order: {fileID: 924347990}
+  _screenShake: {fileID: 1675847781}
 --- !u!114 &834465585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102001,6 +102003,7 @@ MonoBehaviour:
   _playerHealth: {fileID: 679502152}
   _offset: {x: 0, y: 1, z: 1}
   _order: {fileID: 924347990}
+  _screenShake: {fileID: 1675847781}
 --- !u!114 &1587628330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106481,7 +106484,6 @@ MonoBehaviour:
   - {fileID: 2086766857}
   - {fileID: 846954440}
   - {fileID: 1854264906}
-  <ScreenShake>k__BackingField: {fileID: 1675847781}
   _deselectionButtons:
   - {fileID: 2078046605}
   - {fileID: 254681235}
@@ -109938,6 +109940,7 @@ MonoBehaviour:
   _playerHealth: {fileID: 419082562}
   _offset: {x: 0, y: 1, z: 1}
   _order: {fileID: 924347990}
+  _screenShake: {fileID: 1675847781}
 --- !u!114 &1698963052
 MonoBehaviour:
   m_ObjectHideFlags: 0

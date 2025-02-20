@@ -9,8 +9,6 @@ public class SpellVfxManager : MonoBehaviour
 
     [field : SerializeField]
     public List<GameObject> Vfxs = new();
-    [field: SerializeField]
-    public ScreenShakeBehaviour ScreenShake { get; set; }
 
     [SerializeField]
     private List<GameObject> _deselectionButtons = new();

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.Experimental.GraphView.GraphView;
@@ -10,6 +11,8 @@ public class HealthBarBehaviour : MonoBehaviour
     private Vector3 _offset;
     [SerializeField]
     private EntityOrderDisplay _order;
+    [SerializeField]
+    private ScreenShakeBehaviour _screenShake;
     private Entity _entity;
 
     private Slider _healthBar;
@@ -35,7 +38,10 @@ public class HealthBarBehaviour : MonoBehaviour
 
     public void SliderUpdate(int damage)
     {
-        _healthBar.value -= damage;
+        _healthBar.DOValue(_healthBar.value - damage, 0.15f).SetDelay(0.75f).onComplete += () =>
+        {
+            _screenShake.Shake();
+        };
 
         if (_healthBar.value <= 0 && _playerHealth.gameObject.activeInHierarchy)
         {
