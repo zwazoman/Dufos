@@ -41,31 +41,31 @@ public class HealthBarBehaviour : MonoBehaviour
         _healthBar.DOValue(_healthBar.value - damage, 0.15f).SetDelay(0.75f).onComplete += () =>
         {
             _screenShake.Shake();
+
+            if (_healthBar.value <= 0 && _playerHealth.gameObject.activeInHierarchy)
+            {
+                if (_entity == CombatManager.Instance.CurrentEntity)
+                {
+                    CombatManager.Instance.NextTurn();
+                }
+
+                _playerHealth.gameObject.SetActive(false);
+                _healthBar.gameObject.SetActive(false);
+
+                if (_playerHealth.gameObject.TryGetComponent(out Gobelin _enemy))
+                {
+                    CombatManager.Instance.Entities.Remove(_enemy);
+                    CombatManager.Instance.EnemyEntities.Remove(_enemy);
+                }
+
+                else if (_playerHealth.gameObject.TryGetComponent(out PlayerEntity _player))
+                {
+                    _order.UpdateOrder();
+
+                    CombatManager.Instance.Entities.Remove(_player);
+                    CombatManager.Instance.PlayerEntities.Remove(_player);
+                }
+            }
         };
-
-        if (_healthBar.value <= 0 && _playerHealth.gameObject.activeInHierarchy)
-        {
-            if(_entity == CombatManager.Instance.CurrentEntity)
-            {
-                CombatManager.Instance.NextTurn();
-            }
-
-            _playerHealth.gameObject.SetActive(false);
-            _healthBar.gameObject.SetActive(false);
-
-            if (_playerHealth.gameObject.TryGetComponent(out Gobelin _enemy))
-            {
-                CombatManager.Instance.Entities.Remove(_enemy);
-                CombatManager.Instance.EnemyEntities.Remove(_enemy);
-            }
-
-            else if (_playerHealth.gameObject.TryGetComponent(out PlayerEntity _player))
-            {
-                _order.UpdateOrder();
-
-                CombatManager.Instance.Entities.Remove(_player);
-                CombatManager.Instance.PlayerEntities.Remove(_player);
-            }
-        }
     }
 }

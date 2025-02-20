@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0, g: 0, b: 0, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.02
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -27,7 +27,7 @@ RenderSettings:
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.67467654, g: 0.7275893, b: 0.8616352, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 20318a09cb6670b4480a38c10996fd38, type: 2}
-  m_HaloStrength: 0.5
+  m_HaloStrength: 0.902
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
@@ -108621,9 +108621,9 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    m_ImpulseDuration: 0.2
+    m_ImpulseDuration: 0.4
     m_ImpulseType: 2
-    m_DissipationRate: 0.25
+    m_DissipationRate: 1
     m_RawSignal: {fileID: 0}
     m_AmplitudeGain: 1
     m_FrequencyGain: 1
@@ -108650,8 +108650,8 @@ MonoBehaviour:
     m_ImpactRadius: 100
     m_DirectionMode: 0
     m_DissipationMode: 2
-    m_DissipationDistance: 98.67
-    m_PropagationSpeed: 22.9
+    m_DissipationDistance: 300
+    m_PropagationSpeed: 3
   m_DefaultVelocity: {x: -1, y: -1, z: 0}
 --- !u!1 &1676065128
 GameObject:
