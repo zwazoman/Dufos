@@ -11,14 +11,18 @@ public class SpellVisuals
     public async Task RockProjectile(WayPoint target)
     {
         await Task.Yield();
-        Debug.Log("<color=red>test visuel 1</color>" + target.name);
-        SpellVfxManager.Instance.PlayVfx("RockProjectile", target.transform);
+        SpellVfxManager.Instance.PlayParticles("RockProjectile", target.transform);
     }
 
     public async Task CatchingFire(WayPoint target)
     {
         await Task.Yield();
-        //Debug.Log("<color=red>test visuel 1</color>" + targets.name);
-        SpellVfxManager.Instance.PlayVfx("CatchingFire", target.transform);
+        SpellVfxManager.Instance.PlayParticles("CatchingFire", target.transform);
+    }
+
+    public async Task MeteorProjectile(WayPoint target)
+    {
+        await Task.Yield();
+        SpellVfxManager.Instance.PlayParticles("MeteorProjectile", target.transform);
     }
 }
