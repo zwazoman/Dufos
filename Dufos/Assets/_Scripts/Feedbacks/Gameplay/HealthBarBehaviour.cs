@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class HealthBarBehaviour : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class HealthBarBehaviour : MonoBehaviour
     private void Update()
     {
         this.transform.position = _playerHealth.gameObject.transform.position + _offset;
+        transform.LookAt(Camera.main.ScreenToWorldPoint(Vector3.forward));
     }
 
     public void SliderUpdate(int damage)
