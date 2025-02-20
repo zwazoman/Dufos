@@ -223,10 +223,6 @@ public class Spell
             case Visuals.CatchingFire:
                 await spellVisuals.CatchingFire(origin);
                 break;
-                //case Visuals.FireBall:
-                //    await spellVisuals.ShowFireball();
-                //    break;
-
         }
 
         foreach (WayPoint target in targets)
@@ -235,7 +231,6 @@ public class Spell
             {
                 target.TryApplyDamage(Data.Damage);
             }
-
         }
     }
 }

@@ -7,6 +7,8 @@ public class SpellVfxManager : MonoBehaviour
 
     [field : SerializeField]
     public List<GameObject> Vfxs = new();
+    [SerializeField]
+    private List<GameObject> _deselectionButtons = new();
 
     private void Awake()
     {
@@ -30,6 +32,10 @@ public class SpellVfxManager : MonoBehaviour
             {
                 vfx.transform.SetParent(transform, false);
                 vfx.gameObject.SetActive(true);
+                foreach(var button in _deselectionButtons)
+                {
+                    button.gameObject.SetActive(false);
+                }
             }
         }
     }

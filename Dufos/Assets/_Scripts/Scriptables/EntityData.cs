@@ -3,6 +3,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Entity", menuName = "Entities")]
 public class EntityData : ScriptableObject
 {
+    [field: SerializeField]
+    private Sprite EntitySpriteUI;
+
     [field : SerializeField]
     public int Initiative { get;private set; }
 

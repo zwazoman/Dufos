@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67b45e8d42d28844a656f8202221e33, type: 3}
   m_Name: TestEntity
   m_EditorClassIdentifier: 
+  EntitySpriteUI: {fileID: 21300000, guid: 4de5e4f3717b2c548bd8b90b6c628b2f, type: 3}
   <Initiative>k__BackingField: 10
   <MaxHealth>k__BackingField: 45
   <MaxMovePoints>k__BackingField: 7
