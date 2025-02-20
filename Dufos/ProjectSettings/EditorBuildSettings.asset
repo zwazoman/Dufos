@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/DialogueTest.unity
     guid: 83daf669f0bd3ac409741f6246a8f037
+  - enabled: 1
+    path: Assets/_Scenes/Menuing/Menu.unity
+    guid: 8ff0cc05c6f782d429d121862e96144a
+  - enabled: 1
+    path: Assets/_Scenes/Menuing/VictoryScene.unity
+    guid: 49e7a87c71de7b945a8018dbca5594ba
   m_configObjects: {}
