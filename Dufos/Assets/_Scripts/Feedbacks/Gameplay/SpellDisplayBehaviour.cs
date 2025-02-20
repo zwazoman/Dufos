@@ -48,7 +48,10 @@ public class SpellDisplayBehaviour : MonoBehaviour
 
                         foreach (var spellUse in _spellUsesDisplay)
                         {
-                            spellUse.text = CombatManager.Instance.CurrentEntity.Data.Spells[_spellImages.IndexOf(spell)].Data.Uses.ToString();
+                            if(_spellUsesDisplay.IndexOf(spellUse) < CombatManager.Instance.CurrentEntity.Data.Spells.Length)
+                            {
+                                spellUse.text = CombatManager.Instance.CurrentEntity.Data.Spells[_spellUsesDisplay.IndexOf(spellUse)].Data.Uses.ToString();
+                            }
                         }
                     }
                 }
