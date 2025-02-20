@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: TestEntity 2
   m_EditorClassIdentifier: 
   <Initiative>k__BackingField: 1
-  <MaxHealth>k__BackingField: 30
+  <MaxHealth>k__BackingField: 40
   <MaxMovePoints>k__BackingField: 5
   Spells:
   - Data: {fileID: 11400000, guid: 01bb65069dff7b94a95e56803efdc6e4, type: 2}
     Caster: {fileID: 0}
-    IsPreviewing: 0
+    IsPreviewing: 1

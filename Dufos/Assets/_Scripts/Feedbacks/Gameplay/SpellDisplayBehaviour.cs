@@ -14,43 +14,45 @@ public class SpellDisplayBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject _turnAndMoveDisplay;
 
+    private Entity _previousEntity;
+
     private void Update()
     {
-        if (CombatManager.Instance.CurrentEntity.name.Contains("Enemy"))
+        if (_previousEntity == null || _previousEntity != CombatManager.Instance.CurrentEntity)
         {
-            foreach(var spell in _spellImages)
-            {
-                spell.gameObject.SetActive(false);
-                _turnAndMoveDisplay.gameObject.SetActive(false);
-            }
-        }
+            _previousEntity = CombatManager.Instance.CurrentEntity;
 
-        else
-        {
             foreach (var spell in _spellImages)
             {
-                int i = _spellImages.Count - 1;
-                for (; i >= CombatManager.Instance.CurrentEntity.Data.Spells.Length; i--)
-                {
-                    _spellImages[i].gameObject.SetActive(false);
-                }
+                spell.gameObject.SetActive(_previousEntity.name.Contains("Player"));
+                _turnAndMoveDisplay.gameObject.SetActive(_previousEntity.name.Contains("Player"));
 
-                for (; i >= 0; i--)
+                if (spell.gameObject.activeInHierarchy)
                 {
-                    _spellImages[i].gameObject.SetActive(true);
-                }
-
-                if (spell.gameObject.activeInHierarchy && spell.sprite != CombatManager.Instance.CurrentEntity.Data.Spells[_spellImages.IndexOf(spell)].Data.UISprite)
-                {
-                    _turnAndMoveDisplay.gameObject.SetActive(true);
-                    spell.sprite = CombatManager.Instance.CurrentEntity.Data.Spells[_spellImages.IndexOf(spell)].Data.UISprite;
-                    foreach (var spellUse in _spellUsesDisplay)
+                    int i = _spellImages.Count - 1;
+                    for (; i >= CombatManager.Instance.CurrentEntity.Data.Spells.Length; i--)
                     {
-                        spellUse.text = CombatManager.Instance.CurrentEntity.Data.Spells[_spellImages.IndexOf(spell)].Data.Uses.ToString();
+                        _spellImages[i].gameObject.SetActive(false);
+                    }
+
+                    for (; i >= 0; i--)
+                    {
+                        _spellImages[i].gameObject.SetActive(true);
+                    }
+
+                    _turnAndMoveDisplay.gameObject.SetActive(true);
+
+                    if (_spellImages.IndexOf(spell) < CombatManager.Instance.CurrentEntity.Data.Spells.Length)
+                    {
+                        spell.sprite = CombatManager.Instance.CurrentEntity.Data.Spells[_spellImages.IndexOf(spell)].Data.UISprite;
+
+                        foreach (var spellUse in _spellUsesDisplay)
+                        {
+                            spellUse.text = CombatManager.Instance.CurrentEntity.Data.Spells[_spellImages.IndexOf(spell)].Data.Uses.ToString();
+                        }
                     }
                 }
             }
         }
-
     }
 }

@@ -1,8 +1,9 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpellUsesDisplayBehaviour : MonoBehaviour
+public class SpellUsesUpdateBehaviour : MonoBehaviour
 {
     private TextMeshProUGUI _usesDisplay;
     private Button _spellButton;

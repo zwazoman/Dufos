@@ -231,7 +231,11 @@ public class Spell
 
         foreach (WayPoint target in targets)
         {
-            target.TryApplyDamage(Data.Damage);
+            if(target.Content != Caster.CurrentPoint.Content)
+            {
+                target.TryApplyDamage(Data.Damage);
+            }
+
         }
     }
 }
