@@ -1,13 +1,12 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EntityOrderDisplay : MonoBehaviour
 {
     [SerializeField]
-    private List<TextMeshProUGUI> _orderDisplay = new();
+    private List<Image> _orderDisplay = new();
     private List<Entity> _entitiesCopy = new();
-    private bool _firstOrder = true;
 
     private void Update()
     {
@@ -17,11 +16,11 @@ public class EntityOrderDisplay : MonoBehaviour
             _entitiesCopy = CombatManager.Instance.Entities;
             for (int i = 0; i < _orderDisplay.Count; i++)
             {
-                _orderDisplay[i].text = CombatManager.Instance.Entities[i].name;
+                _orderDisplay[i].sprite = CombatManager.Instance.Entities[i].Data.EntitySpriteUI;
             }
-            _firstOrder = false;
         }
     }
+
     public void UpdateOrder()
     {
         var temp = _entitiesCopy[0];
@@ -33,7 +32,7 @@ public class EntityOrderDisplay : MonoBehaviour
         {
             if(_entitiesCopy.Count > i)
             {
-                _orderDisplay[i].text = _entitiesCopy[i].name;
+                _orderDisplay[i].sprite = _entitiesCopy[i].Data.EntitySpriteUI;
             }
 
             else

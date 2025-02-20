@@ -4,7 +4,7 @@ using UnityEngine;
 public class EntityData : ScriptableObject
 {
     [field: SerializeField]
-    private Sprite EntitySpriteUI;
+    public Sprite EntitySpriteUI;
 
     [field : SerializeField]
     public int Initiative { get;private set; }
