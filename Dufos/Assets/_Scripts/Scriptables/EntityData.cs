@@ -4,7 +4,7 @@ using UnityEngine;
 public class EntityData : ScriptableObject
 {
     [field: SerializeField]
-    public Sprite EntitySpriteUI;
+    public Color EntityType;
 
     [field:SerializeField] 
     public string EntityName;
