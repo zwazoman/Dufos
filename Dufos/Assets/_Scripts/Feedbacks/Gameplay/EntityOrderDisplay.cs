@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,9 @@ public class EntityOrderDisplay : MonoBehaviour
 {
     [SerializeField]
     private List<Image> _orderDisplay = new();
+    [SerializeField]
+    private List<TextMeshProUGUI> _orderDisplayText = new();
+
     private List<Entity> _entitiesCopy = new();
 
     private void Update()
@@ -17,6 +21,7 @@ public class EntityOrderDisplay : MonoBehaviour
             for (int i = 0; i < _orderDisplay.Count; i++)
             {
                 _orderDisplay[i].sprite = CombatManager.Instance.Entities[i].Data.EntitySpriteUI;
+                _orderDisplayText[i].text = CombatManager.Instance.Entities[i].Data.EntityName;
             }
         }
     }
@@ -33,6 +38,7 @@ public class EntityOrderDisplay : MonoBehaviour
             if(_entitiesCopy.Count > i)
             {
                 _orderDisplay[i].sprite = _entitiesCopy[i].Data.EntitySpriteUI;
+                _orderDisplayText[i].text = CombatManager.Instance.Entities[i].Data.EntityName;
             }
 
             else

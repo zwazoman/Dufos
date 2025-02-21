@@ -45,7 +45,7 @@ public class SpellDataCustomInspector : Editor
 
         #region SelectionFormSettings
 
-        EditorGUILayout.LabelField("Selection From Settings", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("Selection Form Settings", EditorStyles.boldLabel);
         EditorGUILayout.Space(15);
 
         data.LaunchForm = (SelectionForm)EditorGUILayout.EnumPopup("Launch Form", data.LaunchForm);
