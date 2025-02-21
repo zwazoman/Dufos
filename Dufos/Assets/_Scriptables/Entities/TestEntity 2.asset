@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: TestEntity 2
   m_EditorClassIdentifier: 
   EntitySpriteUI: {fileID: 21300000, guid: b753c88a6aeb2674fa1d4f0a4c0a285a, type: 3}
+  EntityName: Rob
   <Initiative>k__BackingField: 1
   <MaxHealth>k__BackingField: 150
   <MaxMovePoints>k__BackingField: 5
