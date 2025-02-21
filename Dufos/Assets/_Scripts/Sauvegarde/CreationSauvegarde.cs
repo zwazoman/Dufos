@@ -6,48 +6,47 @@ public class CreationSauvegarde : MonoBehaviour
 {
     static string[] _saveFileName = { "File1" };
     static int _currentSaveFile;
-    private bool _didEnterZone = false;
     static int _numberSave = 0;
     [SerializeField] private TMP_Text _uISaves;
+    [SerializeField] private SaveManager _saveManager;
 
     private void Awake()
     {
+        /*
         LoadGame();
-        _uISaves.text = $"Save : {_numberSave}";
+        */
+        //_uISaves.text = $"Save : {_numberSave}";
     }
 
-    public void OnEnterZone()
+    public void Saving()
     {
-        if (_didEnterZone == false)
+        _numberSave += 1;
+        XmlWriterSettings settings = new XmlWriterSettings
         {
-            _numberSave += 1;
-            XmlWriterSettings settings = new XmlWriterSettings
-            {
-                NewLineOnAttributes = true,
-                Indent = true,
-            };
+            NewLineOnAttributes = true,
+            Indent = true,
+        };
 
-            XmlWriter writer = XmlWriter.Create(Application.persistentDataPath + _saveFileName[_currentSaveFile] + ".xml", settings);
-            writer.WriteStartDocument();
-            writer.WriteStartElement("Data");
+        XmlWriter writer = XmlWriter.Create(Application.persistentDataPath + _saveFileName[_currentSaveFile] + ".xml", settings);
+        writer.WriteStartDocument();
+        writer.WriteStartElement("Data");
 
-            Debug.Log(writer.ToString());
-            Debug.Log(_saveFileName[_currentSaveFile]);
-            Debug.Log(Application.persistentDataPath);
+        /*
+        Debug.Log(writer.ToString());
+        Debug.Log(_saveFileName[_currentSaveFile]);
+        Debug.Log(Application.persistentDataPath);
+        */
 
-            WriteXmlString(writer, "Test", "Testing");
-            WriteXmlFloat(writer, "Saves", _numberSave);
+        WriteXmlString(writer, "ZoneCurrentlyOn", _saveManager.ZoneName);
+        //WriteXmlFloat(writer, "Saves", _numberSave);
+        WriteXmlFloat(writer, "FightsWon", _saveManager.FightsWon);
+        WriteXmlVector3D(writer, "PlayerPosition", _saveManager.PlayerPosition);
 
-            _uISaves.text = $"Save : {_numberSave}";
+        //_uISaves.text = $"Save : {_numberSave}";
 
-            writer.WriteEndElement();
-            writer.WriteEndDocument();
-            writer.Close();
-        }
-        else
-        {
-            Debug.Log("Already Saved");
-        }
+        writer.WriteEndElement();
+        writer.WriteEndDocument();
+        writer.Close();
     }
 
     static void WriteXmlString(XmlWriter _writer, string _key, string _value)
@@ -58,6 +57,13 @@ public class CreationSauvegarde : MonoBehaviour
     }
 
     static void WriteXmlFloat(XmlWriter _writer, string _key, float _value)
+    {
+        _writer.WriteStartElement(_key);
+        _writer.WriteValue(_value);
+        _writer.WriteEndElement();
+    }
+
+    static void WriteXmlVector3D(XmlWriter _writer, string _key, Vector3 _value)
     {
         _writer.WriteStartElement(_key);
         _writer.WriteValue(_value);
@@ -88,6 +94,9 @@ public class CreationSauvegarde : MonoBehaviour
                     break;
                 case "Saves":
                     _numberSave = int.Parse(value);
+                    break;
+                case "FightsWon":
+
                     break;
             }
         }

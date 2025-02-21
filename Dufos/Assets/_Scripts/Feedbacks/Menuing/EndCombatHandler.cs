@@ -36,7 +36,7 @@ public class EndCombatHandler : MonoBehaviour
           .SetDelay(1.5f).onComplete += () =>
           {
               _victoryPanel.SetActive(true);
-              // Ajouter le combat au compteur de combats (++).
+              SaveManager.instance.FightsWon += 1;
           };
     }
 
