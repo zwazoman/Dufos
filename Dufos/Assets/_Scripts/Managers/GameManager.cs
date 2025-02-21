@@ -9,8 +9,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
-
         if (instance != null)
         {
             return;
@@ -18,6 +16,7 @@ public class GameManager : MonoBehaviour
 
         instance = this;
 
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public int FightsWon;
@@ -26,8 +25,35 @@ public class GameManager : MonoBehaviour
     public int WichFight;
     public List<bool> Fighters = new List<bool>() { false, false, false, false, false, false, false, false, false };
 
-    public void NextScene()
+    public void NextZone()
     {
+        if (FightsWon < 3)
+        {
+            ZoneName = "Zone 1";
+            Fighters[WichFight] = true;
+            SceneManager.LoadScene("Zone 1");
+            return;
+        }
+        if (FightsWon >= 3 && FightsWon < 6)
+        {
+            ZoneName = "Zone 2";
+            Fighters[WichFight] = true;
+            SceneManager.LoadScene("Zone 2");
+            return;
+        }
+        if (FightsWon >= 6 && FightsWon < 9)
+        {
+            ZoneName = "Zone 3";
+            Fighters[WichFight] = true;
+            SceneManager.LoadScene("Zone 3");
+            return;
+        }
+        else
+        {
+            SceneManager.LoadScene("Win");
+            return;
+        }
+        /*
         switch (FightsWon)
         {
             case 3:
@@ -42,5 +68,6 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene("Win");
                 break;
         }
+        */
     }
 }

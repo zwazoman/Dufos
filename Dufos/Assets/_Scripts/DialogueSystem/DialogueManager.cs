@@ -22,9 +22,11 @@ public class DialogueManager : ScriptableObject
     public struct SceneEvent
     {
         public string nextSceneName;
+        public int wichFightIsIt;
         public void Load()
         {
             SceneManager.LoadScene(nextSceneName);
+            GameManager.instance.WichFight = wichFightIsIt;
         }
     }
 }
