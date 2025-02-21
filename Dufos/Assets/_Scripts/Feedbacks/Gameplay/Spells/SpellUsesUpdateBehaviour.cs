@@ -1,10 +1,14 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SpellUsesUpdateBehaviour : MonoBehaviour
 {
+    [SerializeField]
+    private Button _otherDeselectionButton;
     private TextMeshProUGUI _usesDisplay;
     private Button _spellButton;
 
@@ -16,9 +20,14 @@ public class SpellUsesUpdateBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (int.Parse(_usesDisplay.text) > 0)
+        if (int.Parse(_usesDisplay.text) > 0 && !_otherDeselectionButton.gameObject.activeInHierarchy)
         {
             _spellButton.interactable = true;
+        }
+
+        else if (_otherDeselectionButton.gameObject.activeInHierarchy)
+        {
+            _spellButton.interactable = false;
         }
     }
 
