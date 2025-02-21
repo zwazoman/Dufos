@@ -25,4 +25,10 @@ public class SpellVisuals
         await Task.Yield();
         SpellVfxManager.Instance.PlayParticles("MeteorProjectile", target.transform);
     }
+
+    public async Task ThunderStrike(WayPoint target)
+    {
+        await Task.Yield();
+        SpellVfxManager.Instance.PlayParticles("ThunderStrike", target.transform);
+    }
 }

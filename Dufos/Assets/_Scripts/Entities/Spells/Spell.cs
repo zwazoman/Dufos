@@ -226,6 +226,9 @@ public class Spell
             case Visuals.MeteorProjectile:
                 await spellVisuals.MeteorProjectile(origin);
                 break;
+            case Visuals.ThunderStrike:
+                await spellVisuals.ThunderStrike(origin);
+                break;
         }
 
         foreach (WayPoint target in targets)

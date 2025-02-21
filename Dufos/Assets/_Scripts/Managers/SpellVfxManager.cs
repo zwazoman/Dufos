@@ -34,7 +34,9 @@ public class SpellVfxManager : MonoBehaviour
             if (vfx.name == vfxName)
             {
                 vfx.transform.SetParent(transform, false);
+                vfx.transform.localPosition = Vector3.zero;
                 vfx.gameObject.SetActive(true);
+
                 foreach (var button in _deselectionButtons)
                 {
                     button.gameObject.SetActive(false);

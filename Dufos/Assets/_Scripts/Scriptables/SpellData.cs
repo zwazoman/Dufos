@@ -18,7 +18,8 @@ public enum Visuals
 {
     RockProjectile,
     CatchingFire,
-    MeteorProjectile
+    MeteorProjectile,
+    ThunderStrike
 }
 
 [CreateAssetMenu(fileName = "Spell", menuName = "Spells")]
