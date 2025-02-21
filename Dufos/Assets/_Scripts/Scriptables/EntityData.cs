@@ -6,6 +6,9 @@ public class EntityData : ScriptableObject
     [field: SerializeField]
     public Sprite EntitySpriteUI;
 
+    [field:SerializeField] 
+    public string EntityName;
+
     [field : SerializeField]
     public int Initiative { get;private set; }
 
