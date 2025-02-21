@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67b45e8d42d28844a656f8202221e33, type: 3}
   m_Name: TestEntity
   m_EditorClassIdentifier: 
-  EntitySpriteUI: {fileID: 21300000, guid: 4de5e4f3717b2c548bd8b90b6c628b2f, type: 3}
+  EntityType: {r: 0.25490195, g: 0.8862745, b: 0.6011078, a: 1}
   EntityName: Tod
   <Initiative>k__BackingField: 10
   <MaxHealth>k__BackingField: 45
@@ -21,6 +21,6 @@ MonoBehaviour:
   - Data: {fileID: 11400000, guid: 69d5f1b1c652d8c4f804d3d506abdc5b, type: 2}
     Caster: {fileID: 0}
     IsPreviewing: 0
-  - Data: {fileID: 11400000, guid: 01bb65069dff7b94a95e56803efdc6e4, type: 2}
+  - Data: {fileID: 11400000, guid: f0c249d8351158343ac7752d271da209, type: 2}
     Caster: {fileID: 0}
     IsPreviewing: 0

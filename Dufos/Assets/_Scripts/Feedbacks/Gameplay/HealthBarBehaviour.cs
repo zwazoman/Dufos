@@ -47,8 +47,10 @@ public class HealthBarBehaviour : MonoBehaviour
 
             if (_healthBar.value <= 0 && _playerHealth.gameObject.activeInHierarchy)
             {
+
                 if (_entity == CombatManager.Instance.CurrentEntity)
                 {
+                    _order.UpdateOrder();
                     CombatManager.Instance.NextTurn();
                 }
 
@@ -63,7 +65,6 @@ public class HealthBarBehaviour : MonoBehaviour
 
                 else if (_playerHealth.gameObject.TryGetComponent(out PlayerEntity _player))
                 {
-                    _order.UpdateOrder();
 
                     CombatManager.Instance.Entities.Remove(_player);
                     CombatManager.Instance.PlayerEntities.Remove(_player);

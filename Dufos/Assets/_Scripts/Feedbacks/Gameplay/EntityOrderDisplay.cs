@@ -20,7 +20,7 @@ public class EntityOrderDisplay : MonoBehaviour
             _entitiesCopy = CombatManager.Instance.Entities;
             for (int i = 0; i < _orderDisplay.Count; i++)
             {
-                _orderDisplay[i].sprite = CombatManager.Instance.Entities[i].Data.EntitySpriteUI;
+                _orderDisplay[i].color = CombatManager.Instance.Entities[i].Data.EntityType;
                 _orderDisplayText[i].text = CombatManager.Instance.Entities[i].Data.EntityName;
             }
         }
@@ -37,7 +37,7 @@ public class EntityOrderDisplay : MonoBehaviour
         {
             if(_entitiesCopy.Count > i)
             {
-                _orderDisplay[i].sprite = _entitiesCopy[i].Data.EntitySpriteUI;
+                _orderDisplay[i].color = _entitiesCopy[i].Data.EntityType;
                 _orderDisplayText[i].text = CombatManager.Instance.Entities[i].Data.EntityName;
             }
 
