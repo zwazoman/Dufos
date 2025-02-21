@@ -36,7 +36,7 @@ public class EndCombatHandler : MonoBehaviour
           .SetDelay(1.5f).onComplete += () =>
           {
               _victoryPanel.SetActive(true);
-              SaveManager.instance.FightsWon += 1;
+              GameManager.instance.FightsWon += 1;
           };
     }
 

@@ -8,7 +8,6 @@ public class CreationSauvegarde : MonoBehaviour
     static int _currentSaveFile;
     static int _numberSave = 0;
     [SerializeField] private TMP_Text _uISaves;
-    [SerializeField] private SaveManager _saveManager;
 
     private void Awake()
     {
@@ -37,10 +36,10 @@ public class CreationSauvegarde : MonoBehaviour
         Debug.Log(Application.persistentDataPath);
         */
 
-        WriteXmlString(writer, "ZoneCurrentlyOn", _saveManager.ZoneName);
+        WriteXmlString(writer, "ZoneCurrentlyOn", SaveManager.instance.ZoneName);
         //WriteXmlFloat(writer, "Saves", _numberSave);
-        WriteXmlFloat(writer, "FightsWon", _saveManager.FightsWon);
-        WriteXmlVector3D(writer, "PlayerPosition", _saveManager.PlayerPosition);
+        WriteXmlFloat(writer, "FightsWon", SaveManager.instance.FightsWon);
+        WriteXmlVector3D(writer, "PlayerPosition", SaveManager.instance.PlayerPosition);
 
         //_uISaves.text = $"Save : {_numberSave}";
 
