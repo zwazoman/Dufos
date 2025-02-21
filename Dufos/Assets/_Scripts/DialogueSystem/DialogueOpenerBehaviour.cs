@@ -43,6 +43,7 @@ public class DialogueOpenerBehaviour : MonoBehaviour
                 story.Happening.Load();
             }
 
+            GameManager.instance.PlayerPosition = _playerMove.gameObject.transform.position;
             _dialogueManager = story;
             _nextDialogueButton.SetActive(true);
             _dialogueSystemDisplay.SetActive(true);
