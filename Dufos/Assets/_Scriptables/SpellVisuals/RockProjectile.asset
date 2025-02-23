@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: RockProjectile
   m_EditorClassIdentifier: 
   UISprite: {fileID: 21300000, guid: bc5bd34912f507748a25eb4c4030fc13, type: 3}
-  Uses: 3
+  Uses: 1
   LaunchForm: 0
-  SelectionMaxRange: 10
-  ThrowableOnWalls: 0
+  SelectionMaxRange: 5
+  ThrowableOnWalls: 1
   GoesThroughWalls: 0
   BypassNearSelection: 0
   SelectionBypassSize: 0

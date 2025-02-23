@@ -17,6 +17,9 @@ public class SpellDataCustomInspector : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
+        serializedObject.ApplyModifiedProperties();
+        serializedObject.ApplyModifiedPropertiesWithoutUndo();
+        EditorUtility.SetDirty(data);
 
         #region DisplaySettings
 
