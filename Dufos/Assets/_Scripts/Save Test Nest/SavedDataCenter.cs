@@ -30,28 +30,6 @@ public class SavedDataCenter : MonoBehaviour
         instance = this;
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.I))
-        {
-            Data.CurrentMap = 6;
-            Data.ClearedCampsCount = 8;
-
-            Save();
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            TryLoadSave();
-
-            print(Data.CurrentMap);
-            print(Data.ClearedCampsCount);
-        }
-        if(Input.GetKeyDown(KeyCode.D))
-        {
-            EraseSave();
-        }
-    }
-
     
     public void Save()
     {
@@ -87,6 +65,6 @@ public class SavedDataCenter : MonoBehaviour
 
 public struct SaveData
 {
-    public int CurrentMap;
+    public string CurrentMap;
     public int ClearedCampsCount;
 }

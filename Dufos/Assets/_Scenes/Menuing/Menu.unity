@@ -791,14 +791,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1934839357}
         m_TargetAssemblyTypeName: SceneLoaderBehaviour, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+        m_MethodName: LoadLastZone
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: ZoneTest
+          m_StringArgument: Zone 1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1193629737
@@ -1345,6 +1345,7 @@ GameObject:
   - component: {fileID: 1934839354}
   - component: {fileID: 1934839353}
   - component: {fileID: 1934839357}
+  - component: {fileID: 1934839358}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1448,6 +1449,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28675cc4424718d49ab55eeb30122650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1934839358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934839352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdf606e4b68e4ab40b22aa76c77172a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pnjs: []
 --- !u!1 &1978609071
 GameObject:
   m_ObjectHideFlags: 0

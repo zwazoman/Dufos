@@ -36,7 +36,8 @@ public class EndCombatHandler : MonoBehaviour
           {
               _victoryPanel.SetActive(true);
               SavedDataCenter.Instance.Data.ClearedCampsCount++;
-              GameManager.Instance.FightsWon = SavedDataCenter.Instance.Data.ClearedCampsCount;
+              print(SavedDataCenter.Instance.Data.ClearedCampsCount);
+              GameManager.Instance.FightsWon++;
               SavedDataCenter.Instance.Save();
           };
     }
