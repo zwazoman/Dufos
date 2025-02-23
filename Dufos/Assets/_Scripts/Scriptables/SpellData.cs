@@ -19,7 +19,9 @@ public enum Visuals
     RockProjectile,
     CatchingFire,
     MeteorProjectile,
-    ThunderStrike
+    ThunderStrike,
+    BloodMalediction,
+    SpikeLines
 }
 
 [CreateAssetMenu(fileName = "Spell", menuName = "Spells")]

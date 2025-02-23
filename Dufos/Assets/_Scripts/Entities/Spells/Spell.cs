@@ -229,6 +229,12 @@ public class Spell
             case Visuals.ThunderStrike:
                 await spellVisuals.ThunderStrike(origin);
                 break;
+            case Visuals.BloodMalediction:
+                await spellVisuals.BloodMalediction(origin);
+                break;
+            case Visuals.SpikeLines:
+                await spellVisuals.SpikeLines(origin);
+                break;
         }
 
         foreach (WayPoint target in targets)

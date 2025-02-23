@@ -21,7 +21,7 @@ MonoBehaviour:
   BypassNearSelection: 0
   SelectionBypassSize: 0
   TargetForm: 2
-  SpellMaxRange: 3
+  SpellMaxRange: 2
   BypassNearSpell: 0
   SpellBypassSize: 0
   Damage: 8
