@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d67b45e8d42d28844a656f8202221e33, type: 3}
+  m_Name: Player 1
+  m_EditorClassIdentifier: 
+  EntityType: {r: 0, g: 1, b: 0.025017977, a: 0}
+  EntityName: Cer
+  <Initiative>k__BackingField: 5
+  <MaxHealth>k__BackingField: 100
+  <MaxMovePoints>k__BackingField: 10
+  Spells:
+  - Data: {fileID: 11400000, guid: 01bb65069dff7b94a95e56803efdc6e4, type: 2}
+    Caster: {fileID: 0}
+    IsPreviewing: 0
+  - Data: {fileID: 11400000, guid: 69d5f1b1c652d8c4f804d3d506abdc5b, type: 2}
+    Caster: {fileID: 0}
+    IsPreviewing: 0
