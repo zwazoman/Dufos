@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Loader
   m_EditorClassIdentifier: 
   SpeakerName: 
-  CharacterDialogue:
-  - 
+  CharacterDialogue: []
   Choices: []
   Happening:
-    nextSceneName: Combat 1
+    nextSceneName: ClickableCombatTest
+    wichFightIsIt: 0
