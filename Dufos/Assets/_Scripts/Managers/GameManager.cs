@@ -33,11 +33,13 @@ public class GameManager : MonoBehaviour
 
     public void NextZone()
     {
+
         if (FightsWon < 3)
         {
             ZoneName = "Zone 1";
             Fighters[WhichFight] = true;
             SceneManager.LoadScene("Zone 1");
+            SaveMap(ZoneName);
             return;
         }
         if (FightsWon >= 3 && FightsWon < 6)
@@ -45,6 +47,7 @@ public class GameManager : MonoBehaviour
             ZoneName = "Zone 2";
             Fighters[WhichFight] = true;
             SceneManager.LoadScene("Zone 2");
+            SaveMap(ZoneName);
             return;
         }
         if (FightsWon >= 6 && FightsWon < 9)
@@ -52,6 +55,7 @@ public class GameManager : MonoBehaviour
             ZoneName = "Zone 3";
             Fighters[WhichFight] = true;
             SceneManager.LoadScene("Zone 3");
+            SaveMap(ZoneName);
             return;
         }
         else
@@ -59,21 +63,11 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("Win");
             return;
         }
-        /*
-        switch (FightsWon)
-        {
-            case 3:
-                ZoneName = "Zone2";
-                SceneManager.LoadScene("Zone2");
-                break;
-            case 6:
-                ZoneName = "Zone3";
-                SceneManager.LoadScene("Zone3");
-                break;
-            case 9:
-                SceneManager.LoadScene("Win");
-                break;
-        }
-        */
+    }
+
+    public void SaveMap(string zoneName)
+    {
+        SavedDataCenter.Instance.Data.CurrentMap = zoneName;
+        SavedDataCenter.Instance.Save();
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using TMPro;
+using System.Linq;
 using UnityEngine;
 
 public class PnjSaveHandler : MonoBehaviour
@@ -10,49 +10,54 @@ public class PnjSaveHandler : MonoBehaviour
     private List<GameObject> _pnjs = new();
 
     private Data obj;
-    private string _json;
-    private int _index = -1;
+    private string _json = "";
 
     // Stocker les valeurs de la classe à sauvegarder (ne pas oublier le seriazable).
     [Serializable]
     public class Data
     {
         public List<bool> PnjActive = new();
-        public List<Vector3> PnjPos = new();
     }
 
     private void Awake()
     {
-        if (_pnjs != null && _pnjs.Count != 0)
+        obj = new();
+
+        // Si la file n'existe pas, on l'a créer en lui assignant un chemin.
+        if (!File.Exists(Application.dataPath + "/PnjSaveFile.json"))
         {
-            obj = new();
-
-            // Si la file n'existe pas, on l'a créer en lui assignant un chemin.
-            if (!File.Exists(Application.dataPath + "/PnjSaveFile.json"))
-            {
-                File.Create(Application.dataPath + "/PnjSaveFile.json");
-                return;
-            }
-
-            LoadSave();
+            File.Create(Application.dataPath + "/PnjSaveFile.json");
+            return;
         }
 
     }
 
-    public void LoadSave()
+    private void Start()
     {
-        // S'il n'est pas vide, on assigne les variables contenues dans la file aux variables internes.
-        if (File.Exists(Application.dataPath + "/PnjSaveFile.json"))
+        if (_pnjs.Count > 0)
         {
-            ApplySave();
             _json = File.ReadAllText(Application.dataPath + "/PnjSaveFile.json");
-            obj = JsonUtility.FromJson<Data>(_json);
 
-            if (obj != null)
+            if (_json == "")
             {
                 for (int i = 0; i < _pnjs.Count; i++)
                 {
-                    if (_pnjs[i] != null && _pnjs[i].activeInHierarchy)
+                    obj.PnjActive.Add(true);
+                }
+
+                _json = JsonUtility.ToJson(obj);
+                print("reset");
+
+                File.WriteAllText(Application.dataPath + "/PnjSaveFile.json", _json);
+            }
+
+            else if (_json != "")
+            {
+                obj = JsonUtility.FromJson<Data>(_json);
+
+                for(int i = 0; i < _pnjs.Count; i++)
+                {
+                    if (!obj.PnjActive[i])
                     {
                         _pnjs[i].SetActive(obj.PnjActive[i]);
                     }
@@ -66,26 +71,26 @@ public class PnjSaveHandler : MonoBehaviour
         if(File.Exists(Application.dataPath + "/PnjSaveFile.json"))
         {
             File.Delete(Application.dataPath + "/PnjSaveFile.json");
+            File.Delete(Application.dataPath + "/PnjSaveFile.json.meta");
         }
     }
 
     // On réecrit les variables à chaque appel de la méthode, autant dans l'UI que dans le fichier de sauvegarde.
     public void ApplySave()
     {
-        if (obj != null && obj.PnjPos.Count != 0)
+        print("save");
+
+        if(obj != null && obj.PnjActive != null)
         {
-            obj.PnjPos.Clear();
             obj.PnjActive.Clear();
         }
 
         for (int i = 0; i < _pnjs.Count; i++)
         {
-            obj.PnjPos.Add(_pnjs[i].transform.position);
             obj.PnjActive.Add(_pnjs[i].activeInHierarchy);
         }
 
         _json = JsonUtility.ToJson(obj);
-
         File.WriteAllText(Application.dataPath + "/PnjSaveFile.json", _json);
     }
 }
