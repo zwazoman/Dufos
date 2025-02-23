@@ -40,7 +40,6 @@ public class SpellVfxManager : MonoBehaviour
                 foreach (var button in _deselectionButtons)
                 {
                     button.gameObject.SetActive(false);
-                    DontDestroyOnLoad(button.gameObject);
                 }
             }
         }

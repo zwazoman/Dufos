@@ -8,7 +8,7 @@ public class FightsWonUpdate : MonoBehaviour
     private void Awake()
     {
         _fightDisplay = GetComponent<TextMeshProUGUI>();
-        _fightDisplay.text = "Combats gagnés - " + GameManager.instance.FightsWon.ToString();
+        _fightDisplay.text = "Combats gagnés - " + GameManager.Instance.FightsWon.ToString();
     }
 
 }

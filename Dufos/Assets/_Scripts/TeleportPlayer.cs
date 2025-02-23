@@ -7,6 +7,6 @@ public class TeleportPlayer : MonoBehaviour
     [SerializeField] private GameObject Player;
     private void Start()
     {
-        Player.transform.position = GameManager.instance.PlayerPosition;
+        Player.transform.position = GameManager.Instance.PlayerPosition;
     }
 }
