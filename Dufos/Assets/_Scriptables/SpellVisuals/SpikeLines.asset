@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SpikeLines
   m_EditorClassIdentifier: 
   UISprite: {fileID: 21300000, guid: 004bac42adf146540bad8bbd36ca0db5, type: 3}
-  Uses: 3
+  Uses: 1
   LaunchForm: 1
   SelectionMaxRange: 8
   ThrowableOnWalls: 1
@@ -24,5 +24,5 @@ MonoBehaviour:
   SpellMaxRange: 8
   BypassNearSpell: 0
   SpellBypassSize: 2
-  Damage: 8
+  Damage: 10
   Visuals: 5

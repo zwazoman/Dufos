@@ -235,6 +235,9 @@ public class Spell
             case Visuals.SpikeLines:
                 await spellVisuals.SpikeLines(origin);
                 break;
+            case Visuals.IceFall:
+                await spellVisuals.IceFall(origin);
+                break;
         }
 
         foreach (WayPoint target in targets)

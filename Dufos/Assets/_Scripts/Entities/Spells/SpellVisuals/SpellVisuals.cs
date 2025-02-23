@@ -43,4 +43,10 @@ public class SpellVisuals
         await Task.Yield();
         SpellVfxManager.Instance.PlayParticles("SpikeLines", target.transform);
     }
+
+    public async Task IceFall(WayPoint target)
+    {
+        await Task.Yield();
+        SpellVfxManager.Instance.PlayParticles("IceFall", target.transform);
+    }
 }
