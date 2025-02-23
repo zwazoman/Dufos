@@ -2306,7 +2306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _zone1BadPnj:
-  - {fileID: 0}
+  - {fileID: 904684355}
   - {fileID: 568500051}
   - {fileID: 369494118}
   _zone2BadPnj: []

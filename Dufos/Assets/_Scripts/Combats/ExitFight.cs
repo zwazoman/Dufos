@@ -7,7 +7,7 @@ public class ExitFight : MonoBehaviour
 {
     public void ChangeScene()
     {
-        GameManager.instance.NextZone();
+        GameManager.Instance.NextZone();
     }
 
     public void SimpleChangeScene(string Scene)

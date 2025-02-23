@@ -29,7 +29,6 @@ public class EndCombatHandler : MonoBehaviour
 
     public void VictoryEnd()
     {
-        print("<color=green>no more enemies, you win</color>");
         Sequence endGameSequence = DOTween.Sequence();
 
         endGameSequence
@@ -37,20 +36,20 @@ public class EndCombatHandler : MonoBehaviour
           {
               _victoryPanel.SetActive(true);
               SavedDataCenter.Instance.Data.ClearedCampsCount++;
-              GameManager.instance.FightsWon++;
+              GameManager.Instance.FightsWon = SavedDataCenter.Instance.Data.ClearedCampsCount;
               SavedDataCenter.Instance.Save();
           };
     }
 
     public void DefeatEnd()
     {
-        print("<color=red>no more players, you lose</color>");
         Sequence endGameSequence = DOTween.Sequence();
 
         endGameSequence
           .SetDelay(1.5f).onComplete += () =>
           {
               _defeatPanel.SetActive(true);
+              SavedDataCenter.Instance.Save();
           };
 
     }
