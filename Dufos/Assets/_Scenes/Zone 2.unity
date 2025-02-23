@@ -2225,7 +2225,7 @@ MonoBehaviour:
   FightsWon: 0
   ZoneName: Zone 1
   PlayerPosition: {x: 0, y: 0, z: 0}
-  WichFight: 0
+  WhichFight: 0
   Fighters: 000000000000000000
 --- !u!4 &250832072
 Transform:
