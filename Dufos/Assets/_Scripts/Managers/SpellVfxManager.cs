@@ -67,7 +67,8 @@ public class SpellVfxManager : MonoBehaviour
         }
 
         await Task.Delay(Mathf.RoundToInt(_parts[Vfxs.IndexOf(current)].duration * 1000));
-        print("<color=blue>done</coslor>");
+
+        print("<color=blue>done</color>");
 
     }
 }

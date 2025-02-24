@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 [Serializable]
@@ -207,8 +208,9 @@ public class Spell
 
     async void StartExecute(WayPoint origin)
     {
-        await Execute(origin);
         CancelSelectionPreview();
+        await Execute(origin);
+        // Met le cancel en dessous stp
     }
 
     public async Task Execute(WayPoint origin)
