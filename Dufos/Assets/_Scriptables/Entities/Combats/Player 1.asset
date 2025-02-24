@@ -18,6 +18,6 @@ MonoBehaviour:
   <MaxHealth>k__BackingField: 100
   <MaxMovePoints>k__BackingField: 6
   Spells:
-  - Data: {fileID: 11400000, guid: c4793aa37b698994895f04f247eb0ac1, type: 2}
+  - Data: {fileID: 11400000, guid: 01bb65069dff7b94a95e56803efdc6e4, type: 2}
     Caster: {fileID: 0}
     IsPreviewing: 0

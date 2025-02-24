@@ -22,7 +22,7 @@ public class DialogueDetectionBehaviour : MonoBehaviour
             }
         }
 
-        else if(!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 1) && _currentPnj != null)
+        else if(!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, _detectionRange) && _currentPnj != null)
         {
             if (_currentPnj.transform.childCount <= 0) return;
 

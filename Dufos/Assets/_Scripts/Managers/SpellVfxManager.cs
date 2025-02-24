@@ -14,7 +14,7 @@ public class SpellVfxManager : MonoBehaviour
 
     private List<ParticleSystem.MainModule> _parts = new();
 
-    private ParticleSystem.MainModule _part;
+    private ParticleSystem _part;
 
     private void Awake()
     {
@@ -31,9 +31,9 @@ public class SpellVfxManager : MonoBehaviour
 
         foreach (var go in Vfxs)
         {
-            if(go.TryGetComponent<ParticleSystem.MainModule>(out _part))
+            if(go.TryGetComponent<ParticleSystem>(out _part))
             {
-                _parts.Add(_part);
+                _parts.Add(_part.main);
             }
         }
     }
@@ -58,6 +58,6 @@ public class SpellVfxManager : MonoBehaviour
             }
         }
 
-        await Task.Delay((int)_parts[Vfxs.IndexOf(current)].duration);
+        await Task.Delay(Mathf.RoundToInt(_parts[Vfxs.IndexOf(current)].duration * 1000));
     }
 }
