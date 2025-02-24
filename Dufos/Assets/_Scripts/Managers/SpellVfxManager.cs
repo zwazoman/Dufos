@@ -1,6 +1,5 @@
-using DG.Tweening;
 using System.Collections.Generic;
-using System.Xml.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class SpellVfxManager : MonoBehaviour
@@ -12,6 +11,10 @@ public class SpellVfxManager : MonoBehaviour
 
     [SerializeField]
     private List<GameObject> _deselectionButtons = new();
+
+    private List<ParticleSystem.MainModule> _parts = new();
+
+    private ParticleSystem.MainModule _part;
 
     private void Awake()
     {
@@ -25,14 +28,25 @@ public class SpellVfxManager : MonoBehaviour
         {
             Instance = this;
         }
+
+        foreach (var go in Vfxs)
+        {
+            if(go.TryGetComponent<ParticleSystem.MainModule>(out _part))
+            {
+                _parts.Add(_part);
+            }
+        }
     }
 
-    public void PlayParticles(string vfxName, Transform transform)
+    public async Task PlayParticles(string vfxName, Transform transform)
     {
+        GameObject current = null;
+
         foreach (var vfx in Vfxs)
         {
             if (vfx.name == vfxName)
             {
+                current = vfx;
                 vfx.transform.SetParent(transform, false);
                 vfx.transform.localPosition = Vector3.zero;
                 vfx.gameObject.SetActive(true);
@@ -43,5 +57,7 @@ public class SpellVfxManager : MonoBehaviour
                 }
             }
         }
+
+        await Task.Delay((int)_parts[Vfxs.IndexOf(current)].duration);
     }
 }
