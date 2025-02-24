@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ea44f74cec0a043915801acf63a8a6, type: 3}
+  m_Name: Dialogue 11
+  m_EditorClassIdentifier: 
+  SpeakerName: "D\xE9linquant"
+  CharacterDialogue:
+  - "Alors. Comme \xE7a vous avez n\xE9toy\xE9 la zone 1 et 2."
+  - Je vous dis bravo !
+  - "Mais ce sera l\xE0 o\xF9 votre avanture se termine, car vous \xEAtes maintenant
+    contre l'\xE9lite."
+  - "Et on ne vas pas vous laiss\xE9 nous battre si facilement."
+  Choices:
+  - PlayerChoice: Le combattre
+    NextStory: {fileID: 11400000, guid: a5cbe7da485dc6343b7b7bbdc014ac69, type: 2}
+  - PlayerChoice: Ne pas combattre
+    NextStory: {fileID: 11400000, guid: 6cfb992c33abcdd4297d7617a30e0427, type: 2}
+  Happening:
+    nextSceneName: 
+    wichFightIsIt: 0

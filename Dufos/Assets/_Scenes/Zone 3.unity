@@ -2107,7 +2107,7 @@ MonoBehaviour:
         m_MethodName: DisplayDialogues
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: f8500f7ce1ea997479f019334f428a84,
+          m_ObjectArgument: {fileID: 11400000, guid: df1f3fd0f6784734b8d5d4dd91b77e9f,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: DialogueManager, Assembly-CSharp
           m_IntArgument: 0
@@ -3799,7 +3799,7 @@ GameObject:
   - component: {fileID: 369494120}
   - component: {fileID: 369494119}
   m_Layer: 0
-  m_Name: BadPnj 3
+  m_Name: BadPnj 13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5425,7 +5425,7 @@ GameObject:
   - component: {fileID: 568500053}
   - component: {fileID: 568500052}
   m_Layer: 0
-  m_Name: BadPnj 2
+  m_Name: BadPnj 12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5578,7 +5578,7 @@ GameObject:
   - component: {fileID: 613413773}
   - component: {fileID: 613413772}
   m_Layer: 0
-  m_Name: Pnj 1
+  m_Name: Pnj 14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10744,7 +10744,7 @@ MonoBehaviour:
         m_MethodName: DisplayDialogues
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: f8500f7ce1ea997479f019334f428a84,
+          m_ObjectArgument: {fileID: 11400000, guid: e195322e4977cfe4fa6ff4fdc95e0f18,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: DialogueManager, Assembly-CSharp
           m_IntArgument: 0
@@ -11068,7 +11068,7 @@ GameObject:
   - component: {fileID: 1597677108}
   - component: {fileID: 1597677107}
   m_Layer: 0
-  m_Name: Pnj 1 (1)
+  m_Name: Pnj 15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11431,7 +11431,7 @@ MonoBehaviour:
         m_MethodName: DisplayDialogues
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: f8500f7ce1ea997479f019334f428a84,
+          m_ObjectArgument: {fileID: 11400000, guid: be2d31e6adf10be4cb9e1913a1c982b1,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: DialogueManager, Assembly-CSharp
           m_IntArgument: 0
@@ -12949,7 +12949,7 @@ GameObject:
   - component: {fileID: 1793004063}
   - component: {fileID: 1793004062}
   m_Layer: 0
-  m_Name: BadPnj 1
+  m_Name: BadPnj 11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15375,7 +15375,7 @@ MonoBehaviour:
         m_MethodName: DisplayDialogues
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: f8500f7ce1ea997479f019334f428a84,
+          m_ObjectArgument: {fileID: 11400000, guid: 46e8199962ff1e346a3c9d227453a121,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: DialogueManager, Assembly-CSharp
           m_IntArgument: 0
@@ -15646,7 +15646,7 @@ MonoBehaviour:
         m_MethodName: DisplayDialogues
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: f8500f7ce1ea997479f019334f428a84,
+          m_ObjectArgument: {fileID: 11400000, guid: 2192d5be7e521234884b36f1e22085a5,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: DialogueManager, Assembly-CSharp
           m_IntArgument: 0
