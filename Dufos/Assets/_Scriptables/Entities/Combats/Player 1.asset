@@ -16,11 +16,8 @@ MonoBehaviour:
   EntityName: Cer
   <Initiative>k__BackingField: 7
   <MaxHealth>k__BackingField: 100
-  <MaxMovePoints>k__BackingField: 10
+  <MaxMovePoints>k__BackingField: 6
   Spells:
   - Data: {fileID: 11400000, guid: 01bb65069dff7b94a95e56803efdc6e4, type: 2}
-    Caster: {fileID: 0}
-    IsPreviewing: 0
-  - Data: {fileID: 11400000, guid: 69d5f1b1c652d8c4f804d3d506abdc5b, type: 2}
     Caster: {fileID: 0}
     IsPreviewing: 0

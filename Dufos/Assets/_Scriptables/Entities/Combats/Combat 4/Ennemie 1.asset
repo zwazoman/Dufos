@@ -16,7 +16,7 @@ MonoBehaviour:
   EntityName: Pist
   <Initiative>k__BackingField: 9
   <MaxHealth>k__BackingField: 100
-  <MaxMovePoints>k__BackingField: 7
+  <MaxMovePoints>k__BackingField: 6
   Spells:
   - Data: {fileID: 11400000, guid: f0c249d8351158343ac7752d271da209, type: 2}
     Caster: {fileID: 0}
