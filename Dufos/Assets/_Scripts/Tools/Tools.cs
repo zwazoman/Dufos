@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -112,4 +113,43 @@ public static class Tools
         }
         return default;
     }
+
+    //public static WayPoint FindClosest(this List<WayPoint> points, WayPoint origin)
+    //{
+    //    if (points.Count == 0)
+    //        Debug.LogError("List Is Empty");
+
+    //    Dictionary<WayPoint,int> waypointDistance = new Dictionary<WayPoint,int>();
+
+    //    foreach (WayPoint point in points)
+    //    {
+    //        Stack<WayPoint> path = FindBestPath(origin, point);
+    //        waypointDistance.Add(point, path.Count);
+    //    }
+
+    //    WayPoint closest = waypointDistance.
+
+    //    foreach(WayPoint point in waypointDistance.Keys)
+    //    {
+    //        if()
+    //    }
+
+        
+       
+    //}
+
+    public static Stack<WayPoint> FindBestPath(WayPoint startPoint, WayPoint endPoint)
+    {
+        List<WayPoint> openWayPoints = new List<WayPoint>();
+        List<WayPoint> closedWayPoints = new List<WayPoint>();
+
+        Stack<WayPoint> shorterPath = new Stack<WayPoint>();
+
+        startPoint.TravelThrough(ref openWayPoints, ref closedWayPoints, ref shorterPath, endPoint, startPoint);
+
+        foreach (WayPoint point in openWayPoints) point.ResetState();
+        foreach (WayPoint point in closedWayPoints) point.ResetState();
+        return shorterPath;
+    }
+
 }

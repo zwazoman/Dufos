@@ -65,7 +65,7 @@ public class Entity : MonoBehaviour
 
     public virtual async Task TryMoveTo(WayPoint targetPoint)
     {
-        Stack<WayPoint> path = FindBestPath(CurrentPoint, targetPoint);
+        Stack<WayPoint> path = Tools.FindBestPath(CurrentPoint, targetPoint);
         int pathlength = path.Count;
 
         if(pathlength > MovePoints)
@@ -96,21 +96,6 @@ public class Entity : MonoBehaviour
         }
         // remettre les controles
     }
-
-    Stack<WayPoint> FindBestPath(WayPoint startPoint, WayPoint endPoint)
-    {
-        List<WayPoint> openWayPoints = new List<WayPoint>();
-        List<WayPoint> closedWayPoints = new List<WayPoint>();
-
-        Stack<WayPoint> shorterPath = new Stack<WayPoint>();
-
-        startPoint.TravelThrough(ref openWayPoints, ref closedWayPoints, ref shorterPath, endPoint, startPoint);
-
-        foreach (WayPoint point in openWayPoints) point.ResetState();
-        foreach (WayPoint point in closedWayPoints) point.ResetState();
-        return shorterPath;
-    }
-
     protected void Flood()
     {
         //reset les anciens walkkables
