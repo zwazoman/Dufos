@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EntityType: {r: 1, g: 0.026182937, b: 0, a: 1}
   EntityName: Pist
-  <Initiative>k__BackingField: 8
+  <Initiative>k__BackingField: 5
   <MaxHealth>k__BackingField: 100
   <MaxMovePoints>k__BackingField: 7
   Spells:
