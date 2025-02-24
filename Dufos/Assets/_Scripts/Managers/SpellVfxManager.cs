@@ -1,3 +1,5 @@
+using Cinemachine;
+using DG.Tweening;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -15,6 +17,7 @@ public class SpellVfxManager : MonoBehaviour
     private List<ParticleSystem.MainModule> _parts = new();
 
     private ParticleSystem _part;
+    private CinemachineVirtualCamera _cam;
 
     private void Awake()
     {
@@ -36,6 +39,8 @@ public class SpellVfxManager : MonoBehaviour
                 _parts.Add(_part.main);
             }
         }
+
+        _cam = FindObjectOfType<CinemachineVirtualCamera>();
     }
 
     public async Task PlayParticles(string vfxName, Transform transform)
@@ -50,6 +55,9 @@ public class SpellVfxManager : MonoBehaviour
                 vfx.transform.SetParent(transform, false);
                 vfx.transform.localPosition = Vector3.zero;
                 vfx.gameObject.SetActive(true);
+                _cam.LookAt = current.transform;
+
+                DOTween.To(() => _cam.m_Lens.FieldOfView, x => _cam.m_Lens.FieldOfView = x, 50f, 1f).SetEase(Ease.OutQuad) ;
 
                 foreach (var button in _deselectionButtons)
                 {
@@ -59,5 +67,6 @@ public class SpellVfxManager : MonoBehaviour
         }
 
         await Task.Delay(Mathf.RoundToInt(_parts[Vfxs.IndexOf(current)].duration * 1000));
+
     }
 }
