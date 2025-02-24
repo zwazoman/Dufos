@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ea44f74cec0a043915801acf63a8a6, type: 3}
+  m_Name: Dialogue 4
+  m_EditorClassIdentifier: 
+  SpeakerName: Sybil
+  CharacterDialogue:
+  - "Vous essay\xE9s de vaincre les d\xE9linquants de cette zone ?"
+  - "Je ne suit pas contre ce que vous faites. Mais \xEAtes vous vraiment s\xFBr
+    ?"
+  - "Dites vous qu'une vous aurez eu tous les d\xE9linquants de cette zone. Il reste
+    deux autres zones."
+  - "En sachant qu'ils deviennent de plus en plus fort \xE0 chaque fois que vous
+    progr\xE9ssez dans une zone."
+  - Mais si vous y arrivez, vous avez mon tout mon support !
+  Choices: []
+  Happening:
+    nextSceneName: 
+    wichFightIsIt: 0

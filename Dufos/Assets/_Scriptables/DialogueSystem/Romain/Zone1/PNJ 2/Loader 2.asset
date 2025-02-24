@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43ea44f74cec0a043915801acf63a8a6, type: 3}
-  m_Name: Loader
+  m_Name: Loader 2
   m_EditorClassIdentifier: 
   SpeakerName: 
   CharacterDialogue: []
   Choices: []
   Happening:
-    nextSceneName: ClickableCombatTest
-    wichFightIsIt: 0
+    nextSceneName: Combat 2
+    wichFightIsIt: 1

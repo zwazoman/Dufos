@@ -10,15 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43ea44f74cec0a043915801acf63a8a6, type: 3}
-  m_Name: FirstDialogue
+  m_Name: Dialogue 3
   m_EditorClassIdentifier: 
   SpeakerName: "D\xE9linquant"
   CharacterDialogue:
-  - "Hein ? Qui est tu ? Cette zone est priv\xE9 !"
+  - "Trois petits zigotos essayes de nous d\xE9truires ?"
+  - HA !
+  - "On est peut-\xEAtre lent. Mais vous allez regr\xE9t\xE9 de nous sous-estim\xE9s."
   Choices:
   - PlayerChoice: Le combattre
-    NextStory: {fileID: 11400000, guid: 970b6522878fd954984e09474939d4a6, type: 2}
-  - PlayerChoice: Ne pas combattre
+    NextStory: {fileID: 11400000, guid: 1e3b415171165114e8d7f6d1c52bec3f, type: 2}
+  - PlayerChoice: Ne pas le combattre
     NextStory: {fileID: 11400000, guid: 6cfb992c33abcdd4297d7617a30e0427, type: 2}
   Happening:
     nextSceneName: 

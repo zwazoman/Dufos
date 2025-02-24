@@ -44,6 +44,10 @@ public class GameManager : MonoBehaviour
         }
         if (FightsWon >= 3 && FightsWon < 6)
         {
+            if (ZoneName != "Zone 2")
+            {
+                PlayerPosition = Vector3.zero;
+            }
             ZoneName = "Zone 2";
             Fighters[WhichFight] = true;
             SceneManager.LoadScene("Zone 2");
@@ -52,6 +56,10 @@ public class GameManager : MonoBehaviour
         }
         if (FightsWon >= 6 && FightsWon < 9)
         {
+            if (ZoneName != "Zone 3")
+            {
+                PlayerPosition = Vector3.zero;
+            }
             ZoneName = "Zone 3";
             Fighters[WhichFight] = true;
             SceneManager.LoadScene("Zone 3");
@@ -60,7 +68,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("Win");
+            SceneManager.LoadScene("VictoryScene");
             return;
         }
     }
