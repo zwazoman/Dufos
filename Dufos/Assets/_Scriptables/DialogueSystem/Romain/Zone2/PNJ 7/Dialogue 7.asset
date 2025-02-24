@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ea44f74cec0a043915801acf63a8a6, type: 3}
+  m_Name: Dialogue 7
+  m_EditorClassIdentifier: 
+  SpeakerName: "D\xE9linquant"
+  CharacterDialogue:
+  - "Hmm ... (Alors c'est eux qui ont vaincues seut dans la zone 1 ... Int\xE9r\xE9ssant)"
+  - "Huh ... (Ils faut pas que je les sous-estimes, je pourrais peut-\xEAtre perdre
+    comme ces idiots dans la zone 1)"
+  - "Essayer de me battre pour voir, vos armes se vendront \xE0 un bon prix ..."
+  Choices:
+  - PlayerChoice: Le combattre
+    NextStory: {fileID: 11400000, guid: f1c08ed43a661174b9a21310a3811927, type: 2}
+  - PlayerChoice: Ne pas combattre
+    NextStory: {fileID: 11400000, guid: 6cfb992c33abcdd4297d7617a30e0427, type: 2}
+  Happening:
+    nextSceneName: 
+    wichFightIsIt: 0
