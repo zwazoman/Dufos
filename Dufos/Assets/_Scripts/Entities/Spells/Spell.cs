@@ -223,9 +223,6 @@ public class Spell
             case Visuals.CatchingFire:
                 await spellVisuals.CatchingFire(origin);
                 break;
-            case Visuals.MeteorProjectile:
-                await spellVisuals.MeteorProjectile(origin);
-                break;
             case Visuals.ThunderStrike:
                 await spellVisuals.ThunderStrike(origin);
                 break;
