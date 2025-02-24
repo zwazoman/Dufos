@@ -208,9 +208,8 @@ public class Spell
 
     async void StartExecute(WayPoint origin)
     {
-        CancelSelectionPreview();
         await Execute(origin);
-        // Met le cancel en dessous stp
+        CancelSelectionPreview();
     }
 
     public async Task Execute(WayPoint origin)
