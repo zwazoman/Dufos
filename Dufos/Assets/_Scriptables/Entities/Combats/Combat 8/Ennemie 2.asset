@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ennemie 2
   m_EditorClassIdentifier: 
   EntityType: {r: 0, g: 1, b: 1, a: 1}
-  EntityName: Win
+  EntityName: Seeya
   <Initiative>k__BackingField: 15
   <MaxHealth>k__BackingField: 50
   <MaxMovePoints>k__BackingField: 6
