@@ -16,7 +16,7 @@ MonoBehaviour:
   EntityName: Mega
   <Initiative>k__BackingField: 14
   <MaxHealth>k__BackingField: 50
-  <MaxMovePoints>k__BackingField: 6
+  <MaxMovePoints>k__BackingField: 8
   Spells:
   - Data: {fileID: 11400000, guid: 01bb65069dff7b94a95e56803efdc6e4, type: 2}
     Caster: {fileID: 0}
