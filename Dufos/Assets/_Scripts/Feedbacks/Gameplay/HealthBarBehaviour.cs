@@ -34,13 +34,12 @@ public class HealthBarBehaviour : MonoBehaviour
     private void Update()
     {
         this.transform.position = _playerHealth.gameObject.transform.position + _offset;
-        transform.LookAt(Camera.main.ScreenToWorldPoint(transform.forward));
-        this.transform.Rotate(0, 180, 0);
+        this.transform.rotation = Quaternion.identity;
     }
 
     public void SliderUpdate(int damage)
     {
-        _healthBar.DOValue(_healthBar.value - damage, 0.15f).SetDelay(0.75f).onComplete += () =>
+        _healthBar.DOValue(_healthBar.value - damage, 0.15f).SetDelay(0).onComplete += () =>
         {
             OnHealthChanged(_healthBar.value);
             _screenShake.Shake();
