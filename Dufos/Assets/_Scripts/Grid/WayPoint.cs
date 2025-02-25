@@ -99,7 +99,10 @@ public class WayPoint : MonoBehaviour
 
     public void ApplyWalkableVisual()
     {
-        _mR.material = _walkableMat;
+        if (_mR.material != _walkableMat)
+        {
+            _mR.material = _walkableMat;
+        }
     }
 
     public void Clicked() 
