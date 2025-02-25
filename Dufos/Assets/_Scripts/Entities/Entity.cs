@@ -13,6 +13,7 @@ public class Entity : MonoBehaviour
     [HideInInspector] public Health EntityHealth;
     [HideInInspector] public int MovePoints;
 
+    protected Dictionary<WayPoint,int> WaypointDistance = new Dictionary<WayPoint,int>();
     protected List<WayPoint> Walkables = new List<WayPoint>();
     protected GraphMaker graphMaker;
 
@@ -96,25 +97,51 @@ public class Entity : MonoBehaviour
         }
         // remettre les controles
     }
-    protected void Flood()
+    //protected void Flood()
+    //{
+    //    //reset les anciens walkkables
+    //    Walkables.Clear();
+
+    //    Walkables.Add(CurrentPoint);
+
+    //    for (int i = 0; i < MovePoints; i++)
+    //    {
+    //        List<WayPoint> tmp = new List<WayPoint>();
+    //        foreach (WayPoint walkable in Walkables)
+    //        {
+    //            foreach (WayPoint neighbour in walkable.Neighbours)
+    //            {
+    //                if (Walkables.Contains(neighbour) || !neighbour.IsActive) continue;
+    //                tmp.Add(neighbour);
+    //            }
+    //        }
+    //        Walkables.AddRange(tmp);
+    //    }
+    //}
+
+    protected void Flood(WayPoint targetPoint, int maxIndex = 0)
     {
-        //reset les anciens walkkables
-        Walkables.Clear();
+        WaypointDistance.Clear();
+        Queue<WayPoint> tmp = new Queue<WayPoint>();
 
-        Walkables.Add(CurrentPoint);
+        WaypointDistance.Add(targetPoint, 0);
+        tmp.Enqueue(targetPoint);
 
-        for (int i = 0; i < MovePoints; i++)
+        int index = 0;
+
+        while(tmp.Count > 0 /*&& index != maxIndex*/)
         {
-            List<WayPoint> tmp = new List<WayPoint>();
-            foreach (WayPoint walkable in Walkables)
+            index++;
+            WayPoint currentPoint = tmp.Dequeue();
+           
+            foreach (WayPoint neighbour in currentPoint.Neighbours)
             {
-                foreach (WayPoint neighbour in walkable.Neighbours)
+                if (!WaypointDistance.ContainsKey(neighbour))
                 {
-                    if (Walkables.Contains(neighbour) || !neighbour.IsActive) continue;
-                    tmp.Add(neighbour);
+                    tmp.Enqueue(neighbour);
+                    WaypointDistance.Add(neighbour, index);
                 }
             }
-            Walkables.AddRange(tmp);
         }
     }
 }

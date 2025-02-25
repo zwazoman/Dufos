@@ -99,7 +99,7 @@ public class EnemyEntity : Entity
     {
         print("move toward");
 
-        if (Walkables.Contains(targetPoint))
+        if (WaypointDistance.ContainsKey(targetPoint))
         {
             print("target in range !");
             await TryMoveTo(targetPoint);

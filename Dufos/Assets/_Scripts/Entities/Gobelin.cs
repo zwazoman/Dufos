@@ -8,7 +8,7 @@ public class Gobelin : EnemyEntity
     {
         base.StartTurn();
 
-        Flood();
+        Flood(CurrentPoint,MovePoints);
 
         Spell choosenSpell = ChooseRandomSpell();
 

@@ -95,8 +95,8 @@ public class PlayerEntity : Entity
     #region Flood Field;
     void PreviewFloodField()
     {
-        Flood();
-        foreach(WayPoint point in Walkables)
+        Flood(CurrentPoint, MovePoints);
+        foreach(WayPoint point in WaypointDistance.Keys)
         {
             point.ApplyWalkableVisual();
         }
@@ -104,7 +104,7 @@ public class PlayerEntity : Entity
     }
     void CancelFloodFieldPreview()
     {
-        foreach(WayPoint point in Walkables)
+        foreach(WayPoint point in WaypointDistance.Keys)
         {
             point.ApplyDefaultVisual();
         }
