@@ -1,17 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShowCurrentPoint : MonoBehaviour
 {
+    [SerializeField]
+    private SpellPlayerBehaviour _spellPlayer;
+    private Entity _entity;
+    private WayPoint _previousPoint;
+    private int _previousWalkPoints;
+
     private void Start()
     {
         transform.parent.TryGetComponent(out _entity);
         _previousPoint = _entity.CurrentPoint;
     }
-
-    private Entity _entity;
-    private WayPoint _previousPoint;
 
     private void Update()
     {
@@ -27,6 +28,10 @@ public class ShowCurrentPoint : MonoBehaviour
             _previousPoint.ApplyWalkableVisual();
         }
 
-        _previousPoint.ApplyWalkableVisual();
+        if((_previousWalkPoints != _entity.MovePoints || _entity.MovePoints == _entity.Data.MaxMovePoints) && !_spellPlayer.IsSelecting)
+        {
+            _previousPoint.ApplyWalkableVisual();
+            _previousWalkPoints = _entity.MovePoints;
+        }
     }
 }
