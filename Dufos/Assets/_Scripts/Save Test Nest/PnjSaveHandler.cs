@@ -78,6 +78,7 @@ public class PnjSaveHandler : MonoBehaviour
     public void ApplySave()
     {
         print("save");
+        SavedDataCenter.Instance.Save();
 
         if(obj != null && obj.PnjActive != null)
         {
