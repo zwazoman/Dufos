@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
+using static Unity.VisualScripting.Member;
 
 [Serializable]
 public class Spell
@@ -15,6 +17,7 @@ public class Spell
     [HideInInspector] public bool IsPreviewing;
 
     SpellVisuals spellVisuals = new SpellVisuals();
+    private CancellationTokenSource _source;
 
     protected List<WayPoint> ReadSelectionForm(WayPoint origin)
     {
@@ -214,6 +217,7 @@ public class Spell
 
     async void StartExecute(WayPoint origin)
     {
+
         origin.OnNotHovered -= CancelSpellPreview;
 
         await Execute(origin);

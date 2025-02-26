@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    [SerializeField] float _moveSpeed = 10;
+    [SerializeField] float _moveSpeed = 7;
 
     public async Task StartMoving(Vector3 targetPos)
     {
