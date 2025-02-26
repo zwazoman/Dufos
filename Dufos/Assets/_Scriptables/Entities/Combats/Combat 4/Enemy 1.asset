@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d67b45e8d42d28844a656f8202221e33, type: 3}
-  m_Name: Ennemie 2
+  m_Name: Enemy 1
   m_EditorClassIdentifier: 
-  EntityType: {r: 1, g: 0.026182937, b: 0, a: 1}
-  EntityName: Duper
-  <Initiative>k__BackingField: 8
+  EntityType: {r: 0.8862745, g: 0.25490198, b: 0.45882353, a: 1}
+  EntityName: Pist
+  <Initiative>k__BackingField: 9
   <MaxHealth>k__BackingField: 100
   <MaxMovePoints>k__BackingField: 6
   Spells:

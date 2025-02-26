@@ -19,5 +19,10 @@ public class ShowCurrentPoint : MonoBehaviour
         {
             _mesh.material = _changingMat;
         }
+
+        if (_waypoint.Content != null && !_waypoint.Content.activeInHierarchy && !_waypoint.IsHovered)
+        {
+            _waypoint.ApplyDefaultVisual();
+        }
     }
 }

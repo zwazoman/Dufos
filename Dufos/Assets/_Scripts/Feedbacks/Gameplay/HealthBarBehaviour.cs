@@ -64,7 +64,6 @@ public class HealthBarBehaviour : MonoBehaviour
 
                 else if (_playerHealth.gameObject.TryGetComponent(out PlayerEntity _player))
                 {
-
                     CombatManager.Instance.Entities.Remove(_player);
                     CombatManager.Instance.PlayerEntities.Remove(_player);
                 }

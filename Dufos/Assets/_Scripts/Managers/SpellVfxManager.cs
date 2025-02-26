@@ -66,7 +66,7 @@ public class SpellVfxManager : MonoBehaviour
             }
         }
 
-        if (current != null)
+        if (current != null && Vfxs.IndexOf(current) < _parts.Count)
         {
             await Task.Delay(Mathf.RoundToInt(_parts[Vfxs.IndexOf(current)].duration * 1000));
         }

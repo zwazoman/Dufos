@@ -60,6 +60,7 @@ MonoBehaviour:
   _visualsObject: {fileID: 8054788256522923278}
   floatTime: 0.3
   floatHeight: 0.7
+  _mR: {fileID: 775127388847898918}
   FormerPoint: {fileID: 0}
   IsOpen: 0
   IsClosed: 0

@@ -16,5 +16,5 @@ MonoBehaviour:
   CharacterDialogue: []
   Choices: []
   Happening:
-    nextSceneName: ClickableCombatTest
+    nextSceneName: Combat 1
     wichFightIsIt: 0
