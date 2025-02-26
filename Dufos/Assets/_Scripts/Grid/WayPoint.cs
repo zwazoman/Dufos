@@ -34,7 +34,6 @@ public class WayPoint : MonoBehaviour
     [SerializeField] float floatTime = .3f;
     [SerializeField] float floatHeight = 1f;
 
-    [SerializeField]
     MeshRenderer _mR;
 
     #region Astar Fields
@@ -51,7 +50,7 @@ public class WayPoint : MonoBehaviour
     private void Awake()
     {
         IsActive = true;
-
+        _mR = GetComponentInChildren<MeshRenderer>();
         _mR.material = _defaultMat;
     }
 
@@ -92,25 +91,55 @@ public class WayPoint : MonoBehaviour
 
     public void ApplySelectVisual()
     {
-        IsHovered = true;
-        _mR.material = _selectionMat;
+        try
+        {
+            IsHovered = true;
+            _mR.material = _selectionMat;
+        }
+
+        catch (Exception)
+        {
+        }
+
     }
 
     public void ApplyTargetVisual()
     {
-        IsHovered = true;
-        _mR.material = _targettingMat;
+        try
+        {
+            IsHovered = true;
+            _mR.material = _targettingMat;
+        }
+        catch (Exception)
+        {
+        }
+
     }
 
     public void ApplyDefaultVisual()
     {
-        IsHovered = false;
-        _mR.material = _defaultMat;
+        try
+        {
+            IsHovered = false;
+            _mR.material = _defaultMat;
+        }
+
+        catch (Exception)
+        {
+        }
     }
 
     public void ApplyWalkableVisual()
     {
-        _mR.material = _walkableMat;
+        try
+        {
+            _mR.material = _walkableMat;
+        }
+
+        catch(Exception)
+        {
+        }
+
     }
 
     public void Clicked() 
