@@ -25,10 +25,10 @@ public class GameManager : MonoBehaviour
         FightsWon = SavedDataCenter.Instance.Data.ClearedCampsCount;
     }
 
-    public int FightsWon;
-    public string ZoneName;
-    public Vector3 PlayerPosition;
-    public int WhichFight;
+    public int FightsWon { get; set; }
+    public string ZoneName { get; set; }
+    public Vector3 PlayerPosition { get; set; }
+    public int WhichFight { get; set; }
     public List<bool> Fighters = new List<bool>() { false, false, false, false, false, false, false, false, false };
 
     public void NextZone()
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         {
             ZoneName = "Zone 1";
             Fighters[WhichFight] = true;
-            SceneManager.LoadScene("Zone 1");
+            SceneManager.LoadScene(ZoneName);
             SaveMap(ZoneName);
             return;
         }
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
             }
             ZoneName = "Zone 2";
             Fighters[WhichFight] = true;
-            SceneManager.LoadScene("Zone 2");
+            SceneManager.LoadScene(ZoneName);
             SaveMap(ZoneName);
             return;
         }
@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
             }
             ZoneName = "Zone 3";
             Fighters[WhichFight] = true;
-            SceneManager.LoadScene("Zone 3");
+            SceneManager.LoadScene(ZoneName);
             SaveMap(ZoneName);
             return;
         }
@@ -71,6 +71,11 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("VictoryScene");
             return;
         }
+    }
+
+    public void ChangeZone()
+    {
+
     }
 
     public void SaveMap(string zoneName)
