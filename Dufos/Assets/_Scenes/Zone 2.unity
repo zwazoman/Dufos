@@ -16885,7 +16885,7 @@ MonoBehaviour:
         m_MethodName: DisplayDialogues
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: b692a36cb8bd24e4b855d53ebb5f3976,
+          m_ObjectArgument: {fileID: 11400000, guid: 86a0656624dbb5c4f8e457ab8faba72b,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: DialogueManager, Assembly-CSharp
           m_IntArgument: 0
