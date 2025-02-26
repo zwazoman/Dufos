@@ -9890,7 +9890,6 @@ MonoBehaviour:
   - {fileID: 5921862554695778332}
   - {fileID: 4244129482643864547}
   - {fileID: 8019021606879286120}
-  - {fileID: 8153977924753336249}
 --- !u!4 &765242478507097680 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1cab0e6f931bb1b4788783fcffd4a983,
@@ -9924,12 +9923,6 @@ MeshRenderer:
 --- !u!23 &8019021606879286120 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -2135445998859597101, guid: 1cab0e6f931bb1b4788783fcffd4a983,
-    type: 3}
-  m_PrefabInstance: {fileID: 942402994002532795}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &8153977924753336249 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 8952216247949704706, guid: 1cab0e6f931bb1b4788783fcffd4a983,
     type: 3}
   m_PrefabInstance: {fileID: 942402994002532795}
   m_PrefabAsset: {fileID: 0}
