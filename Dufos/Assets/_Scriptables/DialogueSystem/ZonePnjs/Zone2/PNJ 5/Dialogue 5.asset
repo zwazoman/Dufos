@@ -14,14 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeakerName: "D\xE9linquant"
   CharacterDialogue:
-  - "Vous avez r\xE9ussit \xE0 rentr\xE9 dans notre batiment principale ?"
-  - "Mais cette zone sera l\xE0 o\xF9 vous rencontrerez votre fin."
-  - "Je vais me faire un plaisir de vous \xE9crabouillez."
+  - "Vous avez r\xE9ussi \xE0 rentrer dans notre b\xE2timent principal ?"
   Choices:
-  - PlayerChoice: Le combattre
-    NextStory: {fileID: 11400000, guid: 754772aa84e4ad44bbc4898f9071eea6, type: 2}
-  - PlayerChoice: Ne pas combattre
-    NextStory: {fileID: 11400000, guid: 6cfb992c33abcdd4297d7617a30e0427, type: 2}
+  - PlayerChoice: Oui.
+    NextStory: {fileID: 11400000, guid: e3ff95321c85ae344b15eed9efefdd50, type: 2}
+  - PlayerChoice: Apparemment.
+    NextStory: {fileID: 11400000, guid: e3ff95321c85ae344b15eed9efefdd50, type: 2}
   Happening:
     nextSceneName: 
     wichFightIsIt: 0

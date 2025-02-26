@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeakerName: Steve
   CharacterDialogue:
-  - "Ne me m\xE9l\xE9 pas avec ces d\xE9linquants !"
-  - "Ces vraix que je travaille pour eux, mais je ne me salie pas les mains en combattant
-    des probl\xE8mes comme vous."
+  - "Ne me m\xE9lez pas avec ces d\xE9linquants !"
+  - C'est vrai que je travaille pour eux, mais je ne me salis pas les mains en combattant
+    comme eux.
   - Faites vos trucs et laissez moi tranquille !
   Choices: []
   Happening:

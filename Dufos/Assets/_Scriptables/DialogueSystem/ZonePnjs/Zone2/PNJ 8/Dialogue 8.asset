@@ -12,16 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43ea44f74cec0a043915801acf63a8a6, type: 3}
   m_Name: Dialogue 8
   m_EditorClassIdentifier: 
-  SpeakerName: "L\xE9a"
+  SpeakerName: Patrick
   CharacterDialogue:
   - "Vous avez battus les d\xE9linquants de la zone 1 !"
-  - "Vous avez peut-\xEAtre alors une chance de vaincre ceux qui sont dans cette
-    zone ..."
-  - "Mais faites attentions, ils sont plus d\xFBr que ceux de la zone 1."
-  - "Vous pouvez s\xFBrement la faire, je crois en vous !"
-  - "Par contre si vous vous faites attrapez, ne leur disez pas que je vous ais soutenu
-    ... Jaimerais rest\xE9 en vie."
-  Choices: []
+  Choices:
+  - PlayerChoice: Bien fait pour eux !
+    NextStory: {fileID: 11400000, guid: b692a36cb8bd24e4b855d53ebb5f3976, type: 2}
+  - PlayerChoice: Je crois bien, oui.
+    NextStory: {fileID: 11400000, guid: b692a36cb8bd24e4b855d53ebb5f3976, type: 2}
   Happening:
     nextSceneName: 
     wichFightIsIt: 0

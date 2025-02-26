@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class WayPoint : MonoBehaviour
 {
+    public bool IsHovered { get; private set; }
+
     public event Action OnSteppedOn;
     public event Action OnSteppedOff;
 
@@ -90,16 +92,19 @@ public class WayPoint : MonoBehaviour
 
     public void ApplySelectVisual()
     {
+        IsHovered = true;
         _mR.material = _selectionMat;
     }
 
     public void ApplyTargetVisual()
     {
+        IsHovered = true;
         _mR.material = _targettingMat;
     }
 
     public void ApplyDefaultVisual()
     {
+        IsHovered = false;
         _mR.material = _defaultMat;
     }
 

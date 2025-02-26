@@ -3,35 +3,21 @@ using UnityEngine;
 public class ShowCurrentPoint : MonoBehaviour
 {
     [SerializeField]
-    private SpellPlayerBehaviour _spellPlayer;
-    private Entity _entity;
-    private WayPoint _previousPoint;
-    private int _previousWalkPoints;
+    private Material _changingMat;
+    private WayPoint _waypoint;
+    private MeshRenderer _mesh;
 
     private void Start()
     {
-        transform.parent.TryGetComponent(out _entity);
-        _previousPoint = _entity.CurrentPoint;
+        TryGetComponent(out _waypoint);
+        transform.GetChild(0).TryGetComponent(out _mesh);
     }
 
     private void Update()
     {
-        if (_previousPoint == null)
+        if (_mesh.material != _changingMat && !_waypoint.IsHovered && _waypoint.Content != null && (_waypoint.Content.name.Contains("Player") || _waypoint.Content.name.Contains("Enemy")))
         {
-            _previousPoint = _entity.CurrentPoint;
-        }
-
-        if (_previousPoint != null && _previousPoint != _entity.CurrentPoint)
-        {
-            _previousPoint.ApplyDefaultVisual();
-            _previousPoint = _entity.CurrentPoint;
-            _previousPoint.ApplyWalkableVisual();
-        }
-
-        if((_previousWalkPoints != _entity.MovePoints || _entity.MovePoints == _entity.Data.MaxMovePoints) && !_spellPlayer.IsSelecting)
-        {
-            _previousPoint.ApplyWalkableVisual();
-            _previousWalkPoints = _entity.MovePoints;
+            _mesh.material = _changingMat;
         }
     }
 }

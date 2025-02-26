@@ -14,13 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeakerName: Joseph
   CharacterDialogue:
-  - "Cette zone est surtout utilis\xE9 pour la fabrication d'armes."
-  - "Mais il peut aussie \xEAtre utilis\xE9 pour fabriqu\xE9 des Bras de robot !"
-  - "Et grace \xE0 ca je peux avoir des doigts de 1 centim\xE9tre plus long ! Vous
-    vous rendez compte de ce que l'on peut faire avec des doigts plus long !"
-  - "Tu peux prendre des objets qui sont 1 centim\xE9tres plus loin de toi !"
-  - "Euh ... Tu Peux ... Te grat\xE9 le dos plus loings ! C'est hyper pratique !"
-  - "C'est peut-\xEAtre ch\xE8re, mais c'est pratique !"
+  - "Cette zone est surtout utilis\xE9e pour la fabrication d'armes."
+  - "Mais elle peut aussi \xEAtre utilis\xE9e pour fabriquer des bras de robot !"
+  - "C'est peut-\xEAtre cher, mais c'est pratique !"
   Choices: []
   Happening:
     nextSceneName: 

@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeakerName: "D\xE9linquant"
   CharacterDialogue:
-  - "Hmm ... (Alors c'est eux qui ont vaincues seut dans la zone 1 ... Int\xE9r\xE9ssant)"
-  - "Huh ... (Ils faut pas que je les sous-estimes, je pourrais peut-\xEAtre perdre
-    comme ces idiots dans la zone 1)"
-  - "Essayer de me battre pour voir, vos armes se vendront \xE0 un bon prix ..."
+  - "Hmm ... (Alors c'est eux qui ont vaincus ceux de la zone 1 ... Int\xE9r\xE9ssant)."
+  - "Hmm ... (Il ne faut pas que je les sous-estime, je pourrai peut-\xEAtre perdre
+    comme ces idiots de la premi\xE8re zone)."
+  - "Essayez de me battre pour voir, vos armes se vendront \xE0 un bon prix ..."
   Choices:
-  - PlayerChoice: Le combattre
+  - PlayerChoice: Le combattre.
     NextStory: {fileID: 11400000, guid: f1c08ed43a661174b9a21310a3811927, type: 2}
-  - PlayerChoice: Ne pas combattre
+  - PlayerChoice: Ne pas combattre.
     NextStory: {fileID: 11400000, guid: 6cfb992c33abcdd4297d7617a30e0427, type: 2}
   Happening:
     nextSceneName: 

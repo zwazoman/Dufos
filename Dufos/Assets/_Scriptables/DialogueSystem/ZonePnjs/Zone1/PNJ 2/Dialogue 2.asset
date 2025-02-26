@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeakerName: "D\xE9linquant"
   CharacterDialogue:
-  - Tu pense pouvoir nous battres ?
-  - "On est trop rapide pour toi, laisse tomb\xE9"
+  - Tu penses pouvoir nous battre ?
+  - On est trop rapide pour toi, laisse tomber.
   Choices:
-  - PlayerChoice: Le combattre
+  - PlayerChoice: Le combattre.
     NextStory: {fileID: 11400000, guid: 970b6522878fd954984e09474939d4a6, type: 2}
-  - PlayerChoice: Ne pas le combattre
+  - PlayerChoice: Ne pas combattre.
     NextStory: {fileID: 11400000, guid: 6cfb992c33abcdd4297d7617a30e0427, type: 2}
   Happening:
     nextSceneName: 

@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeakerName: "D\xE9linquant"
   CharacterDialogue:
-  - "Hein ? Qui est tu ? Cette zone est priv\xE9 !"
+  - "Hein ? Qui es-tu ? Cette zone est priv\xE9e !"
   Choices:
-  - PlayerChoice: Le combattre
+  - PlayerChoice: Le combattre.
     NextStory: {fileID: 11400000, guid: 700bea36970f4e242a04a3829768cdde, type: 2}
-  - PlayerChoice: Ne pas combattre
+  - PlayerChoice: Ne pas combattre.
     NextStory: {fileID: 11400000, guid: 6cfb992c33abcdd4297d7617a30e0427, type: 2}
   Happening:
     nextSceneName: 
+    wichFightIsIt: 0

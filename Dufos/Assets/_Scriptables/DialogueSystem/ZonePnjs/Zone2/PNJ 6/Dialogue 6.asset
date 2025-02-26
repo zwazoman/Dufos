@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeakerName: "D\xE9linquant"
   CharacterDialogue:
-  - "Comment est ce que vous \xEAtes arrivez l\xE0 ?"
-  - "Nos meilleur combattants ne sont pas l\xE0 !"
+  - "Comment est-ce que vous \xEAtes arriv\xE9 l\xE0 ?"
+  - "Nos meilleurs combattants ne sont pas l\xE0 !"
   - "(Calme toi, tu est meilleur que ceux de la premi\xE8re zone, et ils vont surement
-    revenir assez rapidement. Reste calme, tu peut le faire... Peut-\xEAtre)"
+    revenir assez rapidement. Reste calme, tu peux le faire... Peut-\xEAtre)."
   - J-Je ... Vous allez ... Euh...
   - JE VAIS VOUS TUER !!!
   Choices:
-  - PlayerChoice: Le combattre
+  - PlayerChoice: Le combattre.
     NextStory: {fileID: 11400000, guid: 65405dd121262074abbc8f85d941827d, type: 2}
-  - PlayerChoice: Ne pas combattre
+  - PlayerChoice: Ne pas combattre.
     NextStory: {fileID: 11400000, guid: 6cfb992c33abcdd4297d7617a30e0427, type: 2}
   Happening:
     nextSceneName: 

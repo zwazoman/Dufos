@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeakerName: "D\xE9linquant"
   CharacterDialogue:
-  - "Vous vous croyez pour qui ? Des h\xE9ros ?"
-  - Pff ! Me faites pas rire.
-  - "Vous allez payer pour vous confrontez \xE0 nous !"
+  - "Vous vous prenez pour qui ? Un h\xE9ros ?"
+  - Pff ! Ne me faites pas rire.
+  - Vous allez payer !
   Choices:
-  - PlayerChoice: Le combattre
+  - PlayerChoice: Le combattre.
     NextStory: {fileID: 11400000, guid: 5ed73bc8b9ad5a948b8fe7074409f37f, type: 2}
-  - PlayerChoice: Ne pas combattre
+  - PlayerChoice: Ne pas combattre.
     NextStory: {fileID: 11400000, guid: 6cfb992c33abcdd4297d7617a30e0427, type: 2}
   Happening:
     nextSceneName: 

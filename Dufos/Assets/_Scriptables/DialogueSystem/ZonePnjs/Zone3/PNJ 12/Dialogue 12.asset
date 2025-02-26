@@ -14,17 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeakerName: "D\xE9linquant"
   CharacterDialogue:
-  - ALORS C'EST VOUS QUI NOUS CAUSE DES PROBLEMES !!
-  - HA ! JE VOUDRAIS PRESQUE VOUS REMERCIE DE NOUS DEBARASSE DE CETTE BANDES DE FAIBLES
-    !
-  - "Mais il ne faut pas \xE9xag\xE9r\xE9. Vous restez des probl\xE8mes et je parie
-    que vous voulez me bottez les fesses !"
-  - Faites de votre mieux et je vous montrerais de quelle bois je me chauffe !
+  - ALORS C'EST VOUS QUI NOUS CAUSEZ DES PROBLEMES ??
   Choices:
-  - PlayerChoice: Le combattre
-    NextStory: {fileID: 11400000, guid: 960c4e2a2d853bd419370b54ce7d5a81, type: 2}
-  - PlayerChoice: Ne pas combattre
-    NextStory: {fileID: 11400000, guid: 6cfb992c33abcdd4297d7617a30e0427, type: 2}
+  - PlayerChoice: Euh...
+    NextStory: {fileID: 11400000, guid: 438766e9f9c39d54ca8152b1a1429f93, type: 2}
+  - PlayerChoice: Et alors ?
+    NextStory: {fileID: 11400000, guid: 438766e9f9c39d54ca8152b1a1429f93, type: 2}
   Happening:
     nextSceneName: 
     wichFightIsIt: 0
