@@ -32,7 +32,7 @@ public class BadPnjDespawn : MonoBehaviour
                 {
                     if (GameManager.Instance.Fighters[i] != false)
                     {
-                        _zone2BadPnj[i].SetActive(false);
+                        _zone2BadPnj[i - 3].SetActive(false);
                     }
                 }
                 break;
@@ -41,7 +41,7 @@ public class BadPnjDespawn : MonoBehaviour
                 {
                     if (GameManager.Instance.Fighters[i] != false)
                     {
-                        _zone3BadPnj[i].SetActive(false);
+                        _zone3BadPnj[i - 6].SetActive(false);
                     }
                 }
                 break;
