@@ -68,6 +68,8 @@ public class EnemyEntity : Entity
 
         bool targetReached = await MoveToward(choosenTargetPoint); // le point le plus proche de lancé de sort
 
+        await Task.Delay(1000);
+
         if (targetReached)
         {
             print("attack !");
@@ -80,10 +82,15 @@ public class EnemyEntity : Entity
 
             WayPoint pointToSelect = graphMaker.PointDict[selfPointPos + (targetPointPos - selectedpointPos)];
 
-            print(pointToSelect.transform.position);
+            choosenSpell.StartSpellPreview(pointToSelect);
 
-            choosenSpell.StartSpellPreview(pointToSelect, true);
+            await Task.Delay(1000);
+
             await choosenSpell.Execute(pointToSelect);
+
+            await Task.Delay(1000);
+
+            choosenSpell.CancelSpellPreview();
 
             return true;
         }

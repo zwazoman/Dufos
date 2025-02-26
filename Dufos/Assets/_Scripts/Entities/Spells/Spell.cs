@@ -215,7 +215,7 @@ public class Spell
         GraphMaker.Instance.TargetPoints.Clear();
     }
 
-    async void StartExecute(WayPoint origin)
+    public async void StartExecute(WayPoint origin)
     {
 
         origin.OnNotHovered -= CancelSpellPreview;
