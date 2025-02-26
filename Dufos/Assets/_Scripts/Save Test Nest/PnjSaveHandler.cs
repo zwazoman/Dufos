@@ -47,6 +47,7 @@ public class PnjSaveHandler : MonoBehaviour
                 }
 
                 _json = JsonUtility.ToJson(obj);
+                print("reset");
 
                 File.WriteAllText(Application.dataPath + "/" + _saveName + ".json", _json);
             }
@@ -90,6 +91,7 @@ public class PnjSaveHandler : MonoBehaviour
     // On réecrit les variables à chaque appel de la méthode, autant dans l'UI que dans le fichier de sauvegarde.
     public void ApplySave()
     {
+        print("save");
         SavedDataCenter.Instance.Save();
 
         if(obj != null && obj.PnjActive != null)

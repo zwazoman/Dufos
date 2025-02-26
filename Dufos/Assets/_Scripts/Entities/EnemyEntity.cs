@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyEntity : Entity
 {
+
     protected override void Start()
     {
         base.Start();
@@ -71,6 +72,7 @@ public class EnemyEntity : Entity
 
         if (targetReached)
         {
+            print("attack !");
 
             WayPoint selected = targetPointsDict[choosenTargetPoint];
 
@@ -102,11 +104,15 @@ public class EnemyEntity : Entity
     /// <returns></returns>
     async Task<bool> MoveToward(WayPoint targetPoint)
     {
+        print("move toward");
+
         if (Walkables.Contains(targetPoint))
         {
+            print("target in range !");
             await TryMoveTo(targetPoint);
             return true;
         }
+        print("target not in range yet ! getting closer...");
         await TryMoveTo(Walkables.FindClosest(targetPoint.transform.position));
         return false;
     }
