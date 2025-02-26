@@ -9779,6 +9779,7 @@ MonoBehaviour:
   - {fileID: 1793004061}
   - {fileID: 568500051}
   - {fileID: 369494118}
+  _saveName: PnjSaveZone2
 --- !u!4 &1006414456
 Transform:
   m_ObjectHideFlags: 0

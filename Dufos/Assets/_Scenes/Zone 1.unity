@@ -2347,10 +2347,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9313496887e26d64eb84a65a8cf20549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FightsWon: 0
-  ZoneName: Zone 1
-  PlayerPosition: {x: 0, y: 0, z: 0}
-  WhichFight: 0
   Fighters: 000000000000000000
 --- !u!4 &250832072
 Transform:
@@ -3247,6 +3243,7 @@ MonoBehaviour:
   - {fileID: 1793004061}
   - {fileID: 568500051}
   - {fileID: 369494118}
+  _saveName: PnjSaveZone1
 --- !u!1 &408215126
 GameObject:
   m_ObjectHideFlags: 0

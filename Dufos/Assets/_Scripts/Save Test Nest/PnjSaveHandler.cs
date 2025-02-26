@@ -7,6 +7,8 @@ public class PnjSaveHandler : MonoBehaviour
 {
     [SerializeField]
     private List<GameObject> _pnjs = new();
+    [SerializeField]
+    private string _saveName;
 
     private Data obj;
     private string _json = "";
@@ -23,9 +25,9 @@ public class PnjSaveHandler : MonoBehaviour
         obj = new();
 
         // Si la file n'existe pas, on l'a créer en lui assignant un chemin.
-        if (!File.Exists(Application.dataPath + "/PnjSaveFile.json"))
+        if (!File.Exists(Application.dataPath + "/" + _saveName + ".json"))
         {
-            File.Create(Application.dataPath + "/PnjSaveFile.json");
+            File.Create(Application.dataPath + "/" + _saveName + ".json");
             return;
         }
 
@@ -35,7 +37,7 @@ public class PnjSaveHandler : MonoBehaviour
     {
         if (_pnjs.Count > 0)
         {
-            _json = File.ReadAllText(Application.dataPath + "/PnjSaveFile.json");
+            _json = File.ReadAllText(Application.dataPath + "/" + _saveName + ".json");
 
             if (_json == "")
             {
@@ -47,7 +49,7 @@ public class PnjSaveHandler : MonoBehaviour
                 _json = JsonUtility.ToJson(obj);
                 print("reset");
 
-                File.WriteAllText(Application.dataPath + "/PnjSaveFile.json", _json);
+                File.WriteAllText(Application.dataPath + "/" + _saveName + ".json", _json);
             }
 
             else if (_json != "")
@@ -67,10 +69,10 @@ public class PnjSaveHandler : MonoBehaviour
 
     public void EraseSave()
     {
-        if(File.Exists(Application.dataPath + "/PnjSaveFile.json"))
+        if(File.Exists(Application.dataPath + "/" + _saveName + ".json"))
         {
-            File.Delete(Application.dataPath + "/PnjSaveFile.json");
-            File.Delete(Application.dataPath + "/PnjSaveFile.json.meta");
+            File.Delete(Application.dataPath + "/" + _saveName + ".json");
+            File.Delete(Application.dataPath + "/" + _saveName + ".json.meta");
         }
     }
 
@@ -91,6 +93,6 @@ public class PnjSaveHandler : MonoBehaviour
         }
 
         _json = JsonUtility.ToJson(obj);
-        File.WriteAllText(Application.dataPath + "/PnjSaveFile.json", _json);
+        File.WriteAllText(Application.dataPath + "/" + _saveName + ".json", _json);
     }
 }
