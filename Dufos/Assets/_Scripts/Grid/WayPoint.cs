@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,6 +27,11 @@ public class WayPoint : MonoBehaviour
     [SerializeField] Material _targettingMat;
     [SerializeField] Material _defaultMat;
 
+    [Header("juice")]
+    [SerializeField] GameObject _visualsObject;
+    [SerializeField] float floatTime = .3f;
+    [SerializeField] float floatHeight = 1f;
+
     MeshRenderer _mR;
 
     #region Astar Fields
@@ -43,7 +49,7 @@ public class WayPoint : MonoBehaviour
     {
         IsActive = true;
 
-        TryGetComponent(out _mR);
+        _mR = GetComponentInChildren<MeshRenderer>();
 
         _mR.material = _defaultMat;
     }
@@ -116,11 +122,13 @@ public class WayPoint : MonoBehaviour
     public void Hovered()
     {
         OnHovered?.Invoke(this,false);
+        _visualsObject.transform.DOMoveY(floatHeight, floatTime).SetEase(Ease.OutBack);
     }
 
     public void NotHovered()
     {
         OnNotHovered?.Invoke();
+        _visualsObject.transform.DOMoveY(0, floatTime).SetEase(Ease.InBack);
     }
 
     #region Astar

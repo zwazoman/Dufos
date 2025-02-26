@@ -170,7 +170,7 @@ public class Spell
         }
     }
 
-    public void CancelSelectionPreview()
+    public void CancelSelectionPreview(bool cancelSpellPreview = true)
     {
         foreach(WayPoint selectedPoint in GraphMaker.Instance.SelectedPoints)
         {
@@ -179,14 +179,21 @@ public class Spell
             selectedPoint.OnNotHovered -= CancelSpellPreview;
             selectedPoint.OnClicked -= StartExecute;
 
-            selectedPoint.ApplyDefaultVisual();
+            if (GraphMaker.Instance.TargetPoints.Contains(selectedPoint))
+                selectedPoint.ApplyTargetVisual();
+            else
+                selectedPoint.ApplyDefaultVisual();
         }
         GraphMaker.Instance.SelectedPoints.Clear();
 
-        CancelSpellPreview();
+        if (cancelSpellPreview)
+        {
+            CancelSpellPreview();
+            OnPreviewCanceled?.Invoke();
+        }
 
         IsPreviewing = false;
-        OnPreviewCanceled?.Invoke();
+        
     }
 
     public void CancelSpellPreview()
@@ -207,13 +214,17 @@ public class Spell
 
     async void StartExecute(WayPoint origin)
     {
+        origin.OnNotHovered -= CancelSpellPreview;
+
         await Execute(origin);
-        CancelSelectionPreview();
+        CancelSpellPreview();
+        OnPreviewCanceled?.Invoke();
     }
 
     public async Task Execute(WayPoint origin)
     {
         WayPoint[] targets = GraphMaker.Instance.TargetPoints.ToArray();
+        CancelSelectionPreview(false);
 
         switch (Data.Visuals)
         {

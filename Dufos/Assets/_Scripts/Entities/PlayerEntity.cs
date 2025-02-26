@@ -108,6 +108,7 @@ public class PlayerEntity : Entity
         {
             point.ApplyDefaultVisual();
         }
+        Walkables.Clear();
     }
     #endregion
 }

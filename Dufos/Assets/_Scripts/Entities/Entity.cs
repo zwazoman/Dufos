@@ -13,7 +13,7 @@ public class Entity : MonoBehaviour
     [HideInInspector] public Health EntityHealth;
     [HideInInspector] public int MovePoints;
 
-    protected List<WayPoint> Walkables = new List<WayPoint>();
+    public List<WayPoint> Walkables = new List<WayPoint>();
     protected GraphMaker graphMaker;
 
     Move _move;
