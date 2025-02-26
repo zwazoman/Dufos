@@ -2,11 +2,6 @@ using System.Threading.Tasks;
 
 public class SpellVisuals
 {
-    public virtual async Task ShowVisuals(WayPoint target)
-    {
-
-    }
-
     public async Task RockProjectile(WayPoint target)
     {
         await SpellVfxManager.Instance.PlayParticles("RockProjectile", target.transform);

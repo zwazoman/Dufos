@@ -23,21 +23,6 @@ public class PlayerEntity : Entity
         CombatManager.Instance.PlayerEntities.Add(this);
     }
 
-
-    protected void Update()
-    {
-        if (!IsFree) return;
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            print("ESPACE");
-            UseSpell(0);
-        }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            CancelSpellUse(0);
-        }
-    }
-
     public override void StartTurn()
     {
         base.StartTurn();

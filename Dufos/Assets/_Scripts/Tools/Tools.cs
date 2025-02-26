@@ -114,30 +114,6 @@ public static class Tools
         return default;
     }
 
-    //public static WayPoint FindClosest(this List<WayPoint> points, WayPoint origin)
-    //{
-    //    if (points.Count == 0)
-    //        Debug.LogError("List Is Empty");
-
-    //    Dictionary<WayPoint,int> waypointDistance = new Dictionary<WayPoint,int>();
-
-    //    foreach (WayPoint point in points)
-    //    {
-    //        Stack<WayPoint> path = FindBestPath(origin, point);
-    //        waypointDistance.Add(point, path.Count);
-    //    }
-
-    //    WayPoint closest = waypointDistance.
-
-    //    foreach(WayPoint point in waypointDistance.Keys)
-    //    {
-    //        if()
-    //    }
-
-        
-       
-    //}
-
     public static Stack<WayPoint> FindBestPath(WayPoint startPoint, WayPoint endPoint)
     {
         List<WayPoint> openWayPoints = new List<WayPoint>();

@@ -23,8 +23,8 @@ public class GraphMaker : MonoBehaviour
     [HideInInspector] public List<WayPoint> TargetPoints = new List<WayPoint>();
 
 
-    [SerializeField] public Vector3Int StartPos; // get set
-    [SerializeField] public Vector3Int EndPos; // get set
+    [SerializeField] public Vector3Int StartPos { get; set; }
+    [SerializeField] public Vector3Int EndPos { get; set; }
 
     [SerializeField] GameObject _waypointPrefab;
 
@@ -55,13 +55,11 @@ public class GraphMaker : MonoBehaviour
 
                 if (PointDict.ContainsKey(down))
                 {
-                    print("y'a en bas !!");
                     point.Neighbours.Add(PointDict[down]);
                     PointDict[down].Neighbours.Add(point);
                 }
                 if (PointDict.ContainsKey(left))
                 {
-                    print("y'a à gauche");
                     point.Neighbours.Add(PointDict[left]);
                     PointDict[left].Neighbours.Add(point);
                 }
