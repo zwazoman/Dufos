@@ -69,10 +69,22 @@ public class PnjSaveHandler : MonoBehaviour
 
     public void EraseSave()
     {
-        if(File.Exists(Application.dataPath + "/" + _saveName + ".json"))
+        if(File.Exists(Application.dataPath + "/" + "Zone1" + ".json"))
         {
-            File.Delete(Application.dataPath + "/" + _saveName + ".json");
-            File.Delete(Application.dataPath + "/" + _saveName + ".json.meta");
+            File.Delete(Application.dataPath + "/" + "Zone1" + ".json");
+            File.Delete(Application.dataPath + "/" + "Zone1" + ".json.meta");
+        }
+
+        if (File.Exists(Application.dataPath + "/" + "Zone2" + ".json"))
+        {
+            File.Delete(Application.dataPath + "/" + "Zone2" + ".json");
+            File.Delete(Application.dataPath + "/" + "Zone2" + ".json.meta");
+        }
+
+        if (File.Exists(Application.dataPath + "/" + "Zone3" + ".json"))
+        {
+            File.Delete(Application.dataPath + "/" + "Zone3" + ".json");
+            File.Delete(Application.dataPath + "/" + "Zone3" + ".json.meta");
         }
     }
 
