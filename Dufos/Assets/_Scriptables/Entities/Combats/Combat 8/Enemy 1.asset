@@ -15,9 +15,9 @@ MonoBehaviour:
   EntityType: {r: 0, g: 0, b: 1, a: 1}
   EntityName: Ruff
   <Initiative>k__BackingField: 2
-  <MaxHealth>k__BackingField: 200
+  <MaxHealth>k__BackingField: 150
   <MaxMovePoints>k__BackingField: 4
   Spells:
-  - Data: {fileID: 11400000, guid: dccaacd8be65810449551465b98ab9e3, type: 2}
+  - Data: {fileID: 11400000, guid: c4793aa37b698994895f04f247eb0ac1, type: 2}
     Caster: {fileID: 0}
     IsPreviewing: 0
