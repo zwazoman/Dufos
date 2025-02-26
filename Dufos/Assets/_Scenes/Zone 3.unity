@@ -15375,7 +15375,7 @@ MonoBehaviour:
         m_MethodName: DisplayDialogues
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 46e8199962ff1e346a3c9d227453a121,
+          m_ObjectArgument: {fileID: 11400000, guid: e9683d668354b654b893f159294c2705,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: DialogueManager, Assembly-CSharp
           m_IntArgument: 0
@@ -15646,7 +15646,7 @@ MonoBehaviour:
         m_MethodName: DisplayDialogues
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 2192d5be7e521234884b36f1e22085a5,
+          m_ObjectArgument: {fileID: 11400000, guid: a8f52767c18d3a14db6cb93873f3b5d0,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: DialogueManager, Assembly-CSharp
           m_IntArgument: 0

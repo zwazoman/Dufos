@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43ea44f74cec0a043915801acf63a8a6, type: 3}
   m_Name: Dialogue 14
   m_EditorClassIdentifier: 
-  SpeakerName: "D\xE9linquant"
+  SpeakerName: Sardine
   CharacterDialogue:
   - "Attention ! Les d\xE9linquants les plus forts sont revenues de leur mission
     !"
