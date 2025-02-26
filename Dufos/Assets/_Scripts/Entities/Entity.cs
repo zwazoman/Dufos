@@ -53,8 +53,6 @@ public class Entity : MonoBehaviour
 
     public virtual void StartTurn() //transférer (passer en virtual)
     {
-        print("start turn : " + gameObject.name);
-        //montrer les cases accessibles par le click / pour les déplacements
     }
 
     public virtual void EndTurn() //transférer (passer en virtual)
@@ -70,7 +68,6 @@ public class Entity : MonoBehaviour
 
         if(pathlength > MovePoints)
         {
-            print("plus de pm !");
             return;
         }
 

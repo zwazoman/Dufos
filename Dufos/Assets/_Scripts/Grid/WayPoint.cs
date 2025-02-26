@@ -29,7 +29,7 @@ public class WayPoint : MonoBehaviour
     [SerializeField] Material _targettingMat;
     [SerializeField] Material _defaultMat;
 
-    [Header("juice")]
+    [Header("Juice")]
     [SerializeField] GameObject _visualsObject;
     [SerializeField] float floatTime = .3f;
     [SerializeField] float floatHeight = 1f;
@@ -188,7 +188,6 @@ public class WayPoint : MonoBehaviour
 
         if(openPoints.Count == 0)
         {
-            print("Oh cong la target est pas dans le graph cagole");
             return;
         }
 

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -45,8 +44,8 @@ public class BadPnjDespawn : MonoBehaviour
                     }
                 }
                 break;
+
             default:
-                Debug.Log("There is nothing in here");
                 break;
         }
     }

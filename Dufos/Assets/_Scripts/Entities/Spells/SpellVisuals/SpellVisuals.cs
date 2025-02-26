@@ -2,10 +2,6 @@ using System.Threading.Tasks;
 
 public class SpellVisuals
 {
-    public virtual async Task ShowVisuals(WayPoint target)
-    {
-
-    }
 
     public async Task RockProjectile(WayPoint target)
     {

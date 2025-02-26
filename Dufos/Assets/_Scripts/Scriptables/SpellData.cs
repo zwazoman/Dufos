@@ -61,6 +61,4 @@ public class SpellData : ScriptableObject
     public int Damage;
 
     public Visuals Visuals;
-
-    //mettre un bouton "show" qui fait apparaitre les gizmos ou colorie la grille pour montrer la zone d'effet du spell
 }
