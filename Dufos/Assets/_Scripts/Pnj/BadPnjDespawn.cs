@@ -16,50 +16,38 @@ public class BadPnjDespawn : MonoBehaviour
 
     private void Awake()
     {
-        if (GameManager.Instance.ZoneName == "Zone 1")
+        switch (GameManager.Instance.ZoneName)
         {
-            if (GameManager.Instance.Fighters[0] == true)
-            {
-                _zone1BadPnj[0].SetActive(false);
-            }
-            if (GameManager.Instance.Fighters[1] == true)
-            {
-                _zone1BadPnj[1].SetActive(false);
-            }
-            if (GameManager.Instance.Fighters[2] == true)
-            {
-                _zone1BadPnj[2].SetActive(false);
-            }
-        }
-        if (GameManager.Instance.ZoneName == "Zone 2")
-        {
-            if (GameManager.Instance.Fighters[3] == true)
-            {
-                _zone2BadPnj[0].SetActive(false);
-            }
-            if (GameManager.Instance.Fighters[4] == true)
-            {
-                _zone2BadPnj[1].SetActive(false);
-            }
-            if (GameManager.Instance.Fighters[5] == true)
-            {
-                _zone2BadPnj[2].SetActive(false);
-            }
-        }
-        if (GameManager.Instance.ZoneName == "Zone 3")
-        {
-            if (GameManager.Instance.Fighters[6] == true)
-            {
-                _zone3BadPnj[0].SetActive(false);
-            }
-            if (GameManager.Instance.Fighters[7] == true)
-            {
-                _zone3BadPnj[1].SetActive(false);
-            }
-            if (GameManager.Instance.Fighters[8] == true)
-            {
-                _zone3BadPnj[2].SetActive(false);
-            }
+            case "Zone 1":
+                for (int i = 0; i < GameManager.Instance.Fighters.Count - 6; i++)
+                {
+                    if (GameManager.Instance.Fighters[i] != false)
+                    {
+                        _zone1BadPnj[i].SetActive(false);
+                    }
+                }
+                break;
+            case "Zone 2":
+                for (int i = 3; i < GameManager.Instance.Fighters.Count - 3; i++)
+                {
+                    if (GameManager.Instance.Fighters[i] != false)
+                    {
+                        _zone2BadPnj[i].SetActive(false);
+                    }
+                }
+                break;
+            case "Zone 3":
+                for (int i = 6; i < GameManager.Instance.Fighters.Count; i++)
+                {
+                    if (GameManager.Instance.Fighters[i] != false)
+                    {
+                        _zone3BadPnj[i].SetActive(false);
+                    }
+                }
+                break;
+            default:
+                Debug.Log("There is nothing in here");
+                break;
         }
     }
 }
