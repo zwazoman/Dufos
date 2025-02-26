@@ -18,8 +18,8 @@ MonoBehaviour:
   SelectionMaxRange: 5
   ThrowableOnWalls: 1
   GoesThroughWalls: 0
-  BypassNearSelection: 0
-  SelectionBypassSize: 0
+  BypassNearSelection: 1
+  SelectionBypassSize: 3
   TargetForm: 0
   SpellMaxRange: 5
   BypassNearSpell: 0

@@ -102,7 +102,7 @@ public class EnemyEntity : Entity
     /// </summary>
     /// <param name="targetPoint"></param>
     /// <returns></returns>
-    protected async Task<bool> MoveToward(WayPoint targetPoint)
+    async Task<bool> MoveToward(WayPoint targetPoint)
     {
         print("move toward");
 

@@ -5,8 +5,6 @@ public class PlayerEntity : Entity
 {
     public bool IsFree;
 
-    Spell _currentSpell;
-
     protected override void Awake()
     {
         base.Awake();

@@ -17,7 +17,6 @@ public class Spell
     [HideInInspector] public bool IsPreviewing;
 
     SpellVisuals spellVisuals = new SpellVisuals();
-    private CancellationTokenSource _source;
 
     protected List<WayPoint> ReadSelectionForm(WayPoint origin)
     {
