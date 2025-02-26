@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -33,49 +34,51 @@ public class GameManager : MonoBehaviour
 
     public void NextZone()
     {
-
-        if (FightsWon < 3)
+        switch (FightsWon)
         {
-            ZoneName = "Zone 1";
-            Fighters[WhichFight] = true;
-            SceneManager.LoadScene(ZoneName);
-            SaveMap(ZoneName);
-            return;
-        }
-        if (FightsWon >= 3 && FightsWon < 6)
-        {
-            if (ZoneName != "Zone 2")
-            {
+            case 1:
+                ZoneName = "Zone 1";
+                ChangeZone(ZoneName);
+                break;
+            case 3:
                 PlayerPosition = Vector3.zero;
-            }
-            ZoneName = "Zone 2";
-            Fighters[WhichFight] = true;
-            SceneManager.LoadScene(ZoneName);
-            SaveMap(ZoneName);
-            return;
-        }
-        if (FightsWon >= 6 && FightsWon < 9)
-        {
-            if (ZoneName != "Zone 3")
-            {
+                ZoneName = "Zone 2";
+                ChangeZone(ZoneName);
+                break;
+            case 6:
                 PlayerPosition = Vector3.zero;
-            }
-            ZoneName = "Zone 3";
-            Fighters[WhichFight] = true;
-            SceneManager.LoadScene(ZoneName);
-            SaveMap(ZoneName);
-            return;
-        }
-        else
-        {
-            SceneManager.LoadScene("VictoryScene");
-            return;
+                ZoneName = "Zone 3";
+                ChangeZone(ZoneName);
+                break;
+            case 9:
+                SceneManager.LoadScene("VictoryScene");
+                break;
+            default:
+                ChangeZone(ZoneName);
+                break;
         }
     }
 
-    public void ChangeZone()
+    public void ChangeZone(string zone)
     {
-
+        switch (zone)
+        {
+            case "Zone 1":
+                Fighters[WhichFight] = true;
+                SceneManager.LoadScene(ZoneName);
+                SaveMap(ZoneName);
+                break;
+            case "Zone 2":
+                Fighters[WhichFight] = true;
+                SceneManager.LoadScene(ZoneName);
+                SaveMap(ZoneName);
+                break;
+            case "Zone 3":
+                Fighters[WhichFight] = true;
+                SceneManager.LoadScene(ZoneName);
+                SaveMap(ZoneName);
+                break;
+        }
     }
 
     public void SaveMap(string zoneName)
