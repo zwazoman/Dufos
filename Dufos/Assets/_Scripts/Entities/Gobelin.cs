@@ -10,9 +10,13 @@ public class Gobelin : EnemyEntity
 
         Flood();
 
-        Spell choosenSpell = ChooseRandomSpell();
+        //Spell choosenSpell = ChooseRandomSpell();
 
-        await TryUseSpell(choosenSpell);
+        WayPoint targetPlayerPoint = FindClosestPlayerPoint();
+
+        Spell choosenSpell = ChooseSpellWithRange(this, targetPlayerPoint);
+
+        await TryUseSpell(choosenSpell,targetPlayerPoint);
 
         _order.UpdateOrder();
 

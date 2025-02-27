@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7863348461409908529
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5095471805958457299}
+  - component: {fileID: 2391061296665731263}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5095471805958457299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7863348461409908529}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.726626, y: 9.63546, z: -1.93625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2391061296665731263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7863348461409908529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0a62cfd4b596e241b92ae866cf432a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _poolSize: 20
+  _SFXObject: {fileID: 6663756555614562868, guid: 9fb59d69bf9234e4094fd0c8e50a9782,
+    type: 3}
+  _clips:
+  - ClipList:
+    - {fileID: 8300000, guid: d5bd221e63986b748a9afd60e792a79e, type: 3}
+  - ClipList:
+    - {fileID: 8300000, guid: 4dfd7d6468c874045a59188abc6578d6, type: 3}
+  - ClipList:
+    - {fileID: 8300000, guid: ba43fcb6816df2c4689eaedafcab3d5b, type: 3}
+  - ClipList:
+    - {fileID: 8300000, guid: c8069e3e65d3ded43961ba40e390d06c, type: 3}
+  - ClipList:
+    - {fileID: 8300000, guid: 86d5a464a6dc25f45b28d83649e96768, type: 3}
+  - ClipList:
+    - {fileID: 8300000, guid: 25f0ef01561a01249802fcc80e9b5fad, type: 3}
+  - ClipList:
+    - {fileID: 8300000, guid: fe4b870cfc75e0e4b8ab9ddd3ca478f6, type: 3}

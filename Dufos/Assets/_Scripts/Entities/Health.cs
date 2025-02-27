@@ -16,9 +16,13 @@ public class Health : MonoBehaviour
     {
         OnTakeDamage?.Invoke(damage);
 
+        AudioManager.Instance.PlaySFXClip(Sounds.Damage, 0.3f);
+
         _currentHealth -= damage;
         if (_currentHealth <= 0)
         {
+            AudioManager.Instance.PlaySFXClip(Sounds.Death, 0.2f);
+
             OnDie?.Invoke();
         }
     }

@@ -27,9 +27,24 @@ public class EnemyEntity : Entity
         return Data.Spells.PickRandom();
     }
 
-    protected Spell ChooseSpellWithRange(WayPoint targetPoint)
+    protected Spell ChooseSpellWithRange(Entity caster, WayPoint targetPoint)
     {
-        return default;
+        Spell bestSpell = null;
+        float bestDistance = 100000;
+
+        foreach(Spell spell in Data.Spells)
+        {
+            float CasterToTargetDistance = (caster.transform.position - targetPoint.transform.position).magnitude;
+
+           if(Mathf.Abs(CasterToTargetDistance - spell.Data.SpellMaxRange)< bestDistance)
+            {
+                bestDistance = spell.Data.SpellMaxRange;
+                bestSpell = spell;
+            }
+
+        }
+
+        return bestSpell;
     }
 
     protected WayPoint FindClosestPlayerPoint()
@@ -49,10 +64,10 @@ public class EnemyEntity : Entity
     /// </summary>
     /// <param name="choosenSpell"></param>
     /// <returns></returns>
-    protected async Task<bool> TryUseSpell(Spell choosenSpell)
+    protected async Task<bool> TryUseSpell(Spell choosenSpell, WayPoint targetPlayerPoint)
     {
-        WayPoint targetPlayerPoint;
-        targetPlayerPoint = FindClosestPlayerPoint();
+        //WayPoint targetPlayerPoint;
+        //targetPlayerPoint = FindClosestPlayerPoint();
 
         Dictionary<WayPoint, WayPoint> targetPointsDict = new Dictionary<WayPoint, WayPoint>();
         targetPointsDict = choosenSpell.ComputeTargetableWaypoints(targetPlayerPoint);
